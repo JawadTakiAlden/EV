@@ -18,7 +18,7 @@ export interface MealSubscriptionModel {
 
 export const MealSubscriptionColumns = () => {
   const { t } = useTranslation();
-  const { getTranslation } = useGetTranslation();
+  const { getTranslation2 } = useGetTranslation();
   const col: MRT_ColumnDef<MealSubscriptionModel>[] = [
     {
       accessorKey: "id",
@@ -47,9 +47,12 @@ export const MealSubscriptionColumns = () => {
       ),
     },
     {
-      accessorKey: "meal_plan." + getTranslation("title"),
+      accessorKey: "meal_plan.title",
       header: t("table.mealTitle"),
       size: 200,
+      Cell: ({ row }) => {
+        return <span>{getTranslation2(row.original.meal_plan, "title")}</span>;
+      },
     },
     {
       accessorKey: "type",

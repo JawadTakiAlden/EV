@@ -11,25 +11,10 @@ import {
   CardMedia,
   Chip,
   Stack,
-  Tooltip,
-  tooltipClasses,
-  TooltipProps,
   Typography,
 } from "@mui/material";
 import { numberOfLines } from "../../../utils/maxLinesNumber";
-import styled from "@emotion/styled";
-
-const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
-  <Tooltip {...props} classes={{ popper: className }} />
-))(({ theme }) => ({
-  [`& .${tooltipClasses.tooltip}`]: {
-    // color: "rgba(0, 0, 0, 0.87)",
-    maxWidth: 220,
-    fontSize: "12px",
-    backdropFilter: "blur(1px)",
-    // border: "1px solid #dadde9",
-  },
-}));
+import HtmlTooltip from "../../../components/HtmlTooltip";
 
 const HorizintalMealCard = ({
   meal,

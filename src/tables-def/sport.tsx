@@ -15,7 +15,7 @@ export interface Sport {
 }
 
 export const SportColumns = () => {
-  const { getTranslation } = useGetTranslation();
+  const { getTranslation2 } = useGetTranslation();
   const { t } = useTranslation();
   const col: MRT_ColumnDef<Sport>[] = [
     {
@@ -23,8 +23,11 @@ export const SportColumns = () => {
       header: t("table.id"),
     },
     {
-      accessorKey: getTranslation("title"),
+      accessorKey: "title",
       header: t("table.title"),
+      Cell: ({ row }) => {
+        return <span>{getTranslation2(row.original, "title")}</span>;
+      },
     },
     {
       accessorKey: "createdAt",

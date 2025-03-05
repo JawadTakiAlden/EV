@@ -23,12 +23,15 @@ export interface Package {
 }
 
 export const PricingColumns = (withActions = true) => {
-  const { getTranslation } = useGetTranslation();
+  const { getTranslation2 } = useGetTranslation();
   const { t } = useTranslation();
   let pricingColumns: MRT_ColumnDef<Pricing>[] = [
     {
-      accessorKey: getTranslation("title"),
+      accessorKey: "title",
       header: t("table.title"),
+      Cell: ({ row }) => {
+        return <span>{getTranslation2(row.original, "title")}</span>;
+      },
     },
     {
       accessorKey: "price",

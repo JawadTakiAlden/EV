@@ -10,11 +10,14 @@ export interface DeliveryTime extends Translation {
 
 export const DeliveryTimesColumns = () => {
   const { t } = useTranslation();
-  const { getTranslation } = useGetTranslation();
+  const { getTranslation2 } = useGetTranslation();
   const col: MRT_ColumnDef<DeliveryTime>[] = [
     {
-      accessorKey: getTranslation("title"),
+      accessorKey: "title",
       header: t("table.title"),
+      Cell: ({ row }) => {
+        return <span>{getTranslation2(row.original, "title")}</span>;
+      },
     },
   ];
 

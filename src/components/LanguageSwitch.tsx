@@ -20,7 +20,7 @@ const LanguageSwitch = () => {
         }
       }}
     >
-      {i18n.language === "ar" ? "E" : "ع"}
+      {i18n.language === "ar" ? "En" : "AR"}
     </Typography>
   );
 };

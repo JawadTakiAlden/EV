@@ -27,12 +27,15 @@ export interface Choice {
 
 export const SurveyQuestionsColumns = () => {
   const { t } = useTranslation();
-  const { getTranslation } = useGetTranslation();
+  const { getTranslation2 } = useGetTranslation();
   const col: MRT_ColumnDef<SurveyDataModel, any>[] = [
     {
-      accessorKey: getTranslation("title"),
+      accessorKey: "title",
       header: t("table.question"),
       maxSize: 200,
+      Cell: ({ row }) => {
+        return <span>{getTranslation2(row.original, "title")}</span>;
+      },
     },
     {
       accessorKey: "choices",

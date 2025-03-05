@@ -20,7 +20,7 @@ export interface SubscriptionModel {
 
 export const SubscriptionsColumns = () => {
   const { t } = useTranslation();
-  const { getTranslation } = useGetTranslation();
+  const { getTranslation2 } = useGetTranslation();
   const col: MRT_ColumnDef<SubscriptionModel, any>[] = [
     {
       accessorKey: "id",
@@ -49,14 +49,20 @@ export const SubscriptionsColumns = () => {
       ),
     },
     {
-      accessorKey: "package." + getTranslation("name"),
+      accessorKey: "package.name",
       header: t("table.packageName"),
       maxSize: 150,
+      Cell: ({ row }) => {
+        return <span>{getTranslation2(row.original.package, "name")}</span>;
+      },
     },
     {
-      accessorKey: "pricing." + getTranslation("title"),
+      accessorKey: "pricing.title",
       header: t("table.priceName"),
       maxSize: 150,
+      Cell: ({ row }) => {
+        return <span>{getTranslation2(row.original.price, "title")}</span>;
+      },
     },
     {
       accessorKey: "package.type",

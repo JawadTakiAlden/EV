@@ -7,12 +7,15 @@ export interface MealType {
 }
 
 export const MealTypesColumns = () => {
-  const { getTranslation } = useGetTranslation();
+  const { getTranslation2 } = useGetTranslation();
   const { t } = useTranslation();
   const col: MRT_ColumnDef<MealType>[] = [
     {
-      accessorKey: getTranslation("title"),
+      accessorKey: "title",
       header: t("table.title"),
+      Cell: ({ row }) => {
+        return <span>{getTranslation2(row.original, "title")}</span>;
+      },
     },
   ];
 

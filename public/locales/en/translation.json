@@ -56,7 +56,7 @@
     "meals": "Meals",
     "meal_plans": "Meal Plans",
     "meal_types": "Meal Types",
-    "meal_ingred": "Meal Ingredient",
+    "meal_ingred": "Inventory Management",
     "delivery_times": "Delivery Times",
     "week_man": "Week Management",
     "chat": "Chat",
@@ -456,7 +456,8 @@
     "mealTitle": "Meal Title",
     "subType": "Subscription Type",
     "unit": "Unit",
-    "stock": "Stock"
+    "stock": "Stock",
+    "updateStock": "Update quantity in stock"
   },
   "addBanner": {
     "button": "Craete Banner"
@@ -486,5 +487,10 @@
     "tbsp": "Tbsp",
     "tsp": "Tsp",
     "pcs": "Pcs"
+  },
+  "addToStock": {
+    "new_qun": "New Quantity",
+    "title": "Update Stock Quantity",
+    "description": "This form allows you to update the stock quantity of a product. Enter the new quantity and click the save button to apply the changes. A tooltip is available for additional guidance."
   }
 }
