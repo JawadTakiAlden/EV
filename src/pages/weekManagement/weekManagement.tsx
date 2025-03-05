@@ -121,7 +121,9 @@ const WeekManagement = () => {
     setAnchorEl(null);
   };
 
-  const mealTypes = mealTypesQuery?.data?.data;
+  const mealTypes = mealTypesQuery?.data?.data?.types;
+
+  console.log(mealTypes);
 
   const assignMealsSubmit = () => {
     const dataToSubmit = Object.keys(droppedMeals)
