@@ -123,8 +123,6 @@ const WeekManagement = () => {
 
   const mealTypes = mealTypesQuery?.data?.data;
 
-  console.log(mealTypes);
-
   const assignMealsSubmit = () => {
     const dataToSubmit = Object.keys(droppedMeals)
       .map((day) => ({
