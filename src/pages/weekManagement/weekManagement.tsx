@@ -121,7 +121,7 @@ const WeekManagement = () => {
     setAnchorEl(null);
   };
 
-  const mealTypes = mealTypesQuery?.data?.data?.types;
+  const mealTypes = mealTypesQuery?.data?.data;
 
   console.log(mealTypes);
 

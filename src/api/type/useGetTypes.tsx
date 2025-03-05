@@ -4,7 +4,7 @@ import { AxiosResponse } from "axios";
 import { MealType } from "../../tables-def/meal-types";
 
 const useGetTypes = () => {
-  const getTypes = (): Promise<AxiosResponse<{ types: MealType[] }>> => {
+  const getTypes = (): Promise<AxiosResponse<MealType[]>> => {
     return request({
       url: "/admin/types",
     });
