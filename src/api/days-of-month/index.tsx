@@ -7,7 +7,7 @@ export const useGetDaysOfMonth = () => {
     AxiosResponse<{ dates: { date: string; day: string }[] }>
   > => {
     return request({
-      url: "/coach/daysOfMonth",
+      url: "/kitchen/daysOfMonth",
     });
   };
 

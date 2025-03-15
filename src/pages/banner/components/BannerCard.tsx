@@ -9,7 +9,7 @@ const BannerCard = ({ banner }: { banner: BannerModel }) => {
     <MainCard border={false} cardContent={false} sx={{ p: 0 }}>
       <CardMedia
         component={"img"}
-        image={"http://127.0.0.1:3001/" + banner.image}
+        image={banner.image}
         alt={banner.image}
         height={192}
         sx={{

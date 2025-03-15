@@ -11,6 +11,11 @@ import {
   ListItemText,
   Stack,
   styled,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
   Tooltip,
   Typography,
 } from "@mui/material";
@@ -19,6 +24,7 @@ import { gridSpacing } from "../../../config";
 import MealCard from "../../meals/components/MealCard";
 import { LoadingButton } from "@mui/lab";
 import { useTranslation } from "react-i18next";
+import useGetTranslation from "../../../utils/useGetTranslation";
 
 const InfoTypography = styled(Typography)(({ theme }) => ({
   fontSize: "calc(16px + 0.05vw)",
@@ -37,7 +43,13 @@ const MealOrderDetail = () => {
   const data = mealOrder.data?.data;
   const chnageOrderStatus = useChangeOrderStatus();
 
+  const { getTranslation2 } = useGetTranslation();
+
   const { t } = useTranslation();
+
+  if (mealOrder.isLoading) {
+    return <Typography>{t("global.loading")}...</Typography>;
+  }
 
   return (
     <Box>
@@ -62,7 +74,10 @@ const MealOrderDetail = () => {
                     orderStatus: "listed",
                   });
                 }}
-                disabled={chnageOrderStatus.isPending}
+                disabled={
+                  chnageOrderStatus.isPending ||
+                  !mealOrder.data?.data.isStockSufficient
+                }
                 color="inherit"
                 variant="outlined"
                 sx={{
@@ -82,7 +97,10 @@ const MealOrderDetail = () => {
                     orderStatus: "pending",
                   });
                 }}
-                disabled={chnageOrderStatus.isPending}
+                disabled={
+                  chnageOrderStatus.isPending ||
+                  !mealOrder.data?.data.isStockSufficient
+                }
                 color="warning"
                 variant="outlined"
                 sx={{
@@ -90,7 +108,7 @@ const MealOrderDetail = () => {
                   transition: "0.2s",
                 }}
               >
-                {t("mealOrderDetail.pinding")}
+                {t("mealOrderDetail.pending")}
               </LoadingButton>
             </Tooltip>
             <Divider sx={{ flexGrow: 0.5 }} />
@@ -102,7 +120,10 @@ const MealOrderDetail = () => {
                     orderStatus: "done",
                   });
                 }}
-                disabled={chnageOrderStatus.isPending}
+                disabled={
+                  chnageOrderStatus.isPending ||
+                  !mealOrder.data?.data.isStockSufficient
+                }
                 color="primary"
                 variant="outlined"
                 sx={{
@@ -115,6 +136,42 @@ const MealOrderDetail = () => {
             </Tooltip>
           </Stack>
         </Grid>
+        {!mealOrder.data?.data.isStockSufficient && (
+          <Grid size={12}>
+            <Typography
+              sx={{
+                fontSize: "calc(16px + 0.15vw)",
+                fontWeight: "600",
+                mb: 2,
+              }}
+              color="secondary"
+            >
+              {t("mealOrderDetail.stockInsufficient")}
+            </Typography>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>{t("mealOrderDetail.ingredientId")}</TableCell>
+                  <TableCell>{t("mealOrderDetail.ingredientName")}</TableCell>
+                  <TableCell>{t("mealOrderDetail.required")}</TableCell>
+                  <TableCell>{t("mealOrderDetail.available")}</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {mealOrder.data?.data.insufficientIngredients.map((ingred) => {
+                  return (
+                    <TableRow>
+                      <TableCell>{ingred.ingredientId}</TableCell>
+                      <TableCell>{ingred.ingredientName}</TableCell>
+                      <TableCell>{ingred.required}</TableCell>
+                      <TableCell>{ingred.available}</TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
+          </Grid>
+        )}
         <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <Box>
             <Typography variant="h3" mb={1}>
@@ -128,7 +185,8 @@ const MealOrderDetail = () => {
               {new Date(data?.order_date || "").toLocaleDateString()}
             </InfoTypography>
             <InfoTypography>
-              <span>{t("mealOrderDetail.orderStatus")}</span>: {data?.status}
+              <span>{t("mealOrderDetail.orderStatus")}</span>:{" "}
+              {t("mealOrderDetail." + data?.status)}
             </InfoTypography>
           </Box>
         </Grid>
@@ -153,7 +211,7 @@ const MealOrderDetail = () => {
             </InfoTypography>
             <InfoTypography>
               <span> {t("mealOrderDetail.customer.gender")}</span>:{" "}
-              {data?.user?.gender}
+              {t("gender." + data?.user?.gender)}
             </InfoTypography>
             <InfoTypography>
               <span> {t("mealOrderDetail.customer.goal")}</span>:{" "}
@@ -178,19 +236,21 @@ const MealOrderDetail = () => {
             </Typography>
             <InfoTypography>
               <span>{t("mealOrderDetail.sub.plan")}</span>:{" "}
-              {data?.subscription?.meal_plan?.title}
+              {getTranslation2(data?.subscription?.meal_plan!, "title")}
             </InfoTypography>
             <List>
               <ListItem>
                 <ListItemText>
                   {t("mealOrderDetail.sub.calories")}:{" "}
-                  {data?.subscription?.meal_plan?.calories} kcal
+                  {data?.subscription?.meal_plan?.calories}{" "}
+                  {t("mealOrderDetail.kcal")}
                 </ListItemText>
               </ListItem>
               <ListItem>
                 <ListItemText>
                   {t("mealOrderDetail.sub.price")}: $
-                  {data?.subscription?.meal_plan?.price_monthly}/month
+                  {data?.subscription?.meal_plan?.price_monthly}/
+                  {t("mealOrderDetail.monthly")}
                 </ListItemText>
               </ListItem>
               <ListItem>
@@ -233,7 +293,7 @@ const MealOrderDetail = () => {
             </InfoTypography>
             <InfoTypography>
               <span>{t("mealOrderDetail.delivery.time")}</span>:{" "}
-              {data?.subscription?.delivery_time?.title}
+              {getTranslation2(data?.subscription?.delivery_time!, "title")}
             </InfoTypography>
           </Box>
         </Grid>

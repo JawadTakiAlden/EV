@@ -4,6 +4,13 @@ import DeleteTypography from "../../../components/DeleteTypography";
 import MealPlanForm from "../components/MealPlanForm";
 import { useCreateMealPlan } from "../../../api/mealPlan";
 import { useTranslation } from "react-i18next";
+import imageCompression from "browser-image-compression";
+
+const options = {
+  maxSizeMB: 0.5,
+  maxWidthOrHeight: 1920,
+  useWebWorker: true,
+};
 
 const CreateMealPlan = () => {
   const createMealPlan = useCreateMealPlan();
@@ -19,7 +26,7 @@ const CreateMealPlan = () => {
         {t("createMealPlan.title")}
       </DeleteTypography>
       <MealPlanForm
-        onSubmit={(values) => {
+        onSubmit={async (values) => {
           createMealPlan.mutateAsync({
             ...values,
             types: values.types.map((ty) => ty.id),

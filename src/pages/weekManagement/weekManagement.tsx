@@ -91,8 +91,8 @@ const WeekManagement = () => {
       const transformedData = mealsOfMonthQuery.data?.data?.map(
         (mealsOfMonth) => {
           return {
-            [`${mealsOfMonth.day}`]: {
-              meals: mealsOfMonth.meals.map((meal) => meal.id),
+            [`${mealsOfMonth?.date}`]: {
+              meals: mealsOfMonth?.meals.map((meal) => meal?.id),
             },
           };
         }
@@ -113,6 +113,14 @@ const WeekManagement = () => {
     }
   }, [mealsOfMonthQuery.isLoading]);
 
+  if (
+    mealTypesQuery.isLoading &&
+    mealsQuery.isLoading &&
+    mealsOfMonthQuery.isLoading
+  ) {
+    return <Typography>{t("global.loading")}...</Typography>;
+  }
+
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -130,6 +138,7 @@ const WeekManagement = () => {
         meal_ids: droppedMeals[day].meals,
       }))
       .filter((mealAssigment) => mealAssigment.meal_ids.length > 0);
+
     assignMealsToDays.mutateAsync({ assignments: dataToSubmit });
   };
 
@@ -232,33 +241,35 @@ const WeekManagement = () => {
           <Box>
             <List
               height={200}
-              itemCount={
-                mealsQuery?.data?.data?.filter((meal) => {
-                  return (
-                    !droppedMeals[activeDay]?.meals.includes(meal.id!) &&
-                    meal.name.includes(search) &&
-                    (mealFilter.id === 0
-                      ? true
-                      : meal.types.findIndex(
-                          (type) => type.id === mealFilter.id
-                        ) !== -1)
-                  );
-                })?.length || 0
-              }
+              // itemCount={
+              //   mealsQuery?.data?.data?.filter((meal) => {
+              //     return (
+              //       !droppedMeals[activeDay]?.meals.includes(meal.id!) &&
+              //       meal.name.includes(search) &&
+              //       (mealFilter.id === 0
+              //         ? true
+              //         : meal.types.findIndex(
+              //             (type) => type.id === mealFilter.id
+              //           ) !== -1)
+              //     );
+              //   })?.length || 0
+              // }
+              itemCount={mealsQuery?.data?.data?.length || 0}
               direction={i18n.language === "ar" ? "rtl" : "ltr"}
-              itemData={
-                mealsQuery?.data?.data?.filter((meal) => {
-                  return (
-                    !droppedMeals[activeDay]?.meals.includes(meal.id!) &&
-                    meal.name.includes(search) &&
-                    (mealFilter.id === 0
-                      ? true
-                      : meal.types.findIndex(
-                          (type) => type.id === mealFilter.id
-                        ) !== -1)
-                  );
-                }) || []
-              }
+              // itemData={
+              //   mealsQuery?.data?.data?.filter((meal) => {
+              //     return (
+              //       !droppedMeals[activeDay]?.meals.includes(meal.id!) &&
+              //       meal.name.includes(search) &&
+              //       (mealFilter.id === 0
+              //         ? true
+              //         : meal.types.findIndex(
+              //             (type) => type.id === mealFilter.id
+              //           ) !== -1)
+              //     );
+              //   }) || []
+              // }
+              itemData={mealsQuery?.data?.data || []}
               itemSize={310}
               layout="horizontal"
               width={1000}

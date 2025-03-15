@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import { MdDeleteOutline, MdUpdate } from "react-icons/md";
 import { useAuthContext } from "../../../providers/AuthProvider";
 import { useTranslation } from "react-i18next";
+import useGetTranslation from "../../../utils/useGetTranslation";
 
 const ExcerciseCard = ({
   exercise,
@@ -28,6 +29,7 @@ const ExcerciseCard = ({
 }) => {
   const { base } = useAuthContext();
   const { t } = useTranslation();
+  const { getTranslation2 } = useGetTranslation();
   return (
     <Box sx={{ height: "100%" }}>
       <MainCard
@@ -60,7 +62,7 @@ const ExcerciseCard = ({
               lineClamp: 1,
             }}
           >
-            {exercise.name}
+            {getTranslation2(exercise, "name")}
           </Typography>
           <Typography
             sx={{
@@ -75,10 +77,7 @@ const ExcerciseCard = ({
               lineClamp: 2,
             }}
           >
-            {exercise.description}
-          </Typography>
-          <Typography sx={{ color: "text.secondary" }}>
-            {t("excercise.duration")} : {exercise.duration}
+            {getTranslation2(exercise, "description")}
           </Typography>
         </CardContent>
         {!noActions && (
@@ -93,24 +92,20 @@ const ExcerciseCard = ({
                 {t("global.more")}
               </Button>
             </Tooltip>
-            <Tooltip title={"update exercise"}>
-              <IconButton
-                component={Link}
-                to={`/${base}/dashboard/exercises/${exercise.id}?task=settings`}
-                color="info"
-              >
-                <MdUpdate />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title={"delete exercise"}>
-              <IconButton
-                component={Link}
-                to={`/${base}/dashboard/exercises/${exercise.id}?task=settings`}
-                color="error"
-              >
-                <MdDeleteOutline />
-              </IconButton>
-            </Tooltip>
+            <IconButton
+              component={Link}
+              to={`/${base}/dashboard/exercises/${exercise.id}?task=settings`}
+              color="info"
+            >
+              <MdUpdate />
+            </IconButton>
+            <IconButton
+              component={Link}
+              to={`/${base}/dashboard/exercises/${exercise.id}?task=settings`}
+              color="error"
+            >
+              <MdDeleteOutline />
+            </IconButton>
           </CardActions>
         )}
       </MainCard>

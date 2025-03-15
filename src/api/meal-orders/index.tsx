@@ -15,7 +15,7 @@ export const useGetMealOrders = () => {
     return request({
       url: "/kitchen/orders",
       params: {
-        date: date,
+        day: date,
       },
     });
   };

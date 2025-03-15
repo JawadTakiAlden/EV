@@ -145,6 +145,10 @@
   "all_users": {
     "create_user": "Create new user"
   },
+  "gender": {
+    "male": "Male",
+    "female": "Female"
+  },
   "userProfile": {
     "setup_required": "Profile setup required",
     "title": "Client Information",
@@ -392,7 +396,14 @@
     "done": "Done",
     "orderDetail": "Order Detail",
     "orderId": "Order ID",
+    "kcal": "kcal",
+    "monthly": "Month",
     "orderDate": "Order Date",
+    "ingredientId": "ID",
+    "ingredientName": "Ingredient Name",
+    "required": "Required Quantity",
+    "available": "Available in stock",
+    "stockInsufficient": "Ahmad afif",
     "orderStatus": "Order Status",
     "customer": {
       "title": "Customer Information",

@@ -11,7 +11,7 @@ export interface SubscriptionModel {
   id: number;
   user: UserModel;
   package: Package;
-  price: PriceModel;
+  pricing: PriceModel;
   start_date: string;
   end_date: string;
   is_active: boolean;
@@ -61,7 +61,7 @@ export const SubscriptionsColumns = () => {
       header: t("table.priceName"),
       maxSize: 150,
       Cell: ({ row }) => {
-        return <span>{getTranslation2(row.original.price, "title")}</span>;
+        return <span>{getTranslation2(row.original.pricing, "title")}</span>;
       },
     },
     {

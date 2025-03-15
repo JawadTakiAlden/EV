@@ -1,5 +1,13 @@
+import { MealIngreadiant } from "./meal-ingrediant";
 import { Meal } from "./meals";
 import { Address, DeliveryTime, UserProfileModel } from "./user-profile";
+
+export interface InsufficientIngredient {
+  ingredientId: number;
+  ingredientName: string;
+  required: number;
+  available: number;
+}
 
 export interface MealOrder {
   id: number;
@@ -11,6 +19,8 @@ export interface MealOrder {
   updatedAt: string;
   user: UserProfileModel;
   meals: Meal[];
+  isStockSufficient: boolean;
+  insufficientIngredients: InsufficientIngredient[];
   subscription: {
     id: number;
     type: string;

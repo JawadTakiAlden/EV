@@ -153,7 +153,7 @@ export const useAssignMealsToDay = () => {
 
 export const useGetMealsOfWeek = () => {
   const getMealsOfWeek = (): Promise<
-    AxiosResponse<{ day: { day: string }; meals: { id: number }[] }[]>
+    AxiosResponse<{ day: string; date: string; meals: Meal[] }[]>
   > => {
     return request({
       url: "/admin/week-meals",

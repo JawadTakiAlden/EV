@@ -147,6 +147,10 @@
   "all_users": {
     "create_user": "إنشاء مستخدم جديد"
   },
+  "gender": {
+    "male": "ذكر",
+    "female": "انثى"
+  },
   "userProfile": {
     "setup_required": "إعداد الملف الشخصي مطلوب",
     "title": "معلومات العميل",
@@ -392,6 +396,13 @@
     "listed": "مدرج",
     "pending": "معلق",
     "done": "تم",
+    "kcal": "kcal",
+    "monthly": "شهر",
+    "ingredientId": "المعرف",
+    "ingredientName": "اسم المكون",
+    "required": "الكمية المطلوبة",
+    "available": "الكمية في المخزن",
+    "stockInsufficient": "",
     "orderDetail": "تفاصيل الطلب",
     "orderId": "رقم الطلب",
     "orderDate": "تاريخ الطلب",

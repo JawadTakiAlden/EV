@@ -173,7 +173,7 @@ const WorkoutForm = ({
     ...formikProps,
   });
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const { exercises, reset } = useCreateWorkout();
   const [inputSearch, setInputSearch] = useState<string>("");
@@ -427,6 +427,7 @@ const WorkoutForm = ({
                 itemCount={allExercises.length}
                 itemSize={310}
                 height={380}
+                direction={i18n.language === "ar" ? "rtl" : "ltr"}
                 width={1000}
                 itemData={allExercises || []}
                 layout="horizontal"
