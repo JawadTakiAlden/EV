@@ -30,7 +30,7 @@ const MealCard = ({
   const { user, base } = useAuthContext();
   const { t } = useTranslation();
   const { getTranslation2 } = useGetTranslation();
-  withAction = user?.role === "admin" || user?.role === "kitchen_staff";
+  withAction = user?.role === "admin";
   return (
     <MainCard
       sx={{

@@ -46,6 +46,7 @@ export const SportColumns = () => {
             src={row.original.image}
             style={{
               borderRadius: "10px",
+              objectFit: "cover",
             }}
           />
         </Box>

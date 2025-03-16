@@ -91,7 +91,7 @@ const FAQs = () => {
 
   useEffect(() => {
     if (!faqsQuery.isLoading && !faqsQuery.isError) {
-      setExpanded(faqsQuery.data?.data?.faqs[0]?.id || false);
+      setExpanded(faqsQuery.data?.data?.[0]?.id || false);
     }
   }, [faqsQuery.isLoading, faqsQuery.isError]);
 
@@ -122,7 +122,7 @@ const FAQs = () => {
       <Divider sx={{ my: 2 }} />
       <Stack>
         {!faqsQuery.isError &&
-          faqsQuery.data?.data.faqs.map((faq) => (
+          faqsQuery.data?.data.map((faq) => (
             <FAQCard
               faq={faq}
               key={faq.id}

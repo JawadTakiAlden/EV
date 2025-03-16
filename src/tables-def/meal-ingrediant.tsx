@@ -50,10 +50,12 @@ export const IngrediantColumns = () => {
     {
       accessorKey: "unit",
       header: t("table.unit"),
+      size: 50,
     },
     {
       accessorKey: "stock",
       header: t("table.stock"),
+      size: 50,
     },
 
     {

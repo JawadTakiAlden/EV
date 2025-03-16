@@ -402,7 +402,7 @@
     "ingredientName": "اسم المكون",
     "required": "الكمية المطلوبة",
     "available": "الكمية في المخزن",
-    "stockInsufficient": "",
+    "stockInsufficient": "احمد عفيف",
     "orderDetail": "تفاصيل الطلب",
     "orderId": "رقم الطلب",
     "orderDate": "تاريخ الطلب",

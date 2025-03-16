@@ -114,7 +114,10 @@ const MealDetail = () => {
                 const mutatedValues = {
                   ...values,
                   types: values.types.map((ty) => ty.id),
-                  ingredients: values.ingredients.map((ty) => ty.id),
+                  ingredients: values.ingredients.map((ty) => ({
+                    id: ty.id,
+                    quantity: ty.quantity,
+                  })),
                 };
                 const mealFormData = new FormData();
                 mealFormData.append("name", mutatedValues.name);
@@ -126,7 +129,16 @@ const MealDetail = () => {
                 );
                 mealFormData.append("carb", values.carb.toString());
                 mutatedValues.ingredients.map((ingre, i) =>
-                  mealFormData.append(`ingredients[${i}]`, ingre.toString())
+                  mealFormData.append(
+                    `ingredients[${i}][ingredient_id]`,
+                    JSON.stringify(ingre.id)
+                  )
+                );
+                mutatedValues.ingredients.map((ingre, i) =>
+                  mealFormData.append(
+                    `ingredients[${i}][quantity]`,
+                    JSON.stringify(+ingre.quantity)
+                  )
                 );
                 mutatedValues.types.map((type, i) =>
                   mealFormData.append(`types[${i}]`, type.toString())

@@ -37,8 +37,14 @@ const CreateMeal = () => {
                   mealFormData.append("carb", values.carb.toString());
                   mutatedValues.ingredients.map((ingre, i) =>
                     mealFormData.append(
-                      `ingredients[${i}]`,
-                      JSON.stringify(ingre)
+                      `ingredients[${i}][ingredient_id]`,
+                      JSON.stringify(ingre.id)
+                    )
+                  );
+                  mutatedValues.ingredients.map((ingre, i) =>
+                    mealFormData.append(
+                      `ingredients[${i}][quantity]`,
+                      JSON.stringify(+ingre.quantity)
                     )
                   );
                   mutatedValues.types.map((type, i) =>

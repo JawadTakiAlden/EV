@@ -132,12 +132,10 @@ const WeekManagement = () => {
   const mealTypes = mealTypesQuery?.data?.data;
 
   const assignMealsSubmit = () => {
-    const dataToSubmit = Object.keys(droppedMeals)
-      .map((day) => ({
-        date: day,
-        meal_ids: droppedMeals[day].meals,
-      }))
-      .filter((mealAssigment) => mealAssigment.meal_ids.length > 0);
+    const dataToSubmit = Object.keys(droppedMeals).map((day) => ({
+      date: day,
+      meal_ids: droppedMeals[day].meals,
+    }));
 
     assignMealsToDays.mutateAsync({ assignments: dataToSubmit });
   };

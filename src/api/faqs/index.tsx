@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { Faq } from "../../tables-def/faq";
 
 export const useGetFaqs = () => {
-  const getFaqs = (): Promise<AxiosResponse<{ faqs: Faq[] }>> => {
+  const getFaqs = (): Promise<AxiosResponse<Faq[]>> => {
     return request({
       url: "/info/faqs",
     });
