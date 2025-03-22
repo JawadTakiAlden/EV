@@ -75,12 +75,15 @@ export const useCreateWorkout = create<CreateWorkoutStore>((set, get) => ({
 
 interface WorkoutFormValues {
   title: string; //done
+  title_ar: string; //done
   description: string; //done
+  description_ar: string; //done
   type: "group" | "personalized"; //done
   difficulty_level: string; //done
   duration: number; //done
   user_id?: string | null;
   motivational_message: string;
+  motivational_message_ar: string;
   package_id?: string | null;
   exercises: ExerciseSelected[] | null;
   image: null | string | File;
@@ -256,6 +259,28 @@ const WorkoutForm = ({
                 </FormControl>
               </Grid>
               <Grid size={{ xs: 12, sm: 6 }}>
+                <FormControl error={!!touched.title_ar && !!errors.title_ar}>
+                  <InputLabel>
+                    {t("arf", {
+                      slug: t("slugs.title"),
+                    })}
+                  </InputLabel>
+                  <OutlinedInput
+                    label={t("arf", {
+                      slug: t("slugs.title"),
+                    })}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.title_ar}
+                    name="title_ar"
+                    type="text"
+                  />
+                  {!!touched.title_ar && !!errors.title_ar && (
+                    <FormHelperText error>{errors.title_ar}</FormHelperText>
+                  )}
+                </FormControl>
+              </Grid>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <FormControl
                   error={
                     !!touched.difficulty_level && !!errors.difficulty_level
@@ -346,6 +371,36 @@ const WorkoutForm = ({
                     )}
                 </FormControl>
               </Grid>
+              <Grid size={{ xs: 12 }}>
+                <FormControl
+                  error={
+                    !!touched.motivational_message_ar &&
+                    !!errors.motivational_message_ar
+                  }
+                >
+                  <InputLabel>
+                    {t("arf", {
+                      slug: t("slugs.message"),
+                    })}
+                  </InputLabel>
+                  <OutlinedInput
+                    label={t("arf", {
+                      slug: t("slugs.message"),
+                    })}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.motivational_message_ar}
+                    name="motivational_message_ar"
+                    type="text"
+                  />
+                  {!!touched.motivational_message_ar &&
+                    !!errors.motivational_message_ar && (
+                      <FormHelperText error>
+                        {errors.motivational_message_ar}
+                      </FormHelperText>
+                    )}
+                </FormControl>
+              </Grid>
             </Grid>
           </Grid>
           <Grid size={{ xs: 12, sm: 4, md: 6 }}>
@@ -363,6 +418,28 @@ const WorkoutForm = ({
               />
               {!!touched.description && !!errors.description && (
                 <FormHelperText error>{errors.description}</FormHelperText>
+              )}
+            </FormControl>
+            <FormControl
+              error={!!touched.description_ar && !!errors.description_ar}
+            >
+              <InputLabel>
+                {t("arf", {
+                  slug: t("slugs.description"),
+                })}
+              </InputLabel>
+              <OutlinedInput
+                label={t("workoutForm.desc")}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.description_ar}
+                name="description_ar"
+                type="text"
+                multiline
+                rows={5}
+              />
+              {!!touched.description_ar && !!errors.description_ar && (
+                <FormHelperText error>{errors.description_ar}</FormHelperText>
               )}
             </FormControl>
             <Grid size={{ xs: 12 }}>

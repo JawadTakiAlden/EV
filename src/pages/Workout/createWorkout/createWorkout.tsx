@@ -35,9 +35,12 @@ const CreateWorkout = () => {
         }}
         initialValues={{
           title: "",
+          title_ar: "",
           image: null,
           description: "",
+          description_ar: "",
           motivational_message: "",
+          motivational_message_ar: "",
           type: type,
           duration: 0,
           difficulty_level: "easy",

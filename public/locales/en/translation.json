@@ -30,6 +30,7 @@
     "question": "Question",
     "answer": "Answer",
     "title": "Title",
+    "message": "Motivational Message",
     "packageName": "Package Name",
     "packageDesc": "Package Description",
     "name": "Name",

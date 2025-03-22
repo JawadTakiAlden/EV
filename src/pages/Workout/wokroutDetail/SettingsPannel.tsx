@@ -38,10 +38,13 @@ const SettingsPannel = ({ workout }: { workout: WorkoutDetail }) => {
             task="update"
             initialValues={{
               title: workout.title,
+              title_ar: workout.title_ar,
               description: workout.description,
+              description_ar: workout.description_ar,
               difficulty_level: workout.difficulty_level,
               duration: workout.duration,
               motivational_message: workout.motiviational_message,
+              motivational_message_ar: workout.motiviational_message_ar,
               type: workout.type,
               image: workout.image,
               package_id: workout.package_id,

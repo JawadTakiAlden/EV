@@ -1,11 +1,14 @@
 export interface WorkoutModel {
   id: number;
   title: string;
+  title_ar: string;
   description: string;
+  description_ar: string;
   type: "group" | "personalized";
   difficulty_level: string;
   duration: number;
   motiviational_message: string;
+  motiviational_message_ar: string;
   coach: string;
   image: string;
   user?: {
