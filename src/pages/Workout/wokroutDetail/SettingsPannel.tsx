@@ -43,8 +43,8 @@ const SettingsPannel = ({ workout }: { workout: WorkoutDetail }) => {
               description_ar: workout.description_ar,
               difficulty_level: workout.difficulty_level,
               duration: workout.duration,
-              motivational_message: workout.motiviational_message,
-              motivational_message_ar: workout.motiviational_message_ar,
+              motivational_message: workout.motivational_message,
+              motivational_message_ar: workout.motivational_message_ar,
               type: workout.type,
               image: workout.image,
               package_id: workout.package_id,
@@ -61,7 +61,11 @@ const SettingsPannel = ({ workout }: { workout: WorkoutDetail }) => {
         </Grid>
         <Grid size={12}>
           <Box id="delete-exercise">
-            <DeleteTypography mb={2}>{t("deleteSec.button")}</DeleteTypography>
+            <DeleteTypography mb={2}>
+              {t("deleteSec.button", {
+                slug: t("slugs.workout"),
+              })}
+            </DeleteTypography>
 
             <Typography mb={2}>{t("deleteSec.warning")}</Typography>
 

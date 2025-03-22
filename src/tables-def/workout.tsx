@@ -7,8 +7,8 @@ export interface WorkoutModel {
   type: "group" | "personalized";
   difficulty_level: string;
   duration: number;
-  motiviational_message: string;
-  motiviational_message_ar: string;
+  motivational_message: string;
+  motivational_message_ar: string;
   coach: string;
   image: string;
   user?: {

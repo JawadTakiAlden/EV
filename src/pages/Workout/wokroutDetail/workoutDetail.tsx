@@ -64,7 +64,7 @@ const WorkOutDetailPage = ({
   workout: WorkoutDetail;
 }) => {
   const exercises = createItemData(workout.exercises);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   return (
     <Box>
       <Grid container spacing={gridSpacing}>
@@ -142,6 +142,7 @@ const WorkOutDetailPage = ({
               itemCount={workout.exercises.length}
               itemSize={310}
               height={400}
+              direction={i18n.language === "ar" ? "rtl" : "ltr"}
               width={1000}
               itemData={{ exercises: exercises.items, withAction }}
               layout="horizontal"

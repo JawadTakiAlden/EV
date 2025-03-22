@@ -13,10 +13,12 @@ import { Link as BaseLink } from "react-router-dom";
 import { WorkoutModel } from "../../../tables-def/workout";
 import { useAuthContext } from "../../../providers/AuthProvider";
 import { useTranslation } from "react-i18next";
+import useGetTranslation from "../../../utils/useGetTranslation";
 
 const WorkoutCard = ({ workout }: { workout: WorkoutModel }) => {
   const { base } = useAuthContext();
   const { t } = useTranslation();
+  const { getTranslation2 } = useGetTranslation();
   return (
     <MainCard
       border={false}
@@ -34,7 +36,9 @@ const WorkoutCard = ({ workout }: { workout: WorkoutModel }) => {
         flexDirection={"row"}
         justifyContent={"space-between"}
       >
-        <Typography variant="h4">{workout.title}</Typography>
+        <Typography variant="h4">
+          {getTranslation2(workout, "title")}
+        </Typography>
         <Chip
           color="default"
           label={workout.type}
@@ -63,7 +67,7 @@ const WorkoutCard = ({ workout }: { workout: WorkoutModel }) => {
           </Link>
         )}
         <Typography mb={1} mt={1} fontWeight={"500"}>
-          {workout.description}
+          {getTranslation2(workout, "description")}
         </Typography>
         <Typography
           sx={{
@@ -73,7 +77,7 @@ const WorkoutCard = ({ workout }: { workout: WorkoutModel }) => {
             color: "text.secondary",
           }}
         >
-          {t("workoutCard.level")} : {workout.difficulty_level}
+          {t("workoutCrad.level")} : {workout.difficulty_level}
         </Typography>
         <Typography
           sx={{
@@ -83,7 +87,7 @@ const WorkoutCard = ({ workout }: { workout: WorkoutModel }) => {
             color: "text.secondary",
           }}
         >
-          {t("workoutCard.duration")} : {workout.duration}
+          {t("workoutCrad.duration")} : {workout.duration}
         </Typography>
       </Box>
       <Box>

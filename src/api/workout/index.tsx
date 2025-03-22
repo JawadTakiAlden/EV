@@ -3,7 +3,7 @@ import { request, ServerResponse } from "../baseRequest";
 import { AxiosError, AxiosResponse } from "axios";
 import { toast } from "react-toastify";
 import { useCreateWorkout as useCreateWorkoutStore } from "../../pages/Workout/components/WorkoutForm";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 export const useGetWorkout = () => {
   const getWorkouts = () => {
@@ -92,6 +92,7 @@ export const useUpdateWorkout = () => {
 
 export const useDeleteWorkout = () => {
   const { workoutID } = useParams();
+  const navigate = useNavigate();
   const deleteWorkout = () => {
     return request({
       url: `/coach/workout/${workoutID}`,
@@ -103,6 +104,7 @@ export const useDeleteWorkout = () => {
     mutationFn: deleteWorkout,
     onSuccess: (res: AxiosResponse<ServerResponse<any>>) => {
       toast(res.data.message);
+      navigate(-1);
     },
     onError: (err: AxiosError<ServerResponse<any>>) => {
       toast(err?.response?.data.message);
