@@ -307,7 +307,7 @@ const ExerciseForm = ({
             onChange={(e, ch) => {
               setFieldValue("cooling_time", ch ? -1 : 0);
             }}
-            label="As much as you can"
+            label="As much as you need"
             sx={{
               border: "1px solid #f1f1f1",
               width: "100%",
