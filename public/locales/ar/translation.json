@@ -397,6 +397,7 @@
     "order_status": "حالة الطلب",
     "listed": "مدرج",
     "pending": "معلق",
+    "out_for_delivery": "قيد التوصيل",
     "done": "تم",
     "kcal": "kcal",
     "monthly": "شهر",

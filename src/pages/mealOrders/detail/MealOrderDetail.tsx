@@ -38,6 +38,33 @@ const InfoTypography = styled(Typography)(({ theme }) => ({
   },
 }));
 
+const mealOrderStatus = [
+  {
+    id: 1,
+    tranlsationKey: "listed",
+    accessKey: "listed",
+    tooltip: "",
+  },
+  {
+    id: 2,
+    tranlsationKey: "pending",
+    accessKey: "pending",
+    tooltip: "",
+  },
+  {
+    id: 3,
+    tranlsationKey: "done",
+    accessKey: "done",
+    tooltip: "",
+  },
+  {
+    id: 4,
+    tranlsationKey: "out_for_delivery",
+    accessKey: "out_for_delivery",
+    tooltip: "",
+  },
+];
+
 const MealOrderDetail = () => {
   const mealOrder = useGetMealOrdersDetail();
   const data = mealOrder.data?.data;
@@ -66,12 +93,12 @@ const MealOrderDetail = () => {
             {t("mealOrderDetail.order_status")}
           </Typography>
           <Stack flexDirection={"row"} alignItems={"center"} gap={"5px"}>
-            <Tooltip title="the order not start yet">
+            {mealOrderStatus.map((statusButton) => (
               <LoadingButton
                 onClick={() => {
                   chnageOrderStatus.mutate({
                     orderId: data?.id!,
-                    orderStatus: "listed",
+                    orderStatus: statusButton.accessKey,
                   });
                 }}
                 disabled={
@@ -81,59 +108,13 @@ const MealOrderDetail = () => {
                 color="inherit"
                 variant="outlined"
                 sx={{
-                  flexGrow: data?.status === "listed" ? 2 : 1,
+                  flexGrow: data?.status === statusButton.accessKey ? 2 : 1,
                   transition: "0.2s",
                 }}
               >
-                {t("mealOrderDetail.listed")}
+                {t("mealOrderDetail." + statusButton.tranlsationKey)}
               </LoadingButton>
-            </Tooltip>
-            <Divider sx={{ flexGrow: 0.5 }} />
-            <Tooltip title="you are start preparing the order">
-              <LoadingButton
-                onClick={() => {
-                  chnageOrderStatus.mutate({
-                    orderId: data?.id!,
-                    orderStatus: "pending",
-                  });
-                }}
-                disabled={
-                  chnageOrderStatus.isPending ||
-                  !mealOrder.data?.data.isStockSufficient
-                }
-                color="warning"
-                variant="outlined"
-                sx={{
-                  flexGrow: data?.status === "pending" ? 2 : 1,
-                  transition: "0.2s",
-                }}
-              >
-                {t("mealOrderDetail.pending")}
-              </LoadingButton>
-            </Tooltip>
-            <Divider sx={{ flexGrow: 0.5 }} />
-            <Tooltip title="the order done and ready to be delevired">
-              <LoadingButton
-                onClick={() => {
-                  chnageOrderStatus.mutate({
-                    orderId: data?.id!,
-                    orderStatus: "done",
-                  });
-                }}
-                disabled={
-                  chnageOrderStatus.isPending ||
-                  !mealOrder.data?.data.isStockSufficient
-                }
-                color="primary"
-                variant="outlined"
-                sx={{
-                  flexGrow: data?.status === "done" ? 2 : 1,
-                  transition: "0.2s",
-                }}
-              >
-                {t("mealOrderDetail.done")}
-              </LoadingButton>
-            </Tooltip>
+            ))}
           </Stack>
         </Grid>
         {!mealOrder.data?.data.isStockSufficient && (
