@@ -21,7 +21,7 @@ export const workoutRequestsColumns: MRT_ColumnDef<WorkoutRequest>[] = [
     Cell: ({ row }) => (
       <Link
         component={BaseLink}
-        to={`/coach/dashboard/users/${row.original.user.id}?package_id=${row.original.package.id}&day=Saturday`}
+        to={`/coach/dashboard/users/${row.original.user.id}?package_id=${row.original.package.id}`}
         style={{
           textDecoration: "underline",
           cursor: "pointer",
