@@ -35,7 +35,9 @@ const SettingsPannel = ({ exercise }: { exercise: Exercise }) => {
           onSubmit={(values) => {
             const exerciseFormData = new FormData();
             exerciseFormData.append("name", values.name);
+            exerciseFormData.append("name_ar", values.name_ar);
             exerciseFormData.append("description", values.description);
+            exerciseFormData.append("description_ar", values.description_ar);
             exerciseFormData.append(
               "cooling_time",
               values.cooling_time.toString()

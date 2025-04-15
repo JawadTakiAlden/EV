@@ -6,21 +6,11 @@ import { Link } from "react-router-dom";
 import { useAuthContext } from "../../../providers/AuthProvider";
 import { UseQueryResult } from "@tanstack/react-query";
 import { AxiosResponse } from "axios";
+import { useChatContext } from "../../../providers/ChatProvider";
 
-const MyChatPeople = ({
-  query,
-}: {
-  query: UseQueryResult<
-    AxiosResponse<
-      {
-        chats: Record[];
-      },
-      any
-    >,
-    Error
-  >;
-}) => {
+const MyChatPeople = ({}) => {
   const { base } = useAuthContext();
+  const { chats, isLoading } = useChatContext();
   return (
     <Box
       sx={{
@@ -33,9 +23,6 @@ const MyChatPeople = ({
       }}
     >
       <Stack flexDirection={"row"} gap={1}>
-        <IconButton component={Link} to={`/${base}/dashboard/home`}>
-          <IoArrowBackCircle />
-        </IconButton>
         <Typography
           sx={{
             fontSize: "calc(0.15vw + 18px)",
@@ -46,14 +33,13 @@ const MyChatPeople = ({
           Chats
         </Typography>
       </Stack>
-      <SearchOrStartNewChat />
       <Stack
         sx={{
           maxHeight: "calc(100vh - 110px)",
           overflowY: "auto",
         }}
       >
-        {query.isLoading ? (
+        {isLoading ? (
           <Stack flexDirection={"row"} alignItems={"center"} gap={1}>
             <Skeleton variant="circular" width={40} height={40} />
             <Box>
@@ -61,12 +47,10 @@ const MyChatPeople = ({
               <Skeleton variant="text" height={"20px"} width={"150px"} />
             </Box>
           </Stack>
-        ) : query?.data?.data.chats?.length === 0 ? (
+        ) : chats.length === 0 ? (
           <Typography textAlign={"center"}>No Chats , Start one</Typography>
         ) : (
-          query?.data?.data.chats?.map((chat, i) => (
-            <UserChatRow chatRow={chat} key={i} />
-          ))
+          chats.map((chat, i) => <UserChatRow chatRow={chat} key={i} />)
         )}
       </Stack>
     </Box>

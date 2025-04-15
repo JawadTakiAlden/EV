@@ -5,7 +5,6 @@ import MainLayout from "../pages/Chat/Layout/MainLayout";
 
 export const chatRoutes: RouteObject = {
   path: "",
-  element: <RootLayout />,
   children: [
     {
       path: "chat",

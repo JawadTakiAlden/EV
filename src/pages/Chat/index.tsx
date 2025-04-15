@@ -4,24 +4,27 @@ import { useChat } from "./Store/chatStore";
 import MessageRenderer from "./components/MessageRenderer";
 import { useGetChats } from "../../api/chats";
 import LoadingDataError from "../../components/LoadingDataError";
+import { useChatContext } from "../../providers/ChatProvider";
 
 const MainChat = () => {
-  const { selectedUser } = useChat();
+  // const { selectedUser } = useChat();
+
+  const { selectedChatId } = useChatContext();
 
   const theme = useTheme();
   const mathcDownSm = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const chats = useGetChats();
+  // const chats = useGetChats();
 
-  if (chats.isError) {
-    return <LoadingDataError refetch={chats.refetch} />;
-  }
+  // if (chats.isError) {
+  //   return <LoadingDataError refetch={chats.refetch} />;
+  // }
 
   const DownSmLayout = () => {
-    return selectedUser ? (
-      <MessageRenderer user={selectedUser} />
+    return selectedChatId ? (
+      <MessageRenderer chatId={selectedChatId} />
     ) : (
-      <MyChatPeople query={chats} />
+      <MyChatPeople />
     );
   };
 
@@ -30,11 +33,11 @@ const MainChat = () => {
       <Stack flexDirection={"row"}>
         {/* people to chat */}
         <Box sx={{ flexShrink: 0 }}>
-          <MyChatPeople query={chats} />
+          <MyChatPeople />
         </Box>
         {/* selected chat */}
         <Box sx={{ flex: 1 }}>
-          <MessageRenderer user={selectedUser} />
+          <MessageRenderer chatId={selectedChatId} />
         </Box>
       </Stack>
     );

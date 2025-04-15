@@ -1,8 +1,13 @@
-import { Avatar, Box, Stack, Typography } from "@mui/material";
+import { Avatar, Badge, Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import { numberOfLines } from "../../../utils/maxLinesNumber";
 import useGetGetDarkValue from "../../../utils/useGetGetDarkValue";
 import { useChat } from "../Store/chatStore";
+import {
+  ConversationRow,
+  useChatContext,
+} from "../../../providers/ChatProvider";
+import { RiMailLine } from "react-icons/ri";
 
 export interface User {
   id: number;
@@ -22,9 +27,9 @@ export interface Record {
   user: User;
 }
 
-const UserChatRow = ({ chatRow }: { chatRow: Record }) => {
+const UserChatRow = ({ chatRow }: { chatRow: ConversationRow }) => {
   const { getVlaue } = useGetGetDarkValue();
-  const { selectUser, selectChat, setMessages } = useChat();
+  const { setSelectedChatId } = useChatContext();
   return (
     <Stack
       flexDirection={"row"}
@@ -41,31 +46,57 @@ const UserChatRow = ({ chatRow }: { chatRow: Record }) => {
         },
       }}
       onClick={() => {
-        selectUser(chatRow.user);
-        selectChat(chatRow.id);
-        setMessages(null);
+        setSelectedChatId(chatRow.id);
       }}
     >
       <Box>
         <Avatar />
       </Box>
-      <Box sx={{ flex: 1 }}>
-        <Typography
-          sx={{
-            fontWeight: "600",
-            letterSpacing: "0.6px",
-          }}
-        >
-          {chatRow.user.name}
-        </Typography>
-        <Typography
-          sx={{
-            ...numberOfLines(1),
-            color: "grey.500",
-          }}
-        >
-          {chatRow.lastMessage?.content}
-        </Typography>
+      <Box
+        sx={{
+          flex: 1,
+          display: "flex",
+          alignItems: "flex-end",
+        }}
+      >
+        <Box sx={{ width: "100%" }}>
+          <Typography
+            sx={{
+              fontWeight: chatRow.hasUnReadMessages ? "800" : "600",
+              letterSpacing: "0.6px",
+            }}
+          >
+            {chatRow.user.name}
+          </Typography>
+          <Typography
+            sx={{
+              ...numberOfLines(1),
+              color: "grey.500",
+            }}
+          >
+            {chatRow.lastMessage.content}
+          </Typography>
+        </Box>
+        {chatRow.hasUnReadMessages && (
+          <Box>
+            <Badge
+              color="primary"
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              badgeContent={chatRow.unreadMessageCount}
+              slotProps={{
+                badge: {
+                  style: {
+                    transform: "none",
+                    position: "relative",
+                  },
+                },
+              }}
+            />
+          </Box>
+        )}
       </Box>
     </Stack>
   );

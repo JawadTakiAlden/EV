@@ -28,7 +28,9 @@ const CreateExcercise = () => {
         onSubmit={(values) => {
           const exerciseFormData = new FormData();
           exerciseFormData.append("name", values.name);
+          exerciseFormData.append("name_ar", values.name_ar);
           exerciseFormData.append("description", values.description);
+          exerciseFormData.append("description_ar", values.description_ar);
           // exerciseFormData.append("duration", values.duration.toString());
           exerciseFormData.append(
             "cooling_time",

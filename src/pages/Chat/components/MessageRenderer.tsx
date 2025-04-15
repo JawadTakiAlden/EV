@@ -16,6 +16,7 @@ import { useAuthContext } from "../../../providers/AuthProvider";
 import { request } from "../../../api/baseRequest";
 import socket from "../socket";
 import JustInViewRender from "../../../components/JustInViewRender";
+import { useChatContext } from "../../../providers/ChatProvider";
 
 export interface Sender {
   id: number;
@@ -33,76 +34,15 @@ export interface MessageResponse {
   sender: Sender;
 }
 
-const MessageRenderer = ({ user }: { user: any }) => {
-  const { selectUser, selectedChat, messages, setMessages } = useChat();
-  const [, setIsLoading] = useState(true);
-  const [error, setError] = useState(false);
+const MessageRenderer = ({ chatId }: { chatId: number | undefined }) => {
   // const [messages, setMessages] = useState<MessageResponse[]>([]);
   const authContext = useAuthContext();
   const messageContainerRef = useRef<HTMLDivElement>(null);
+  const { chats, messages, setSelectedChatId } = useChatContext();
 
-  useEffect(() => {
-    if (messages) {
-      messageContainerRef.current?.scrollTo({
-        top: messageContainerRef.current?.scrollHeight,
-      });
-    }
-  }, [messages]);
+  const user = chats.find((chat) => chat.id === chatId)?.user;
 
-  const getMessages = async () => {
-    await request({
-      url: `/coach/messages?chat_id=${selectedChat}`,
-    })
-      .then((res) => {
-        setIsLoading(false);
-        setMessages(res.data.messages);
-      })
-      .catch(() => {
-        setError(true);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
-  useEffect(() => {
-    socket.connect();
-    console.log("join chat", selectedChat);
-    socket.emit("joinChat", selectedChat);
-
-    socket.on("new_message", (message) => {
-      console.log(message);
-      const messageFormat: MessageResponse = {
-        id: message.id,
-        content: message.content,
-        chat_id: message.chat_id,
-        createdAt: message.createdAt,
-        updatedAt: message.updatedAt,
-        sender: {
-          id: message.sender_id,
-          name: "not returnd from back end",
-          role: "admin",
-        },
-        file: null,
-      };
-      if (messages) {
-        setMessages([...messages, messageFormat]);
-      }
-    });
-
-    return () => {
-      console.log("desconnect to chat", selectedChat);
-      socket.disconnect();
-    };
-  }, [selectedChat]);
-
-  useEffect(() => {
-    if (selectedChat && !messages) {
-      getMessages();
-    }
-  }, [selectedChat]);
-
-  if (user === null) {
+  if (!user) {
     return (
       <Box
         sx={{
@@ -132,24 +72,6 @@ const MessageRenderer = ({ user }: { user: any }) => {
     );
   }
 
-  if (error) {
-    return (
-      <Box
-        sx={{
-          height: "100vh",
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          flexDirection: "column",
-          justifyContent: "center",
-          px: 2,
-        }}
-      >
-        Error while loading messages
-      </Box>
-    );
-  }
-
   return (
     <Box
       sx={{
@@ -174,12 +96,12 @@ const MessageRenderer = ({ user }: { user: any }) => {
         }}
       >
         <Stack flexDirection={"row"} alignItems={"center"} gap={1}>
-          <Avatar />
-          <Typography>{user.name}</Typography>
+          <Avatar src={user?.image} />
+          <Typography>{user?.name}</Typography>
         </Stack>
 
         <IconButton
-          onClick={() => selectUser(null)}
+          onClick={() => setSelectedChatId(undefined)}
           sx={{
             display: { md: "none" },
           }}

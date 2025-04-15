@@ -137,14 +137,6 @@ export const adminMenuItems: MenuItemObject[] = [
   },
 
   {
-    id: "chat",
-    title: "chat",
-    type: "item",
-    path: "/chat",
-    icon: <CiChat2 size={30} />,
-  },
-
-  {
     id: "workout-management",
     type: "group",
     title: "workout_man",
@@ -325,7 +317,7 @@ export const coacheMenuItems: MenuItemObject[] = [
     id: "chat",
     title: "chat",
     type: "item",
-    path: "/chat",
+    path: "/coach/dashboard/chat",
     icon: <CiChat2 size={30} />,
   },
 ];
