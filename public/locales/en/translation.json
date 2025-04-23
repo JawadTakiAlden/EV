@@ -35,6 +35,7 @@
     "packageName": "Package Name",
     "packageDesc": "Package Description",
     "name": "Name",
+    "notes": "Notes",
     "description": "Description"
   },
 
@@ -67,6 +68,7 @@
     "all_ex": "All Exercises",
     "create_ex": "Create Exercise",
     "workouts": "Workouts",
+    "workout_library": "Workout Library",
     "create_workout": "Create Workout",
     "banner": "Banner",
     "banners": "Banners",
@@ -98,13 +100,19 @@
     "edit": "Edit",
     "deleting": "Deleting"
   },
+  "templates": {
+    "create": "Create workout for library",
+    "manageWorkout": "Update Template"
+  },
+
   "click-tw": "click again to confirm action",
   "global": {
     "loading": "Loading",
     "more": "More",
     "group": "Group",
     "person": "Personalized",
-    "personalized": "Personalized"
+    "personalized": "Personalized",
+    "template": "Template"
   },
   "delete_pop": {
     "title": "Confirm Deletion of {{slug}}",
@@ -249,12 +257,16 @@
   "createWorkout": {
     "header": "create {{type}} workout {{slug}} in {{day}}",
     "personSlug": "for user {{username}}",
-    "groupSlug": "for {{packageName}} package"
+    "groupSlug": "for {{packageName}} package",
+    "templateSlug": "Create workout for library",
+    "newWorkout": "Create new workout",
+    "library": "Pick Workout from library"
   },
   "workoutForm": {
     "workout": "Workout",
     "title": "Title",
     "diff_level": "Difficulty Level",
+    "calories_burned": "Calories Burned",
     "duration": "Duration",
     "type": "Workout Type",
     "message": "Motivational Message",
@@ -280,7 +292,7 @@
     "settings": "Settings",
     "level": "Level",
     "duration": "Expected duration",
-    "craete_at": "Created at",
+    "created_at": "Created at",
     "workoutExcer": "Workout Exercise"
   },
   "deleteSec": {
@@ -295,8 +307,9 @@
     "target_muscles_image": "Target muscles image",
     "notes": "Notes",
     "exc_vid": "Exercise Video",
-    "watting": "please wait , creating ... ",
-    "cooling_time": "Cooling Time"
+    "waitting": "please wait , creating ... ",
+    "cooling_time": "Cooling Time",
+    "cooling_as": "As much as you need"
   },
   "excDetail": {
     "tabs": {

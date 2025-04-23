@@ -12,6 +12,7 @@ const BannerCard = ({ banner }: { banner: BannerModel }) => {
         image={banner.image}
         alt={banner.image}
         height={192}
+        loading="lazy"
         sx={{
           borderRadius: "10px",
         }}

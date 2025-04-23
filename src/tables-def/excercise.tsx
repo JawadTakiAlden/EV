@@ -11,5 +11,6 @@ export interface Exercise {
   createdAt?: Date;
   updatedAt?: Date;
   notes: string[];
+  notes_ar: string[];
   cooling_time: number;
 }

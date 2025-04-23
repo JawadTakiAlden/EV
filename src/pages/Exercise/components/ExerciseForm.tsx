@@ -40,6 +40,7 @@ interface ExerciseFormValues {
   target_muscles_image: null | string | File;
   video: null | string | File;
   notes: string[];
+  notes_ar: string[];
 }
 
 const ExerciseForm = ({
@@ -307,7 +308,7 @@ const ExerciseForm = ({
             onChange={(e, ch) => {
               setFieldValue("cooling_time", ch ? -1 : 0);
             }}
-            label="As much as you need"
+            label={t("createExc.cooling_as")}
             sx={{
               border: "1px solid #f1f1f1",
               width: "100%",
@@ -344,12 +345,44 @@ const ExerciseForm = ({
                 {...params}
                 variant="outlined"
                 label={t("createExc.notes")}
-                placeholder="write a note and click enter"
               />
             )}
           />
         </Grid>
-        <Grid size={12}></Grid>
+        <Grid size={{ xs: 12, sm: 6 }}>
+          <Autocomplete
+            multiple
+            id="notes_ar"
+            options={[]}
+            defaultValue={values.notes_ar || []}
+            onChange={(e, newVlaue) => {
+              setFieldValue("notes_ar", newVlaue);
+            }}
+            freeSolo
+            renderTags={(value: readonly string[], getTagProps) => {
+              return value?.map((option: string, index: number) => {
+                const { key, ...tagProps } = getTagProps({ index });
+                return (
+                  <Chip
+                    variant="outlined"
+                    label={option}
+                    key={key}
+                    {...tagProps}
+                  />
+                );
+              });
+            }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                variant="outlined"
+                label={t("arf", {
+                  slug: t("slugs.notes"),
+                })}
+              />
+            )}
+          />
+        </Grid>
         <Grid size={{ xs: 12, md: 6 }}>
           <Grid container spacing={1}>
             <Grid size={12}>{values.images && exerciseImg}</Grid>

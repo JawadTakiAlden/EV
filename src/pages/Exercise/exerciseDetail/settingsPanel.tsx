@@ -42,8 +42,11 @@ const SettingsPannel = ({ exercise }: { exercise: Exercise }) => {
               "cooling_time",
               values.cooling_time.toString()
             );
-            // exerciseFormData.append("duration", values.duration.toString());
             exerciseFormData.append("notes", JSON.stringify(values.notes));
+            exerciseFormData.append(
+              "notes_ar",
+              JSON.stringify(values.notes_ar)
+            );
             exerciseFormData.append(
               "target_muscles_image",
               values.target_muscles_image as Blob
@@ -70,6 +73,7 @@ const SettingsPannel = ({ exercise }: { exercise: Exercise }) => {
             target_muscles_image: exercise.target_muscles_image as string,
             video: exercise.video_url as string,
             notes: exercise.notes,
+            notes_ar: exercise.notes_ar,
           }}
         />
       </Box>

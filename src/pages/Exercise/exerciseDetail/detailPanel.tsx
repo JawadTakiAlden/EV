@@ -1,4 +1,11 @@
-import { Box, CardHeader, CardMedia, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  CardHeader,
+  CardMedia,
+  Chip,
+  Stack,
+  Typography,
+} from "@mui/material";
 import React from "react";
 import { gridSpacing } from "../../../config";
 import MainCard from "../../../components/MainCard";
@@ -6,9 +13,11 @@ import ReactPlayer from "react-player";
 import Grid from "@mui/material/Grid2";
 import { Exercise } from "../../../tables-def/excercise";
 import { useTranslation } from "react-i18next";
+import useGetTranslation from "../../../utils/useGetTranslation";
 
 const DetailPanel = ({ exercise }: { exercise: Exercise }) => {
   const { t } = useTranslation();
+  const { getTranslation, getTranslation2 } = useGetTranslation();
   return (
     <Box>
       <Grid container spacing={gridSpacing}>
@@ -22,23 +31,18 @@ const DetailPanel = ({ exercise }: { exercise: Exercise }) => {
             >
               <Box flex={2}>
                 <Typography mb={1} variant="h3">
-                  {exercise.name}
+                  {getTranslation2(exercise, "name")}
                 </Typography>
                 <Typography variant="h5" mb={1}>
-                  {exercise.description}
+                  {getTranslation2(exercise, "description")}
                 </Typography>
-                <Typography
-                  sx={{
-                    fontWeight: "600",
-                    textTransform: "capitalize",
-                    fontStyle: "italic",
-                    color: "text.secondary",
-                    mb: 1,
-                  }}
-                >
-                  {t("excDetail.detailPanel.expectedDuration")} :{" "}
-                  {exercise.duration}
-                </Typography>
+                <Stack direction={"row"} gap={1} flexWrap={"wrap"}>
+                  {exercise[
+                    getTranslation("notes") as "notes" | "notes_ar"
+                  ]?.map((note, i) => {
+                    return <Chip key={i} label={note} />;
+                  })}
+                </Stack>
               </Box>
             </Stack>
           </MainCard>
@@ -48,7 +52,14 @@ const DetailPanel = ({ exercise }: { exercise: Exercise }) => {
             <Grid size={{ xs: 12, md: 6 }}>
               <MainCard sx={{ width: "100%", p: 0 }} cardContent={false}>
                 <CardHeader title={t("excDetail.detailPanel.exc_image")} />
-                <Stack flexDirection={"row"} alignItems={"center"} gap={1}>
+                <Stack
+                  flexDirection={"row"}
+                  alignItems={"center"}
+                  gap={2}
+                  sx={{
+                    overflowX: "auto",
+                  }}
+                >
                   {exercise.image_urls?.map((image) => (
                     <CardMedia
                       component={"img"}

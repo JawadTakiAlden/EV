@@ -13,6 +13,7 @@ import {
 import ExcerciseCard from "../../Exercise/components/ExcerciseCard";
 import memoize from "memoize-one";
 import { useTranslation } from "react-i18next";
+import useGetTranslation from "../../../utils/useGetTranslation";
 
 const Exercise: React.FC<ListChildComponentProps> = memo(
   ({ index, style, data }) => (
@@ -65,6 +66,7 @@ const WorkOutDetailPage = ({
 }) => {
   const exercises = createItemData(workout.exercises);
   const { t, i18n } = useTranslation();
+  const { getTranslation2 } = useGetTranslation();
   return (
     <Box>
       <Grid container spacing={gridSpacing}>
@@ -78,10 +80,10 @@ const WorkOutDetailPage = ({
             >
               <Box flex={2}>
                 <Typography mb={1} variant="h3">
-                  {workout.title}
+                  {getTranslation2(workout, "title")}
                 </Typography>
                 <Typography variant="h5" mb={1}>
-                  {workout.description}
+                  {getTranslation2(workout, "description")}
                 </Typography>
               </Box>
               <Box flex={1}>
@@ -154,41 +156,6 @@ const WorkOutDetailPage = ({
             </List>
           </Grid>
         </Grid>
-        {/* <Grid size={12}>
-          <DeleteTypography
-            sx={{
-              borderLeftColor: (theme) =>
-                alpha(theme.palette.secondary.main, 0.3),
-              my: 2,
-            }}
-          >
-            Workout Completions
-          </DeleteTypography>
-          <Typography
-            sx={{
-              textTransform: "capitalize",
-              fontStyle: "italic",
-              fontSize: "calc(16px + 0.15vw)",
-              my: 2,
-            }}
-          >
-            this workouts completed by {workoutDetail.workout_completion.length}{" "}
-            users
-          </Typography>
-          <List
-            itemCount={workoutDetail.workout_completion.length}
-            itemSize={260}
-            height={150}
-            width={1000}
-            itemData={{ completions: completions.items, withAction }}
-            layout="horizontal"
-            style={{
-              width: "100%",
-            }}
-          >
-            {Completion}
-          </List>
-        </Grid> */}
       </Grid>
     </Box>
   );

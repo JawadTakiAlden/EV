@@ -11,11 +11,17 @@ import { gridSpacing } from "../../../config";
 import { useDeleteWorkout, useUpdateWorkout } from "../../../api/workout";
 import { WorkoutDetail } from "../../../tables-def/workout";
 import { useTranslation } from "react-i18next";
+import {
+  useDeleteWorkoutTemplate,
+  useUpdateWorkoutTemplate,
+} from "../../../api/templates";
 
 const SettingsPannel = ({ workout }: { workout: WorkoutDetail }) => {
   const deleteWorkout = useDeleteWorkout();
   const { setExer } = useCreateWorkout();
   const updateWorkout = useUpdateWorkout();
+  const updateTemplate = useUpdateWorkoutTemplate();
+  const deleteTemplate = useDeleteWorkoutTemplate();
   const { t } = useTranslation();
   useEffect(() => {
     const exercisesSelected = workout.exercises.map((exer) => {
@@ -36,6 +42,9 @@ const SettingsPannel = ({ workout }: { workout: WorkoutDetail }) => {
         <Grid size={12}>
           <WorkoutForm
             task="update"
+            loadingButtonProps={{
+              loading: updateTemplate.isPending || updateWorkout.isPending,
+            }}
             initialValues={{
               title: workout.title,
               title_ar: workout.title_ar,
@@ -52,7 +61,11 @@ const SettingsPannel = ({ workout }: { workout: WorkoutDetail }) => {
               exercises: [],
             }}
             onSubmit={(values) => {
-              updateWorkout.mutate(values);
+              if (workout.is_template) {
+                updateTemplate.mutate(values);
+              } else {
+                updateWorkout.mutate(values);
+              }
             }}
           />
         </Grid>
@@ -72,8 +85,13 @@ const SettingsPannel = ({ workout }: { workout: WorkoutDetail }) => {
             <DoupleClickToConfirm
               color="error"
               onClick={() => {
-                deleteWorkout.mutate();
+                if (workout.is_template) {
+                  deleteTemplate.mutate();
+                } else {
+                  deleteWorkout.mutate();
+                }
               }}
+              loading={deleteWorkout.isPending || deleteTemplate.isPending}
             >
               {t("gbtn.delete")}
             </DoupleClickToConfirm>

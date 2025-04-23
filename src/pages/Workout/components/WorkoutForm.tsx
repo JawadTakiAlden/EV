@@ -37,6 +37,8 @@ import { useGetExercises } from "../../../api/exercise";
 import LoadingDataError from "../../../components/LoadingDataError";
 import FileImagePicker from "../../../components/FileImagePicker";
 import { useTranslation } from "react-i18next";
+import { FormLoadingButtonProps } from "../../../tables-def/loadingButtonProps";
+import { LoadingButton } from "@mui/lab";
 
 interface CreateWorkoutStore {
   exercises: ExerciseSelected[];
@@ -78,7 +80,7 @@ interface WorkoutFormValues {
   title_ar: string; //done
   description: string; //done
   description_ar: string; //done
-  type: "group" | "personalized"; //done
+  type: "group" | "personalized" | "template"; //done
   difficulty_level: string; //done
   duration: number; //done
   user_id?: string | null;
@@ -162,8 +164,11 @@ const ExerciseRow: React.FC<ListChildComponentProps<Exercise[]>> = memo(
 
 const WorkoutForm = ({
   task = "create",
+  loadingButtonProps,
   ...formikProps
-}: FormikConfig<WorkoutFormValues> & WorkoutFormProps) => {
+}: FormikConfig<WorkoutFormValues> &
+  WorkoutFormProps &
+  FormLoadingButtonProps) => {
   const {
     values,
     touched,
@@ -341,6 +346,11 @@ const WorkoutForm = ({
                       control={<Radio readOnly />}
                       label={t("global.person")}
                     />
+                    <FormControlLabel
+                      value="template"
+                      control={<Radio readOnly />}
+                      label={t("global.template")}
+                    />
                   </RadioGroup>
                   {!!touched.type && !!errors.type && (
                     <FormHelperText error>{errors.type}</FormHelperText>
@@ -517,7 +527,8 @@ const WorkoutForm = ({
             </Box>
           </Grid>
         </Grid>
-        <Button
+        <LoadingButton
+          {...loadingButtonProps}
           type="submit"
           variant="outlined"
           sx={{
@@ -526,7 +537,7 @@ const WorkoutForm = ({
           }}
         >
           {t("gbtn." + task)}
-        </Button>
+        </LoadingButton>
       </form>
     </Box>
   );

@@ -29,7 +29,12 @@ const CollapseItem = ({ item }: { item: MenuItemObject }) => {
         },
       }}
     >
-      <AccordionSummary expandIcon={<MdExpandMore size={20} />}>
+      <AccordionSummary
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+        expandIcon={<MdExpandMore size={20} />}
+      >
         {t("sidebar." + item.title)}
       </AccordionSummary>
       <AccordionDetails

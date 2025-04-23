@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Exercise } from "../../../tables-def/excercise";
 import {
   alpha,
@@ -30,6 +30,19 @@ const ExcerciseCard = ({
   const { base } = useAuthContext();
   const { t } = useTranslation();
   const { getTranslation2 } = useGetTranslation();
+
+  const [imageIndex, setImageIndex] = useState(0);
+
+  useEffect(() => {
+    if (!exercise.image_urls || exercise.image_urls.length <= 1) return;
+
+    const interval = setInterval(() => {
+      setImageIndex((prev) => (prev + 1) % exercise?.image_urls?.length!);
+    }, 3000); // 3 seconds
+
+    return () => clearInterval(interval);
+  }, [exercise.image_urls]);
+
   return (
     <Box sx={{ height: "100%" }}>
       <MainCard
@@ -47,7 +60,7 @@ const ExcerciseCard = ({
           component="img"
           loading="lazy"
           height="194"
-          image={exercise.image_urls?.[0]}
+          image={exercise.image_urls?.[imageIndex]}
         />
         <CardContent>
           <Typography
@@ -55,7 +68,6 @@ const ExcerciseCard = ({
             sx={{
               overflow: "hidden",
               textOverflow: "ellipsis",
-              boxOrient: "vertical",
               WebkitBoxOrient: "vertical",
               display: "-webkit-box",
               WebkitLineClamp: 1,
@@ -70,7 +82,6 @@ const ExcerciseCard = ({
               my: 1,
               overflow: "hidden",
               textOverflow: "ellipsis",
-              boxOrient: "vertical",
               WebkitBoxOrient: "vertical",
               display: "-webkit-box",
               WebkitLineClamp: 2,

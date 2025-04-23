@@ -31,12 +31,12 @@ const CreateExcercise = () => {
           exerciseFormData.append("name_ar", values.name_ar);
           exerciseFormData.append("description", values.description);
           exerciseFormData.append("description_ar", values.description_ar);
-          // exerciseFormData.append("duration", values.duration.toString());
           exerciseFormData.append(
             "cooling_time",
             values.cooling_time.toString()
           );
           exerciseFormData.append("notes", JSON.stringify(values.notes));
+          exerciseFormData.append("notes_ar", JSON.stringify(values.notes_ar));
           exerciseFormData.append(
             "target_muscles_image",
             values.target_muscles_image as Blob
@@ -69,4 +69,5 @@ const initialValues = {
   video: null,
   cooling_time: -1,
   notes: [],
+  notes_ar: [],
 };

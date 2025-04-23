@@ -18,6 +18,7 @@ import { FcPrivacy } from "react-icons/fc";
 import { FcFaq } from "react-icons/fc";
 import { RiCalendarScheduleFill } from "react-icons/ri";
 import { FcRules } from "react-icons/fc";
+import { MdLibraryBooks } from "react-icons/md";
 
 import { FcSportsMode } from "react-icons/fc";
 
@@ -167,13 +168,13 @@ export const adminMenuItems: MenuItemObject[] = [
         title: "workouts",
         type: "coollabse",
         children: [
-          // {
-          //   id: "all-workout",
-          //   title: "All",
-          //   type: "item",
-          //   path: "/admin/dashboard/workout",
-          //   icon: <CgGym size={30} />,
-          // },
+          {
+            id: "workout-library",
+            title: "workout_library",
+            type: "item",
+            path: "/admin/dashboard/workout-library",
+            icon: <MdLibraryBooks size={30} />,
+          },
           {
             id: "create-workout",
             title: "create_workout",
@@ -311,7 +312,15 @@ export const coacheMenuItems: MenuItemObject[] = [
     title: "group_workout",
     type: "item",
     path: "/coach/dashboard/group-workout",
-    icon: <MdGroupWork size={30} />,
+    icon: <CgGym size={30} />,
+  },
+
+  {
+    id: "workout-library",
+    title: "workout_library",
+    type: "item",
+    path: "/coach/dashboard/workout-library",
+    icon: <MdLibraryBooks size={30} />,
   },
   {
     id: "chat",

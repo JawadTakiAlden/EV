@@ -32,6 +32,7 @@ import DeliveryTime from "../pages/delivery-times/DeliveryTime";
 import CreateUser from "../pages/admin/users/CreateUser";
 import TermsAndConditions from "../pages/admin/termsAndCOndtions/TermsAndConditions";
 import MealIngrediant from "../pages/MealTypes/MealIngrediant";
+import WorkoutLibrary from "../pages/WorkoutLibrary";
 
 export const adminRoutes: RouteObject = {
   path: "",
@@ -99,6 +100,10 @@ export const adminRoutes: RouteObject = {
                   element: <FoodSubscriptions />,
                 },
               ],
+            },
+            {
+              path: "workout-library",
+              element: <WorkoutLibrary />,
             },
             {
               path: "workout",

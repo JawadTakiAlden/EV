@@ -48,7 +48,7 @@ const panelMaps: {
   [key: string]: number;
 } = {
   main: 0,
-  settings: 1,
+  settings: 2,
 };
 
 const ExcerciseDetail = () => {

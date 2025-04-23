@@ -35,7 +35,8 @@
     "packageName": "اسم الباقة",
     "packageDesc": "وصف الباقة",
     "name": "الاسم",
-    "description": "الوصف"
+    "description": "الوصف",
+    "notes": "ملاحظات"
   },
 
   "pricingForm": {
@@ -67,6 +68,7 @@
     "all_ex": "جميع التمارين",
     "create_ex": "إنشاء تمرين",
     "workouts": "التمارين الرياضية",
+    "workout_library": "مكتبة التمارين",
     "create_workout": "إنشاء تمرين رياضي",
     "banner": "لافتة",
     "banners": "لافتات",
@@ -105,7 +107,8 @@
     "more": "المزيد",
     "group": "مجموعة",
     "person": "مُخصّص",
-    "personalized": "مُخصّص"
+    "personalized": "مُخصّص",
+    "template": "نموذج"
   },
 
   "delete_pop": {
@@ -116,6 +119,11 @@
   },
   "edit_pop": {
     "title": "تعديل {{slug}}"
+  },
+
+  "templates": {
+    "create": "انشاء تمرين للمكتبة",
+    "manageWorkout": "تحديث النموذج"
   },
   "faqForm": {
     "ques": "السؤال",
@@ -251,11 +259,16 @@
   "createWorkout": {
     "header": "إنشاء تمرين {{type}} {{slug}} في {{day}}",
     "personSlug": "للمستخدم {{username}}",
-    "groupSlug": "للحزمة {{packageName}}"
+    "groupSlug": "للحزمة {{packageName}}",
+    "templateSlug": "انشاء تمرين للمكتبة",
+    "newWorkout": "انشأ تمرين جديد",
+    "library": "اختر تمرين من المكتبة"
   },
   "workoutForm": {
     "workout": "تمرين",
     "title": "العنوان",
+
+    "calories_burned": "السعرات المحروقة",
     "diff_level": "مستوى الصعوبة",
     "duration": "المدة",
     "type": "نوع التمرين",
@@ -282,7 +295,7 @@
     "settings": "الإعدادات",
     "level": "المستوى",
     "duration": "المدة المتوقعة",
-    "craete_at": "تم الإنشاء في",
+    "created_at": "تم الإنشاء في",
     "workoutExcer": "تمرين التمرين"
   },
   "deleteSec": {
@@ -297,8 +310,9 @@
     "target_muscles_image": "صورة العضلات المستهدفة",
     "notes": "ملاحظات",
     "exc_vid": "فيديو التمرين",
-    "watting": "يرجى الانتظار، جارٍ الإنشاء...",
-    "cooling_time": "وقت الراحة"
+    "waitting": "يرجى الانتظار، جارٍ الإنشاء...",
+    "cooling_time": "وقت الراحة",
+    "cooling_as": "قدر ما تحتاج"
   },
   "excDetail": {
     "tabs": {

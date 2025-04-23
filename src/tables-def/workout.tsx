@@ -7,6 +7,9 @@ export interface WorkoutModel {
   type: "group" | "personalized";
   difficulty_level: string;
   duration: number;
+  is_template?: boolean;
+  template_id?: number;
+  is_Active?: boolean;
   motivational_message: string;
   motivational_message_ar: string;
   coach: string;
@@ -16,6 +19,7 @@ export interface WorkoutModel {
     name: string;
   };
   createdAt: string;
+  exercises?: Exercise[];
 }
 
 export interface WorkoutDetail extends WorkoutModel {
@@ -31,7 +35,7 @@ interface Exercise {
   name: string;
   description: string;
   duration: number | null;
-  image_url: string;
+  image_urls: string[];
   target_muscles_image: string;
   video_url: string;
   createdAt: string;
