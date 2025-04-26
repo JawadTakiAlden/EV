@@ -17,6 +17,7 @@ import { request } from "../../../api/baseRequest";
 import socket from "../socket";
 import JustInViewRender from "../../../components/JustInViewRender";
 import { useChatContext } from "../../../providers/ChatProvider";
+import { useTranslation } from "react-i18next";
 
 export interface Sender {
   id: number;
@@ -39,24 +40,24 @@ const MessageRenderer = ({ chatId }: { chatId: number | undefined }) => {
   const authContext = useAuthContext();
   const messageContainerRef = useRef<HTMLDivElement>(null);
   const { chats, messages, setSelectedChatId } = useChatContext();
-
+  const { t } = useTranslation();
   const user = chats.find((chat) => chat.id === chatId)?.user;
 
   if (!user) {
     return (
       <Box
         sx={{
-          height: "100vh",
+          height: "calc(100vh - 70px - 24px)",
           width: "100%",
           display: "flex",
           alignItems: "center",
           flexDirection: "column",
           justifyContent: "center",
-          px: 2,
+          // px: 2,
         }}
       >
         <Typography variant="h3" textAlign={"center"} mb={1}>
-          Fitness chat
+          {t("fitnessChat.title")} {/* Translated title */}
         </Typography>
         <Typography
           sx={{
@@ -65,8 +66,7 @@ const MessageRenderer = ({ chatId }: { chatId: number | undefined }) => {
           variant="h5"
           textAlign={"center"}
         >
-          send and recive messages easily with height performance chat app ,
-          select user and start
+          {t("fitnessChat.description")} {/* Translated description */}
         </Typography>
       </Box>
     );
@@ -81,7 +81,7 @@ const MessageRenderer = ({ chatId }: { chatId: number | undefined }) => {
             0.07
           )} 1px, transparent 1px)`,
         backgroundSize: `10px 10px`,
-        height: "100vh",
+        height: "calc(100vh - 70px)",
       }}
     >
       <Box
@@ -112,7 +112,7 @@ const MessageRenderer = ({ chatId }: { chatId: number | undefined }) => {
       <Box
         ref={messageContainerRef}
         sx={{
-          height: "calc(100vh - 115px)",
+          height: "calc(100vh - 70px)",
           overflowY: "auto",
           py: 1,
           px: 0.5,

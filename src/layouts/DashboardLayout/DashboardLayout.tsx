@@ -9,6 +9,7 @@ import { MenuItemObject } from "../../menu-items";
 import { MdFullscreen } from "react-icons/md";
 import ProfileSection from "./ProfileSection";
 import LanguageSwitch from "../../components/LanguageSwitch";
+import HideInRoute from "../../components/HideInRoute";
 
 const DashboardLayout = ({
   children,
@@ -20,7 +21,9 @@ const DashboardLayout = ({
   const { handelSwitch } = useSidebar();
   return (
     <Box sx={{ display: "flex", width: "100%" }}>
-      <Sidebar items={sidebarItems} />
+      <HideInRoute excludedRoutes={["/coach/dashboard/chat"]}>
+        <Sidebar items={sidebarItems} />
+      </HideInRoute>
       <Box
         sx={{
           minHeight: "100vh",

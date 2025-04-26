@@ -7,19 +7,21 @@ import { useAuthContext } from "../../../providers/AuthProvider";
 import { UseQueryResult } from "@tanstack/react-query";
 import { AxiosResponse } from "axios";
 import { useChatContext } from "../../../providers/ChatProvider";
+import { useTranslation } from "react-i18next";
 
 const MyChatPeople = ({}) => {
   const { base } = useAuthContext();
   const { chats, isLoading } = useChatContext();
+  const { t } = useTranslation();
   return (
     <Box
       sx={{
         width: { xs: "100%", sm: "300px" },
         flexShrink: 0,
-        height: "100vh",
-        maxHeight: "100vh",
+        height: "calc(100vh - 70px - 24px)",
+        maxHeight: "calc(100vh - 70px - 24px)",
         borderRight: (theme) => `1px solid ${theme.palette.divider}`,
-        p: 0.5,
+        // p: 0.5,
       }}
     >
       <Stack flexDirection={"row"} gap={1}>
@@ -30,7 +32,7 @@ const MyChatPeople = ({}) => {
             fontWeight: "600",
           }}
         >
-          Chats
+          {t("chat.title")}
         </Typography>
       </Stack>
       <Stack
@@ -48,7 +50,9 @@ const MyChatPeople = ({}) => {
             </Box>
           </Stack>
         ) : chats.length === 0 ? (
-          <Typography textAlign={"center"}>No Chats , Start one</Typography>
+          <Typography textAlign={"center"}>
+            {t("chat.noChatsMessage")}
+          </Typography>
         ) : (
           chats.map((chat, i) => <UserChatRow chatRow={chat} key={i} />)
         )}

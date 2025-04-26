@@ -528,5 +528,17 @@
     "new_qun": "New Quantity",
     "title": "Update Stock Quantity",
     "description": "This form allows you to update the stock quantity of a product. Enter the new quantity and click the save button to apply the changes. A tooltip is available for additional guidance."
+  },
+
+  "common": {
+    "goBack": "Go back"
+  },
+  "chat": {
+    "title": "Chats",
+    "noChatsMessage": "No Chats, Start one"
+  },
+  "fitnessChat": {
+    "title": "Fitness chat",
+    "description": "Send and receive messages easily with a high-performance chat app, select a user and start"
   }
 }
