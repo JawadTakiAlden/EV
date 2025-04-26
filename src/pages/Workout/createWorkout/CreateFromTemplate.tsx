@@ -7,6 +7,7 @@ import Grid from "@mui/material/Grid2";
 import { useGetWorkoutTemplate } from "../../../api/templates";
 import {
   alpha,
+  Box,
   Button,
   FormControl,
   FormHelperText,
@@ -25,7 +26,6 @@ interface WorkoutFromTemaplteFormValues {
   user_id?: string | null;
   package_id?: string | null;
   difficulty_level: string;
-  calories_burned: number;
 }
 
 const CreateFromTemplate = ({
@@ -73,6 +73,11 @@ const CreateFromTemplate = ({
             <WorkoutTemplateCard withAction={false} row workout={workout} />
           </Grid>
         ))}
+        <Box>
+          {!!touched.template_id && !!errors.template_id && (
+            <FormHelperText error>{errors.template_id}</FormHelperText>
+          )}
+        </Box>
       </Grid>
       <Grid sx={{ mt: 2 }} container spacing={gridSpacing}>
         <Grid size={{ xs: 12, sm: 6 }}>
@@ -90,24 +95,6 @@ const CreateFromTemplate = ({
             />
             {!!touched.difficulty_level && !!errors.difficulty_level && (
               <FormHelperText error>{errors.difficulty_level}</FormHelperText>
-            )}
-          </FormControl>
-        </Grid>
-        <Grid size={{ xs: 12, sm: 6 }}>
-          <FormControl
-            error={!!touched.calories_burned && !!errors.calories_burned}
-          >
-            <InputLabel>{t("workoutForm.calories_burned")}</InputLabel>
-            <OutlinedInput
-              label={t("workoutForm.calories_burned")}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.calories_burned}
-              name="calories_burned"
-              type="number"
-            />
-            {!!touched.calories_burned && !!errors.calories_burned && (
-              <FormHelperText error>{errors.calories_burned}</FormHelperText>
             )}
           </FormControl>
         </Grid>

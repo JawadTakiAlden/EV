@@ -458,7 +458,7 @@ const ExerciseForm = ({
                 onSelectImage={(files) => {
                   setFieldValue("video", files?.[0]);
                 }}
-                accept="video/mp4"
+                accept="video/*"
                 name="video"
                 id="video"
                 onBlur={handleBlur}

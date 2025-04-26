@@ -260,7 +260,16 @@
     "groupSlug": "for {{packageName}} package",
     "templateSlug": "Create workout for library",
     "newWorkout": "Create new workout",
-    "library": "Pick Workout from library"
+    "library": "Pick Workout from library",
+    "title": "Title",
+    "title_ar": "Title (Arabic)",
+    "image": "Image",
+    "description": "Description",
+    "description_ar": "Description (Arabic)",
+    "motivational_message": "Motivational Message",
+    "motivational_message_ar": "Motivational Message (Arabic)",
+    "duration": "Duration",
+    "difficulty_level": "Difficulty Level"
   },
   "workoutForm": {
     "workout": "Workout",
@@ -282,7 +291,7 @@
   },
   "vidPicker": {
     "title": "{{slug}} Video",
-    "types": "available types: Mp4"
+    "types": "Please upload a video file"
   },
   "excerciseCard": {
     "duration": "Duration"

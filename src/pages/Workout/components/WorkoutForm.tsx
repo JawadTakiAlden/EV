@@ -499,6 +499,9 @@ const WorkoutForm = ({
                   ))}
                 </Stack>
               )}
+              {touched.exercises && errors.exercises && (
+                <FormHelperText error>{errors.exercises}</FormHelperText>
+              )}
               <FormControl margin="normal" sx={{ maxWidth: "375px" }}>
                 <InputLabel> {t("workoutForm.search")}</InputLabel>
                 <OutlinedInput

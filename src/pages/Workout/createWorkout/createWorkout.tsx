@@ -8,14 +8,15 @@ import {
   useCreateWorkoutTemplate,
   useGetWorkoutTemplate,
 } from "../../../api/templates";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import CreateFromTemplate from "./CreateFromTemplate";
+import * as yup from "yup";
 
 const CreateWorkout = () => {
   const [searchParams] = useSearchParams();
-  const [workoutOrigin, setWorkoutOrigin] = useState<"new" | "library">(
-    "library"
+  const [workoutOrigin, setWorkoutOrigin] = useState<"new" | "library" | null>(
+    null
   );
 
   const type = searchParams.get("type") as
@@ -33,6 +34,14 @@ const CreateWorkout = () => {
   const createFromTemplate = useCreateWorkoutFromTemplate();
   const { t } = useTranslation();
 
+  useEffect(() => {
+    if (type === "template") {
+      setWorkoutOrigin("new");
+    } else {
+      setWorkoutOrigin("library");
+    }
+  }, [type]);
+
   return (
     <Box>
       <Typography variant="h4" mb={4} sx={{ color: "primary.main" }}>
@@ -49,17 +58,20 @@ const CreateWorkout = () => {
         {}
       </Typography>
 
-      <Button
-        variant="contained"
-        sx={{ mb: 2 }}
-        onClick={() => {
-          setWorkoutOrigin(workoutOrigin === "library" ? "new" : "library");
-        }}
-      >
-        {workoutOrigin === "library"
-          ? t("createWorkout.newWorkout")
-          : t("createWorkout.library")}
-      </Button>
+      {type !== "template" && (
+        <Button
+          variant="contained"
+          sx={{ mb: 2 }}
+          onClick={() => {
+            setWorkoutOrigin(workoutOrigin === "library" ? "new" : "library");
+          }}
+        >
+          {workoutOrigin === "library"
+            ? t("createWorkout.newWorkout")
+            : t("createWorkout.library")}
+        </Button>
+      )}
+
       <Box
         sx={{
           display: workoutOrigin === "library" ? "none" : "block",
@@ -74,8 +86,43 @@ const CreateWorkout = () => {
             }
           }}
           loadingButtonProps={{
-            loading: createWorkout.isPending,
+            loading: createWorkout.isPending || createWorkoutTemplate.isPending,
           }}
+          validationSchema={yup.object().shape({
+            title: yup.string().required().label(t("createWorkout.title")),
+            title_ar: yup
+              .string()
+              .required()
+              .label(t("arf", { slug: t("createWorkout.title") })),
+            image: yup.mixed().required().label(t("createWorkout.image")),
+            description: yup
+              .string()
+              .required()
+              .label(t("createWorkout.description")),
+            description_ar: yup
+              .string()
+              .required()
+              .label(t("arf", { slug: t("createWorkout.description") })),
+            motivational_message: yup
+              .string()
+              .required()
+              .label(t("createWorkout.motivational_message")),
+            motivational_message_ar: yup
+              .string()
+              .required()
+              .label(
+                t("arf", { slug: t("createWorkout.motivational_message") })
+              ),
+            duration: yup
+              .number()
+              .min(1)
+              .required()
+              .label(t("createWorkout.duration")),
+            difficulty_level: yup
+              .string()
+              .required()
+              .label(t("createWorkout.difficulty_level")),
+          })}
           initialValues={{
             title: "",
             title_ar: "",
@@ -105,9 +152,12 @@ const CreateWorkout = () => {
               package_id: package_id,
               date: day,
               difficulty_level: "easy",
-              calories_burned: 0,
               template_id: null,
             }}
+            validationSchema={yup.object().shape({
+              template_id: yup.number().required(),
+              difficulty_level: yup.string().required(),
+            })}
             loadingButtonProps={{
               loading: createFromTemplate.isPending,
             }}

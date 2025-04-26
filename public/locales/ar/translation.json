@@ -262,7 +262,16 @@
     "groupSlug": "للحزمة {{packageName}}",
     "templateSlug": "انشاء تمرين للمكتبة",
     "newWorkout": "انشأ تمرين جديد",
-    "library": "اختر تمرين من المكتبة"
+    "library": "اختر تمرين من المكتبة",
+    "title": "العنوان",
+    "title_ar": "العنوان (بالعربية)",
+    "image": "الصورة",
+    "description": "الوصف",
+    "description_ar": "الوصف (بالعربية)",
+    "motivational_message": "رسالة تحفيزية",
+    "motivational_message_ar": "رسالة تحفيزية (بالعربية)",
+    "duration": "المدة",
+    "difficulty_level": "مستوى الصعوبة"
   },
   "workoutForm": {
     "workout": "تمرين",
@@ -285,7 +294,7 @@
   },
   "vidPicker": {
     "title": "فيديو {{slug}}",
-    "types": "الأنواع المتاحة: Mp4"
+    "types": "يرجى رفع ملف فيديو"
   },
   "excerciseCard": {
     "duration": "المدة"
