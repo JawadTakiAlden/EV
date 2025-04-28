@@ -43,6 +43,20 @@ const MessageRenderer = ({ chatId }: { chatId: number | undefined }) => {
   const { t } = useTranslation();
   const user = chats.find((chat) => chat.id === chatId)?.user;
 
+  // const Scroll = () => {
+  //   if (!messageContainerRef.current) return;
+  //   const { offsetHeight, scrollHeight, scrollTop } =
+  //     messageContainerRef.current as HTMLDivElement;
+  //   if (scrollHeight <= scrollTop + offsetHeight + 100) {
+  //     console.log(scrollHeight);
+  //     messageContainerRef.current?.scrollTo(0, scrollHeight);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   Scroll();
+  // }, [messages, messageContainerRef]);
+
   if (!user) {
     return (
       <Box
@@ -81,7 +95,7 @@ const MessageRenderer = ({ chatId }: { chatId: number | undefined }) => {
             0.07
           )} 1px, transparent 1px)`,
         backgroundSize: `10px 10px`,
-        height: "calc(100vh - 70px)",
+        height: "calc(100vh - 70px - 24px)",
       }}
     >
       <Box
@@ -112,22 +126,23 @@ const MessageRenderer = ({ chatId }: { chatId: number | undefined }) => {
       <Box
         ref={messageContainerRef}
         sx={{
-          height: "calc(100vh - 70px)",
+          height: "calc(100vh - 70px - 24px - 60px - 56px)",
           overflowY: "auto",
           py: 1,
           px: 0.5,
           display: "flex",
           flexDirection: "column",
+          justifyContent: "flex-end",
           gap: "10px",
         }}
       >
         {messages?.map((message, i) =>
           message.sender.id === authContext?.user?.id ? (
-            <JustInViewRender>
+            <JustInViewRender key={i}>
               <JustifyEndMessage message={message} />
             </JustInViewRender>
           ) : (
-            <JustInViewRender>
+            <JustInViewRender key={i}>
               <JustifyStartMessage message={message} />
             </JustInViewRender>
           )
@@ -135,7 +150,7 @@ const MessageRenderer = ({ chatId }: { chatId: number | undefined }) => {
       </Box>
       <Box
         sx={{
-          height: "45px",
+          height: "56px",
           backdropFilter: "blur(1px)",
           pt: 0,
         }}

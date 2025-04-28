@@ -29,7 +29,7 @@ export interface Record {
 
 const UserChatRow = ({ chatRow }: { chatRow: ConversationRow }) => {
   const { getVlaue } = useGetGetDarkValue();
-  const { setSelectedChatId } = useChatContext();
+  const { setSelectedChatId, setUserSelectedId } = useChatContext();
   return (
     <Stack
       flexDirection={"row"}
@@ -47,6 +47,7 @@ const UserChatRow = ({ chatRow }: { chatRow: ConversationRow }) => {
       }}
       onClick={() => {
         setSelectedChatId(chatRow.id);
+        setUserSelectedId(chatRow.user.id);
       }}
     >
       <Box>

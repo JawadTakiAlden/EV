@@ -1,7 +1,9 @@
 import { Box, Typography } from "@mui/material";
 import { MessageResponse } from "./MessageRenderer";
+import useGetGetDarkValue from "../../../utils/useGetGetDarkValue";
 
 const JustifyStartMessage = ({ message }: { message: MessageResponse }) => {
+  const { getVlaue } = useGetGetDarkValue();
   return (
     <Box
       sx={{
@@ -14,7 +16,7 @@ const JustifyStartMessage = ({ message }: { message: MessageResponse }) => {
           maxWidth: "70%",
           p: 1,
           borderRadius: "10px",
-          backgroundColor: "background.default",
+          backgroundColor: getVlaue("grey.800", "grey.200"),
           color: (theme) => theme.palette.text.primary,
         }}
       >

@@ -19,7 +19,6 @@ const MyChatPeople = ({}) => {
         width: { xs: "100%", sm: "300px" },
         flexShrink: 0,
         height: "calc(100vh - 70px - 24px)",
-        maxHeight: "calc(100vh - 70px - 24px)",
         borderRight: (theme) => `1px solid ${theme.palette.divider}`,
         // p: 0.5,
       }}

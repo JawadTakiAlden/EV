@@ -8,6 +8,9 @@ import React, {
 } from "react";
 import { request } from "../api/baseRequest";
 import { AxiosResponse } from "axios";
+import socket from "../pages/Chat/socket";
+import { useAuthContext } from "./AuthProvider";
+import { useGetChats, useGetMessages } from "../api/chats";
 
 export interface ConversationRow {
   id: number;
@@ -46,6 +49,7 @@ interface ChatContextType {
   chats: ConversationRow[];
   messages: Message[];
   selectedChatId: number | undefined;
+  userSelectedId: number | undefined;
   isLoading: boolean;
   isError: boolean;
   setMessages: (messages: Message[]) => void;
@@ -53,6 +57,7 @@ interface ChatContextType {
   resetUnreadMessages: (chatId: number) => void;
   incrementUnreadMessage: (chatId: number) => void;
   setSelectedChatId: (chatId: number | undefined) => void;
+  setUserSelectedId: (chatId: number | undefined) => void;
 }
 
 const chatContext = createContext<ChatContextType>({
@@ -66,6 +71,8 @@ const chatContext = createContext<ChatContextType>({
   resetUnreadMessages: () => {},
   incrementUnreadMessage: () => {},
   setSelectedChatId: () => {},
+  setUserSelectedId: () => {},
+  userSelectedId: undefined,
 });
 
 const UnreadMessageContext = createContext<number>(0);
@@ -78,6 +85,10 @@ const ChatProvider = ({ children }: { children: ReactNode }) => {
   const [selectedChatId, setSelectedChatId] = useState<number | undefined>(
     undefined
   );
+  const [userSelectedId, setUserSelectedId] = useState<number | undefined>(
+    undefined
+  );
+  const { user } = useAuthContext();
 
   // ✅ New: Cached messages by chat_id
   const [cachedMessages, setCachedMessages] = useState<
@@ -94,6 +105,18 @@ const ChatProvider = ({ children }: { children: ReactNode }) => {
     const res = await request({ url: `/coach/messages?chat_id=${chatId}` });
     return res.data.messages;
   };
+
+  useEffect(() => {
+    socket.connect();
+
+    socket.emit("joinCoach", user?.id);
+
+    socket.emit("joinCoachesRoom");
+
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
 
   useEffect(() => {
     getChats()
@@ -119,6 +142,28 @@ const ChatProvider = ({ children }: { children: ReactNode }) => {
       setMessages([]);
     }
 
+    socket.emit("joinChat", selectedChatId);
+
+    socket.on("new_message", (message) => {
+      setMessages((prev) => [...prev, message]);
+      const newChats = chats.map((chat) => {
+        if (chat.id === selectedChatId) {
+          chat.lastMessage = message;
+          return chat;
+        }
+        return chat;
+      });
+      setChats(newChats);
+      setCachedMessages((prev) => ({
+        ...prev,
+        [selectedChatId]: [...messages, message],
+      }));
+    });
+
+    socket.on("new_message_alert", (data: any) => {
+      console.log(data);
+    });
+
     fetchMessagesFromAPI(selectedChatId)
       .then((fetchedMessages) => {
         const cachedString = JSON.stringify(cached ?? []);
@@ -135,12 +180,15 @@ const ChatProvider = ({ children }: { children: ReactNode }) => {
       .catch((err) => {
         console.log(err);
       });
+
+    return () => {
+      socket.off("new_message");
+    };
   }, [selectedChatId]);
 
   const addMessage = (message: Message) => {
     setMessages((prev) => [...prev, message]);
 
-    // ✅ Update cache too
     setCachedMessages((prev) => {
       const prevMessages = prev[message.chat_id] || [];
       return {
@@ -196,6 +244,8 @@ const ChatProvider = ({ children }: { children: ReactNode }) => {
         resetUnreadMessages,
         incrementUnreadMessage,
         setSelectedChatId,
+        userSelectedId,
+        setUserSelectedId,
       }}
     >
       <UnreadMessageContext.Provider value={totalUnreadCount}>
