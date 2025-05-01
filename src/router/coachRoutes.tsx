@@ -10,6 +10,8 @@ import GroupWorkoutManagement from "../pages/groupWorkoutManagem/GroupWorkoutMan
 import MealIngrediant from "../pages/MealTypes/MealIngrediant";
 import MainChat from "../pages/Chat";
 import MainLayout from "../pages/Chat/Layout/MainLayout";
+import ChatRequests from "../pages/coach/ChatRequests";
+import WorkoutLibrary from "../pages/WorkoutLibrary";
 
 export const coachRoutes: RouteObject = {
   path: "",
@@ -25,6 +27,10 @@ export const coachRoutes: RouteObject = {
             {
               path: "home",
               element: <Home />,
+            },
+            {
+              path: "chat-requests",
+              element: <ChatRequests />,
             },
             {
               path: "chat",
@@ -48,6 +54,10 @@ export const coachRoutes: RouteObject = {
                   element: <UserProfile />,
                 },
               ],
+            },
+            {
+              path: "workout-library",
+              element: <WorkoutLibrary />,
             },
             {
               path: "workout",

@@ -1,0 +1,45 @@
+import { Link as BaseLink } from "react-router-dom";
+import { Button, Link } from "@mui/material";
+import { MRT_ColumnDef } from "material-react-table";
+import { useAcceptChatRequest } from "../api/chat-requests";
+import { LoadingButton } from "@mui/lab";
+
+export interface ChatRequest {
+  id: number;
+  user: {
+    id: number;
+    email: string;
+    name: string;
+  };
+}
+
+export const chatRequestColumns: MRT_ColumnDef<ChatRequest>[] = [
+  {
+    accessorKey: "user.name",
+    header: "User Name",
+  },
+  {
+    accessorKey: "user.email",
+    header: "Email",
+  },
+  {
+    accessorKey: "actions",
+    header: "Actions",
+    Cell: ({ row }) => {
+      const acceptRequest = useAcceptChatRequest();
+      return (
+        <LoadingButton
+          loading={acceptRequest.isPending}
+          variant="contained"
+          size="small"
+          color="secondary"
+          onClick={() => {
+            acceptRequest.mutate(row.original.id);
+          }}
+        >
+          Accept
+        </LoadingButton>
+      );
+    },
+  },
+];

@@ -324,6 +324,13 @@ export const coacheMenuItems: MenuItemObject[] = [
   },
   {
     id: "chat",
+    title: "chat_request",
+    type: "item",
+    path: "/coach/dashboard/chat-requests",
+    icon: <CiChat2 size={30} />,
+  },
+  {
+    id: "chat",
     title: "chat",
     type: "item",
     path: "/coach/dashboard/chat",
