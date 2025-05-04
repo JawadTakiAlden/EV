@@ -38,7 +38,7 @@ const InfoTypography = styled(Typography)(({ theme }) => ({
   },
 }));
 
-const mealOrderStatus = [
+export const mealOrderStatus = [
   {
     id: 1,
     tranlsationKey: "listed",

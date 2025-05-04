@@ -21,7 +21,7 @@ export const useGetMealOrders = () => {
   };
 
   const query = useQuery({
-    queryKey: [`get-meal-orders-${date}`],
+    queryKey: [`get-meal-orders-for-${date}`],
     queryFn: getMealOrders,
   });
 
@@ -70,10 +70,10 @@ export const useChangeOrderStatus = () => {
     mutationKey: ["change-order-status"],
     mutationFn: changeOrderStatus,
     onSuccess: (res: AxiosResponse<any>) => {
-      toast(res.data.message);
       queryClient.refetchQueries({
         queryKey: [`get-meal-orders-${orderId}`],
       });
+      toast(res.data.message);
     },
     onError: (err: AxiosError<any>) => {
       if (err.response) {

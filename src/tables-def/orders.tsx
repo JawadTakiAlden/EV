@@ -1,10 +1,14 @@
-import { Box, IconButton } from "@mui/material";
+import { Box, IconButton, Stack } from "@mui/material";
 import { Meal } from "./meals";
 import { UserProfileModel } from "./user-profile";
 import { MRT_ColumnDef } from "material-react-table";
 import { CgInfo } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../providers/AuthProvider";
+import { LoadingButton } from "@mui/lab";
+import { useChangeOrderStatus } from "../api/meal-orders";
+import { mealOrderStatus } from "../pages/mealOrders/detail/MealOrderDetail";
+import { useTranslation } from "react-i18next";
 
 export interface Order {
   id: number;
@@ -26,6 +30,46 @@ export const orderColumns: MRT_ColumnDef<Order>[] = [
   {
     accessorKey: "status",
     header: "Status",
+    Cell: ({ row }) => {
+      const chnageOrderStatus = useChangeOrderStatus();
+      const { t } = useTranslation();
+      return (
+        <Stack
+          flexDirection={"row"}
+          flexWrap={"wrap"}
+          alignItems={"center"}
+          gap={"5px"}
+        >
+          {mealOrderStatus.map((statusButton) => (
+            <LoadingButton
+              size="small"
+              onClick={() => {
+                chnageOrderStatus.mutate({
+                  orderId: row.original.id,
+                  orderStatus: statusButton.accessKey,
+                });
+              }}
+              disabled={chnageOrderStatus.isPending}
+              color={
+                row.original.status === statusButton.accessKey
+                  ? "primary"
+                  : "inherit"
+              }
+              variant={
+                row.original.status === statusButton.accessKey
+                  ? "contained"
+                  : "outlined"
+              }
+              sx={{
+                transition: "0.2s",
+              }}
+            >
+              {t("mealOrderDetail." + statusButton.tranlsationKey)}
+            </LoadingButton>
+          ))}
+        </Stack>
+      );
+    },
   },
   {
     accessorKey: "user.name",

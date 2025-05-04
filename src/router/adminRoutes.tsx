@@ -33,6 +33,10 @@ import CreateUser from "../pages/admin/users/CreateUser";
 import TermsAndConditions from "../pages/admin/termsAndCOndtions/TermsAndConditions";
 import MealIngrediant from "../pages/MealTypes/MealIngrediant";
 import WorkoutLibrary from "../pages/WorkoutLibrary";
+import WorkoutRequests from "../pages/coach/WorkoutRequests/WorkoutRequests";
+import MealOrders from "../pages/mealOrders/MealOrders";
+import MealOrderDetail from "../pages/mealOrders/detail/MealOrderDetail";
+import OrderOfDay from "../pages/mealOrders/order-of-day/OrderOfDay";
 
 export const adminRoutes: RouteObject = {
   path: "",
@@ -69,6 +73,32 @@ export const adminRoutes: RouteObject = {
               path: "home",
 
               element: <Home />,
+            },
+            {
+              path: "workoutRequests",
+              element: <WorkoutRequests />,
+            },
+            {
+              path: "orders",
+              children: [
+                {
+                  path: "",
+                  element: <MealOrders />,
+                },
+                {
+                  path: ":orderId",
+                  element: <MealOrderDetail />,
+                },
+                {
+                  path: "orderOf",
+                  children: [
+                    {
+                      path: ":day",
+                      element: <OrderOfDay />,
+                    },
+                  ],
+                },
+              ],
             },
             {
               path: "users",

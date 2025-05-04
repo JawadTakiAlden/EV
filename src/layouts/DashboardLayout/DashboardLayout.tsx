@@ -44,6 +44,7 @@ const DashboardLayout = ({
           <Box
             sx={{
               display: "flex",
+              flexDirection: "row-reverse",
               alignItems: "center",
             }}
           >

@@ -1,6 +1,7 @@
 import { Link as BaseLink } from "react-router-dom";
 import { Link } from "@mui/material";
 import { MRT_ColumnDef } from "material-react-table";
+import { useAuthContext } from "../providers/AuthProvider";
 
 export interface WorkoutRequest {
   user: {
@@ -18,18 +19,21 @@ export const workoutRequestsColumns: MRT_ColumnDef<WorkoutRequest>[] = [
   {
     accessorKey: "user.name",
     header: "User Name",
-    Cell: ({ row }) => (
-      <Link
-        component={BaseLink}
-        to={`/coach/dashboard/users/${row.original.user.id}?package_id=${row.original.package.id}`}
-        style={{
-          textDecoration: "underline",
-          cursor: "pointer",
-        }}
-      >
-        {row.original.user.name}
-      </Link>
-    ),
+    Cell: ({ row }) => {
+      const { base } = useAuthContext();
+      return (
+        <Link
+          component={BaseLink}
+          to={`/${base}/dashboard/users/${row.original.user.id}?package_id=${row.original.package.id}`}
+          style={{
+            textDecoration: "underline",
+            cursor: "pointer",
+          }}
+        >
+          {row.original.user.name}
+        </Link>
+      );
+    },
   },
   {
     accessorKey: "package.name",

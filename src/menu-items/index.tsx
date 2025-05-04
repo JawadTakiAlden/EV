@@ -121,6 +121,14 @@ export const adminMenuItems: MenuItemObject[] = [
         path: "/admin/dashboard/meal-ingredients",
       },
       {
+        id: "kitchen-order",
+        path: "/admin/dashboard/orders",
+        title: "orders",
+        type: "item",
+        icon: <FaFirstOrder size={30} />,
+        external: false,
+      },
+      {
         id: "all-delvery-times",
         title: "delivery_times",
         type: "item",
@@ -142,6 +150,20 @@ export const adminMenuItems: MenuItemObject[] = [
     type: "group",
     title: "workout_man",
     children: [
+      {
+        id: "users-requests",
+        title: "user_req",
+        type: "group",
+        children: [
+          {
+            id: "all-workout-requests",
+            title: "workout_req",
+            type: "item",
+            path: "/admin/dashboard/workoutRequests",
+            icon: <MdRequestPage size={30} />,
+          },
+        ],
+      },
       {
         id: "exercises",
         title: "exercises",
