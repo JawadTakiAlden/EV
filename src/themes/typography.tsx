@@ -6,6 +6,7 @@ export const typographyOverrides: TypographyOptions = {
   fontWeightRegular: 400,
   fontWeightMedium: 500,
   fontWeightBold: 600,
+
   h1: {
     fontWeight: 600,
     fontSize: "2.375rem",
