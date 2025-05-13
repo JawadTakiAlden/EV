@@ -10,6 +10,7 @@ import {
 } from "../../../api/meal-orders/printMealOrdersINformation";
 import { useSearchParams } from "react-router-dom";
 import { FaFilePdf } from "react-icons/fa6";
+import { useTranslation } from "react-i18next";
 
 const TableComponent = Loadable(
   lazy(() => import("../../../components/Table"))
@@ -21,9 +22,16 @@ const OrderOfDay = () => {
   const orderSummaryDownload = usePrintMealOrdersInformationToPDF();
   const markAllOrdersAsDone = useMarkAllOrdersAsDone();
   const date = searchParams.get("date");
+  const { t } = useTranslation();
   return (
     <Box>
-      <Stack direction={"row"} gap={2} alignItems={"center"}>
+      <Stack
+        direction={"row"}
+        flexWrap={"wrap"}
+        columnGap={2}
+        mb={2}
+        alignItems={"center"}
+      >
         <LoadingButton
           variant="contained"
           color="secondary"
@@ -32,7 +40,7 @@ const OrderOfDay = () => {
           }}
           endIcon={<FaFilePdf />}
         >
-          Download Order Summary
+          {t("orderSummary.donwload_order_summmary")}
         </LoadingButton>
         <LoadingButton
           variant="contained"
@@ -40,7 +48,7 @@ const OrderOfDay = () => {
             markAllOrdersAsDone.mutate(date);
           }}
         >
-          Mark All Orders As Done
+          {t("orderSummary.mark_all_done")}
         </LoadingButton>
       </Stack>
       <TableComponent

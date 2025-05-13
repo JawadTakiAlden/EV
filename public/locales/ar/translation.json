@@ -83,6 +83,10 @@
     "group_workout": "تمرين جماعي",
     "orders": "الطلبات"
   },
+  "orderSummary": {
+    "donwload_order_summmary": "تحميل ملخص الطلبات",
+    "mark_all_done": "'تعليم جميع الطلبات ك  'منتهي"
+  },
   "profile": {
     "my": "ملفي الشخصي",
     "logout": "تسجيل الخروج"

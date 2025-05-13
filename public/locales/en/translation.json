@@ -83,6 +83,10 @@
     "group_workout": "Group Workout",
     "orders": "Orders"
   },
+  "orderSummary": {
+    "donwload_order_summmary": "Download Order Summary",
+    "mark_all_done": "Mark All Order As Done"
+  },
   "profile": {
     "my": "My Profile",
     "logout": "Logout"

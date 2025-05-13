@@ -9,7 +9,7 @@ export const usePrintMealOrdersInformationToPDF = () => {
       url: "/kitchen/orders-summary",
       method: "get",
       params: {
-        date: "2025-05-14",
+        date: date,
       },
     });
   };
@@ -49,7 +49,7 @@ export const useMarkAllOrdersAsDone = () => {
   };
 
   const mutation = useMutation({
-    mutationKey: ["mak-order-sas-done"],
+    mutationKey: ["mark-order-as-done"],
     mutationFn: maarkAllOrdersAsDone,
     onSuccess: (res) => {
       console.log(res);
