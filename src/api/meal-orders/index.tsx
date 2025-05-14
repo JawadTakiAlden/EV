@@ -46,6 +46,7 @@ export const useGetMealOrdersDetail = () => {
 
 export const useChangeOrderStatus = () => {
   const { orderId } = useParams();
+  const [searchParams] = useSearchParams();
   const changeOrderStatus = ({
     orderStatus,
     orderId,
@@ -70,8 +71,12 @@ export const useChangeOrderStatus = () => {
     mutationKey: ["change-order-status"],
     mutationFn: changeOrderStatus,
     onSuccess: (res: AxiosResponse<any>) => {
+      //
       queryClient.refetchQueries({
         queryKey: [`get-meal-orders-${orderId}`],
+      });
+      queryClient.refetchQueries({
+        queryKey: [`get-meal-orders-for-${searchParams.get("date")}`],
       });
       toast(res.data.message);
     },

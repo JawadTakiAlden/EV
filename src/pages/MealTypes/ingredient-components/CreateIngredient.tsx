@@ -4,7 +4,6 @@ import { Dialog, DialogContent, DialogTitle } from "@mui/material";
 import MealIngrediantForm from "../components/MealIngrediantForm";
 import { useCreateIngredient } from "../../../api/ingredients";
 import { useTranslation } from "react-i18next";
-import imageCompression from "browser-image-compression";
 
 const options = {
   maxSizeMB: 0.5,
@@ -25,13 +24,6 @@ const CreateIngredient = () => {
             <DialogContent>
               <MealIngrediantForm
                 onSubmit={async (values) => {
-                  if (typeof values.image === "object") {
-                    const compressedFile = await imageCompression(
-                      values.image!,
-                      options
-                    );
-                    console.log(compressedFile.size);
-                  }
                   await createIngredient.mutateAsync(values);
                   handleClose();
                 }}

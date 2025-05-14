@@ -9,6 +9,7 @@ import { LoadingButton } from "@mui/lab";
 import { useChangeOrderStatus } from "../api/meal-orders";
 import { mealOrderStatus } from "../pages/mealOrders/detail/MealOrderDetail";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 export interface Order {
   id: number;
@@ -33,6 +34,7 @@ export const orderColumns: MRT_ColumnDef<Order>[] = [
     Cell: ({ row }) => {
       const chnageOrderStatus = useChangeOrderStatus();
       const { t } = useTranslation();
+      console.log("rerender");
       return (
         <Stack
           flexDirection={"row"}
@@ -42,6 +44,7 @@ export const orderColumns: MRT_ColumnDef<Order>[] = [
         >
           {mealOrderStatus.map((statusButton) => (
             <LoadingButton
+              key={statusButton.accessKey}
               size="small"
               onClick={() => {
                 chnageOrderStatus.mutate({

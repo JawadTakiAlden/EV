@@ -4,7 +4,6 @@ import DeleteTypography from "../../../components/DeleteTypography";
 import MealPlanForm from "../components/MealPlanForm";
 import { useCreateMealPlan } from "../../../api/mealPlan";
 import { useTranslation } from "react-i18next";
-import imageCompression from "browser-image-compression";
 
 const options = {
   maxSizeMB: 0.5,
