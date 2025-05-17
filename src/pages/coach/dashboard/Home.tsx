@@ -14,8 +14,6 @@ const Home = () => {
           <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
             <StatisticCard
               count={`${stats?.data?.data?.metrics?.activeFitnessSubscriptions}`}
-              isLoss={false}
-              percentage={20}
               loading={stats.isLoading}
               title="Active fitness subscription"
             />
@@ -23,8 +21,6 @@ const Home = () => {
           <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
             <StatisticCard
               count={`${stats?.data?.data?.metrics?.activeMealSubscriptions}`}
-              isLoss={false}
-              percentage={20}
               loading={stats.isLoading}
               title="Active meal subscription"
             />
@@ -32,8 +28,6 @@ const Home = () => {
           <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
             <StatisticCard
               count={`${stats?.data?.data?.metrics?.newSignupsCount}`}
-              isLoss={false}
-              percentage={20}
               loading={stats.isLoading}
               title="New sign ups"
             />
@@ -41,8 +35,6 @@ const Home = () => {
           <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
             <StatisticCard
               count={`${stats?.data?.data?.metrics?.workoutCompletionRate}`}
-              isLoss
-              percentage={20}
               loading={stats.isLoading}
               title="Workout completion rate"
             />

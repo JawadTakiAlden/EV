@@ -83,6 +83,7 @@ export interface MealSelection {
   user_id: number;
   meal_id: number;
   day: string;
+  date: string;
   meal_subscription_id: number;
   createdAt: string;
   updatedAt: string;

@@ -1,4 +1,4 @@
-import { Box, Link, Stack, styled, Typography } from "@mui/material";
+import { Box, Link, Stack, styled, Tooltip, Typography } from "@mui/material";
 import React from "react";
 import { useAuthContext } from "../../providers/AuthProvider";
 import MainCard from "../../components/MainCard";
@@ -29,8 +29,30 @@ const Subscription: React.FC<
       }}
       key={index}
     >
-      <MainCard border={false}>
-        <SectionTitle>{t("userProfile.fit_sub.sub_pan")}</SectionTitle>
+      <MainCard border={false} sx={{ position: "relative" }}>
+        <SectionTitle
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: "10px",
+          }}
+        >
+          {subscription.is_active && (
+            <Tooltip title={"Active"}>
+              <Box
+                sx={{
+                  width: "10px",
+                  height: "10px",
+                  borderRadius: "5px",
+                  bgcolor: "success.main",
+                  top: "0px",
+                  left: "50%",
+                }}
+              />
+            </Tooltip>
+          )}
+          {t("userProfile.fit_sub.sub_pan")}
+        </SectionTitle>
         <Stack gap="10px">
           <InformationTypography>
             {t("userProfile.fit_sub.package")} :{" "}
@@ -56,11 +78,13 @@ const Subscription: React.FC<
           <InformationTypography>
             {t("userProfile.fit_sub.experid_on")} : {subscription.end_date}
           </InformationTypography>
-          <InformationTypography>
-            {t("userProfile.fit_sub.renew", {
-              days_left: subscription.days_left,
-            })}
-          </InformationTypography>
+          {subscription.is_active && (
+            <InformationTypography>
+              {t("userProfile.fit_sub.renew", {
+                days_left: subscription.days_left,
+              })}
+            </InformationTypography>
+          )}
         </Stack>
       </MainCard>
     </div>

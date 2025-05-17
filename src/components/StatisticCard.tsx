@@ -8,23 +8,14 @@ import { AiOutlineRise } from "react-icons/ai";
 interface StatsticCardProps {
   title: string;
   count: string;
-  percentage: number;
   loading?: boolean;
-  color?: "warning" | "info";
-  isLoss: boolean;
 }
 
 const StatisticCard = ({
   title,
   count,
-  percentage,
   loading = false,
-  isLoss,
-  color,
 }: StatsticCardProps) => {
-  if (!color) {
-    color = isLoss ? "warning" : "info";
-  }
   return (
     <MainCard
       contentProps={{
@@ -52,37 +43,6 @@ const StatisticCard = ({
               </Typography>
             )}
           </Grid>
-          {percentage && (
-            <Grid>
-              <Chip
-                icon={
-                  loading ? (
-                    <Skeleton
-                      width={"30px"}
-                      height={"100%"}
-                      variant="rectangular"
-                    />
-                  ) : isLoss ? (
-                    <Icon>
-                      <AiOutlineFall />
-                    </Icon>
-                  ) : (
-                    <Icon>
-                      <AiOutlineRise />
-                    </Icon>
-                  )
-                }
-                label={loading ? "" : `${percentage}%`}
-                sx={{
-                  ml: 1.25,
-                  pl: 1,
-                  borderRadius: "4px",
-                  background: (theme) => alpha(theme.palette[color!].main, 0.2),
-                }}
-                size="small"
-              />
-            </Grid>
-          )}
         </Grid>
       </Stack>
     </MainCard>

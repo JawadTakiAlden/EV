@@ -6,10 +6,13 @@ import { useAuthContext } from "../../providers/AuthProvider";
 import { useNavigate, useParams } from "react-router";
 import { Package } from "../../tables-def/packages";
 
-export const useGetPackages = () => {
+export const useGetPackages = (type: string | null = null) => {
   const getPackages = (): Promise<AxiosResponse<Package[]>> => {
     return request({
       url: "/admin/packages",
+      params: {
+        type,
+      },
     });
   };
 

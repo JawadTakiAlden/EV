@@ -15,7 +15,7 @@ import { useTranslation } from "react-i18next";
 
 const GroupWorkoutManagement = () => {
   const [selectedPackage, setSelectedPackage] = useState<null | Package>(null);
-  const packagesQuery = useGetPackages();
+  const packagesQuery = useGetPackages("group");
   const [searchParams] = useSearchParams();
   const { t } = useTranslation();
   const workoutsQuery = useGetWorkoutOfPackageAndDay(

@@ -1,4 +1,4 @@
-import { Box, Divider, Typography } from "@mui/material";
+import { Box, Divider, Tooltip, Typography } from "@mui/material";
 import React from "react";
 import SectionTitle from "../../components/SectionTitle";
 import { DietSubscription } from "../../tables-def/user-profile";
@@ -27,13 +27,37 @@ const Subscription: React.FC<ListChildComponentProps<DietSubscription[]>> = ({
       }}
       key={index}
     >
-      <MainCard border={false} cardContent={false} sx={{ p: 0 }}>
+      <MainCard
+        border={false}
+        cardContent={false}
+        sx={{
+          border: (theme) =>
+            subscription.is_active
+              ? `1px solid ${theme.palette.success.main}`
+              : undefined,
+          p: 0,
+        }}
+      >
         <Box
           sx={{
             p: 1,
           }}
         >
           <Typography sx={{ fontWeight: "600", fontSize: "18px" }}>
+            {subscription.is_active && (
+              <Tooltip title={"Active"}>
+                <Box
+                  sx={{
+                    width: "10px",
+                    height: "10px",
+                    borderRadius: "5px",
+                    bgcolor: "success.main",
+                    top: "0px",
+                    left: "50%",
+                  }}
+                />
+              </Tooltip>
+            )}
             {t("userProfile.meal_sub.sub_info")} :{" "}
           </Typography>
           <Typography>

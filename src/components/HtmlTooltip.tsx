@@ -7,6 +7,8 @@ const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
     maxWidth: 220,
     fontSize: "12px",
     backdropFilter: "blur(1px)",
+    backgroundColor: theme.palette.background.paper,
+    color: theme.palette.text.primary,
   },
 }));
 

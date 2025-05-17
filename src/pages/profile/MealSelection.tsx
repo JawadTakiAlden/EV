@@ -88,13 +88,13 @@ const MealSelection = ({
       </Box>
       <List
         itemCount={
-          mealSelection?.filter((ms) => ms.day === selectedDay)?.length || 0
+          mealSelection?.filter((ms) => ms.date === selectedDay)?.length || 0
         }
         direction={i18n.language === "ar" ? "rtl" : "ltr"}
         itemSize={310}
         height={300}
         width={1000}
-        itemData={mealSelection?.filter((ms) => ms.day === selectedDay) || []}
+        itemData={mealSelection?.filter((ms) => ms.date === selectedDay) || []}
         layout="horizontal"
         style={{
           width: "100%",
