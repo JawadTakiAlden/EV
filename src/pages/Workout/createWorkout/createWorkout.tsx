@@ -6,7 +6,6 @@ import { useTranslation } from "react-i18next";
 import {
   useCreateWorkoutFromTemplate,
   useCreateWorkoutTemplate,
-  useGetWorkoutTemplate,
 } from "../../../api/templates";
 import { useEffect, useState } from "react";
 
@@ -85,7 +84,7 @@ const CreateWorkout = () => {
               createWorkout.mutate({ ...values, date: day });
             }
           }}
-          loadingButtonProps={{
+          ButtonProps={{
             loading: createWorkout.isPending || createWorkoutTemplate.isPending,
           }}
           validationSchema={yup.object().shape({
@@ -158,7 +157,7 @@ const CreateWorkout = () => {
               template_id: yup.number().required(),
               difficulty_level: yup.string().required(),
             })}
-            loadingButtonProps={{
+            ButtonProps={{
               loading: createFromTemplate.isPending,
             }}
             onSubmit={(values) => {

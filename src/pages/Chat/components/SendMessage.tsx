@@ -1,10 +1,8 @@
 import { Box, IconButton, styled, TextField } from "@mui/material";
 import { useSendMessage } from "../../../api/chats";
-import { useChat } from "../Store/chatStore";
 import { useFormik } from "formik";
 import { IoIosSend } from "react-icons/io";
 import { IoDocumentText } from "react-icons/io5";
-import * as yup from "yup";
 import { useChatContext } from "../../../providers/ChatProvider";
 
 const ChatInputWrapper = styled(Box)(({ theme }) => ({

@@ -14,13 +14,11 @@ const RootLayout = () => {
 
   return (
     <Box>
-      {/* <ScrollOnNavigate> */}
       <AuthContextProvider>
         <ChatProvider>
           <Outlet />
         </ChatProvider>
       </AuthContextProvider>
-      {/* </ScrollOnNavigate> */}
     </Box>
   );
 };

@@ -17,7 +17,7 @@ const CreateSurvey = () => {
           title_ar: "",
           package_id: parseInt(packageId!),
         }}
-        loadingButtonProps={{
+        ButtonProps={{
           loading: createSurvey.isPending,
         }}
         onSubmit={(values) => {

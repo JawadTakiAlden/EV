@@ -9,7 +9,6 @@ const AppRouterProvider = () => {
       <RouterProvider router={appRouter()} />
     </RTL>
   );
-  // return i18n.language === "en" ? <RouterProvider router={appRouter()} /> : <RTL><RouterProvider router={appRouter()} /></RTL>
 };
 
 export default AppRouterProvider;

@@ -2,12 +2,10 @@ import { Avatar, Badge, Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import { numberOfLines } from "../../../utils/maxLinesNumber";
 import useGetGetDarkValue from "../../../utils/useGetGetDarkValue";
-import { useChat } from "../Store/chatStore";
 import {
   ConversationRow,
   useChatContext,
 } from "../../../providers/ChatProvider";
-import { RiMailLine } from "react-icons/ri";
 
 export interface User {
   id: number;

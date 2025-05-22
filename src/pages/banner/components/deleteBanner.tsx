@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { MdDeleteSweep } from "react-icons/md";
 import { BannerModel } from "../../../tables-def/banner";
-import { LoadingButton } from "@mui/lab";
+
 import { useDeleteBanner } from "../../../api/banner";
 import { useTranslation } from "react-i18next";
 
@@ -47,7 +47,7 @@ const DeleteBanner = ({ banner }: { banner: BannerModel }) => {
               <Button onClick={handleClose} variant="outlined" color="error">
                 {t("delete_pop.cancel")}
               </Button>
-              <LoadingButton
+              <Button
                 onClick={async () => {
                   await deleteBanner.mutateAsync(banner.id);
                   handleClose();
@@ -57,7 +57,7 @@ const DeleteBanner = ({ banner }: { banner: BannerModel }) => {
                 color="primary"
               >
                 {t("delete_pop.confirm")}
-              </LoadingButton>
+              </Button>
             </DialogActions>
           </Dialog>
         );

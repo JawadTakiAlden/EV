@@ -1,6 +1,6 @@
 import { FormikConfig, useFormik } from "formik";
 import React, { useEffect, useMemo } from "react";
-import Grid from "@mui/material/Grid2";
+import { Button, Grid } from "@mui/material";
 import { gridSpacing } from "../../../config";
 import {
   Box,
@@ -12,10 +12,10 @@ import {
   Select,
   Typography,
 } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
+
 import FileImagePicker from "../../../components/FileImagePicker";
 import { useTranslation } from "react-i18next";
-import { FormLoadingButtonProps } from "../../../tables-def/loadingButtonProps";
+import { FormButtonProps } from "../../../tables-def/loadingButtonProps";
 
 export interface MealIngrediantVlaue {
   id?: number;
@@ -33,11 +33,11 @@ interface MealIngrediantFormProps {
 const MealIngrediantForm = ({
   task = "create",
   initialValues,
-  loadingButtonProps,
+  ButtonProps,
   ...formikConfig
 }: FormikConfig<MealIngrediantVlaue> &
   MealIngrediantFormProps &
-  FormLoadingButtonProps) => {
+  FormButtonProps) => {
   const {
     values,
     touched,
@@ -193,15 +193,15 @@ const MealIngrediantForm = ({
           </Grid>
         </Grid>
         <Grid size={12}>
-          <LoadingButton
+          <Button
             variant="outlined"
             type="submit"
             disabled={!isValid}
             sx={{ width: { xs: "100%", sm: "initial" } }}
-            {...loadingButtonProps}
+            {...ButtonProps}
           >
             {t("gbtn." + task)}
-          </LoadingButton>
+          </Button>
         </Grid>
       </Grid>
     </form>

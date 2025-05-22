@@ -1,16 +1,9 @@
-import { Box, IconButton, Skeleton, Stack, Typography } from "@mui/material";
-import SearchOrStartNewChat from "./SearchOrStartNewChat";
-import UserChatRow, { Record } from "./UserChatRow";
-import { IoArrowBackCircle } from "react-icons/io5";
-import { Link } from "react-router-dom";
-import { useAuthContext } from "../../../providers/AuthProvider";
-import { UseQueryResult } from "@tanstack/react-query";
-import { AxiosResponse } from "axios";
+import { Box, Skeleton, Stack, Typography } from "@mui/material";
+import UserChatRow from "./UserChatRow";
 import { useChatContext } from "../../../providers/ChatProvider";
 import { useTranslation } from "react-i18next";
 
 const MyChatPeople = ({}) => {
-  const { base } = useAuthContext();
   const { chats, isLoading } = useChatContext();
   const { t } = useTranslation();
   return (
@@ -20,7 +13,6 @@ const MyChatPeople = ({}) => {
         flexShrink: 0,
         height: "calc(100vh - 70px - 24px)",
         borderRight: (theme) => `1px solid ${theme.palette.divider}`,
-        // p: 0.5,
       }}
     >
       <Stack flexDirection={"row"} gap={1}>

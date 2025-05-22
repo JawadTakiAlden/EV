@@ -27,7 +27,7 @@ const UpdateFaq = ({ faq }: { faq: Faq }) => {
               <FAQForm
                 initialValues={faq}
                 task="update"
-                loadingButtonProps={{
+                ButtonProps={{
                   loading: updateFaq.isPending,
                 }}
                 onSubmit={(values) => {

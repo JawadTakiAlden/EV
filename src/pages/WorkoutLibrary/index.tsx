@@ -14,7 +14,7 @@ import {
 import { useGetWorkoutTemplate } from "../../api/templates";
 import useGetTranslation from "../../utils/useGetTranslation";
 
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { gridSpacing } from "../../config";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
@@ -178,53 +178,6 @@ const WorkoutLibrary = () => {
       </Box>
     </Box>
   );
-  //     <Grid container spacing={2}>
-  //       {data?.data.map((workout) => {
-  //         return (
-  //           <Grid item xs={12} sm={6} md={4} lg={3} key={workout.id}>
-  //             <Card
-  //               sx={{ height: "100%", display: "flex", flexDirection: "column" }}
-  //             >
-  //               <CardMedia
-  //                 component="img"
-  //                 height="180"
-  //                 image={workout.image}
-  //                 alt={"workout"}
-  //               />
-  //               <CardContent sx={{ flexGrow: 1 }}>
-
-  //               </CardContent>
-
-  //               {workout.exercises?.length > 0 && (
-  //                 <Box
-  //                   sx={{
-  //                     px: 2,
-  //                     pb: 2,
-  //                     overflowX: "auto",
-  //                     display: "flex",
-  //                     gap: 1,
-  //                   }}
-  //                 >
-  //                   {workout.exercises.map((exercise) => (
-  //                     <CardMedia
-  //                       key={exercise.id}
-  //                       component="img"
-  //                       sx={{ height: 60, width: 60, borderRadius: 1 }}
-  //                       image={
-  //                         exercise.image_urls?.[0] ??
-  //                         "https://via.placeholder.com/60?text=No+Image"
-  //                       }
-  //                       alt={getTranslation2(exercise, "name")}
-  //                     />
-  //                   ))}
-  //                 </Box>
-  //               )}
-  //             </Card>
-  //           </Grid>
-  //         );
-  //       })}
-  //     </Grid>
-  //   );
 };
 
 export default WorkoutLibrary;

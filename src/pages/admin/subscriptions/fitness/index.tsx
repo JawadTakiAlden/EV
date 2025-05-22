@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { gridSpacing } from "../../../../config";
 import MainCard from "../../../../components/MainCard";
 import SectionTitle from "../../../../components/SectionTitle";

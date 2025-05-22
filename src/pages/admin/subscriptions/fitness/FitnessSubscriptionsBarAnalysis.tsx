@@ -3,10 +3,7 @@ import RenewalAndCancelationBarChartAnalysis from "../components/RenewalAndCance
 import { useGetRenwalStats } from "../../../../api/admin/stats";
 import LoadingDataError from "../../../../components/LoadingDataError";
 import { Typography } from "@mui/material";
-import {
-  useGetActiveMealsSubscriptionStats,
-  useGetFitnessSubscriptionStats,
-} from "../../../../api/subscriptions";
+import { useGetFitnessSubscriptionStats } from "../../../../api/subscriptions";
 
 const FitnessSubscriptionsBarAnalysis = () => {
   const fitnessSubscription = useGetFitnessSubscriptionStats();

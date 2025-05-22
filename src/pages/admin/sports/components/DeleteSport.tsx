@@ -11,7 +11,7 @@ import {
   IconButton,
 } from "@mui/material";
 import { MdOutlineDeleteSweep } from "react-icons/md";
-import { LoadingButton } from "@mui/lab";
+
 import { useDeleteSport } from "../../../../api/sports";
 import { useTranslation } from "react-i18next";
 import useGetTranslation from "../../../../utils/useGetTranslation";
@@ -45,7 +45,7 @@ const DeleteSport = ({ sport }: { sport: Sport }) => {
               <Button onClick={handleClose} color="error" variant="outlined">
                 {t("delete_pop.cancel")}
               </Button>
-              <LoadingButton
+              <Button
                 onClick={() => {
                   deleteSport.mutateAsync(sport.id);
                   handleClose();
@@ -55,7 +55,7 @@ const DeleteSport = ({ sport }: { sport: Sport }) => {
                 variant="contained"
               >
                 {t("delete_pop.confirm")}
-              </LoadingButton>
+              </Button>
             </DialogActions>
           </Dialog>
         );

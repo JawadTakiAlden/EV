@@ -1,6 +1,6 @@
 import { alpha, Box, Skeleton, Stack, Typography } from "@mui/material";
 import React from "react";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { gridSpacing } from "../../../config";
 import DeleteTypography from "../../../components/DeleteTypography";
 import CreateSurvey from "../../Survey/createSurvey/createSurvey";

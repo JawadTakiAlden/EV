@@ -66,7 +66,7 @@ const CreateMeal = () => {
                   await createMeal.mutateAsync(mealFormData);
                   handleClose();
                 }}
-                loadingButtonProps={{
+                ButtonProps={{
                   loading: createMeal.isPending,
                 }}
                 initialValues={{

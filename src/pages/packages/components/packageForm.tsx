@@ -2,6 +2,7 @@ import { FormikConfig, useFormik } from "formik";
 import React from "react";
 import {
   Box,
+  Button,
   FormControl,
   FormControlLabel,
   FormHelperText,
@@ -12,9 +13,9 @@ import {
   RadioGroup,
 } from "@mui/material";
 import { gridSpacing } from "../../../config";
-import { LoadingButton } from "@mui/lab";
-import Grid from "@mui/material/Grid2";
-import { FormLoadingButtonProps } from "../../../tables-def/loadingButtonProps";
+
+import { Grid } from "@mui/material";
+import { FormButtonProps } from "../../../tables-def/loadingButtonProps";
 import { useTranslation } from "react-i18next";
 
 interface PackageFormProps {
@@ -31,11 +32,9 @@ interface PackageFormValues {
 
 const PackageForm = ({
   task = "create",
-  loadingButtonProps,
+  ButtonProps,
   ...formikConfig
-}: FormikConfig<PackageFormValues> &
-  PackageFormProps &
-  FormLoadingButtonProps) => {
+}: FormikConfig<PackageFormValues> & PackageFormProps & FormButtonProps) => {
   const {
     values,
     touched,
@@ -162,14 +161,14 @@ const PackageForm = ({
           </Grid>
         </Grid>
 
-        <LoadingButton
+        <Button
           type="submit"
           variant="contained"
           disabled={!isValid}
-          {...loadingButtonProps}
+          {...ButtonProps}
         >
           {t("gbtn." + task)}
-        </LoadingButton>
+        </Button>
       </form>
     </Box>
   );

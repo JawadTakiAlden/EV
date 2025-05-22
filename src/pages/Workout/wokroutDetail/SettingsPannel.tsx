@@ -6,7 +6,7 @@ import WorkoutForm, {
 } from "../components/WorkoutForm";
 import DeleteTypography from "../../../components/DeleteTypography";
 import DoupleClickToConfirm from "../../../components/DoupleClickToConfirm";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { gridSpacing } from "../../../config";
 import { useDeleteWorkout, useUpdateWorkout } from "../../../api/workout";
 import { WorkoutDetail } from "../../../tables-def/workout";
@@ -42,7 +42,7 @@ const SettingsPannel = ({ workout }: { workout: WorkoutDetail }) => {
         <Grid size={12}>
           <WorkoutForm
             task="update"
-            loadingButtonProps={{
+            ButtonProps={{
               loading: updateTemplate.isPending || updateWorkout.isPending,
             }}
             initialValues={{

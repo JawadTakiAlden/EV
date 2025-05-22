@@ -1,9 +1,9 @@
 import React from "react";
-import { FormLoadingButtonProps } from "../../../tables-def/loadingButtonProps";
+import { FormButtonProps } from "../../../tables-def/loadingButtonProps";
 import { FormikConfig, useFormik } from "formik";
 import { gridSpacing } from "../../../config";
 import { WorkoutTemplateCard } from "../../WorkoutLibrary";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { useGetWorkoutTemplate } from "../../../api/templates";
 import {
   alpha,
@@ -18,7 +18,6 @@ import {
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import LoadingDataError from "../../../components/LoadingDataError";
-import { LoadingButton } from "@mui/lab";
 
 interface WorkoutFromTemaplteFormValues {
   template_id: number | null;
@@ -29,9 +28,9 @@ interface WorkoutFromTemaplteFormValues {
 }
 
 const CreateFromTemplate = ({
-  loadingButtonProps,
+  ButtonProps,
   ...formikProps
-}: FormikConfig<WorkoutFromTemaplteFormValues> & FormLoadingButtonProps) => {
+}: FormikConfig<WorkoutFromTemaplteFormValues> & FormButtonProps) => {
   const {
     values,
     touched,
@@ -99,14 +98,14 @@ const CreateFromTemplate = ({
           </FormControl>
         </Grid>
       </Grid>
-      <LoadingButton
-        {...loadingButtonProps}
+      <Button
+        {...ButtonProps}
         variant="contained"
         type="submit"
         sx={{ width: { xs: "100%", sm: "initial" }, my: 2 }}
       >
         {t("gbtn.create")}
-      </LoadingButton>
+      </Button>
     </form>
   );
 };

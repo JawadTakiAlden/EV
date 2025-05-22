@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   FormControl,
   FormHelperText,
   IconButton,
@@ -8,7 +9,7 @@ import {
 } from "@mui/material";
 import * as yup from "yup";
 import { Formik } from "formik";
-import { LoadingButton } from "@mui/lab";
+
 import { useState } from "react";
 import EyeIcon from "../../../components/EyeIcon";
 import useLogin from "../../../api/useLogin";
@@ -24,12 +25,16 @@ const initialValues: LoginVlaues = {
   password: "",
 };
 
-
 const LoginForm = () => {
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   const validationSchema = yup.object().shape({
     email: yup.string().email().required().label(t("login.form.email")),
-    password: yup.string().min(7).max(26).required().label("login.form.password"),
+    password: yup
+      .string()
+      .min(7)
+      .max(26)
+      .required()
+      .label("login.form.password"),
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -92,14 +97,14 @@ const LoginForm = () => {
                 <FormHelperText>{errors.password}</FormHelperText>
               )}
             </FormControl>
-            <LoadingButton
+            <Button
               loading={login.isPending}
               variant="contained"
               fullWidth
               type="submit"
             >
               {t("login.form.btn")}
-            </LoadingButton>
+            </Button>
           </form>
         )}
       </Formik>

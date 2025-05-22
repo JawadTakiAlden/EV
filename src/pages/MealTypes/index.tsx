@@ -1,8 +1,7 @@
 import { Box } from "@mui/material";
 import { gridSpacing } from "../../config";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import MealType from "./MealType";
-import MealIngrediant from "./MealIngrediant";
 
 const MealTypes = () => {
   return (

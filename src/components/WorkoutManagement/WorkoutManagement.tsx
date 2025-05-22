@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { gridSpacing } from "../../config";
 import { Box, Button, ListItemButton, Stack, Typography } from "@mui/material";
-import { days } from "../../tables-def/days";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuthContext } from "../../providers/AuthProvider";
 import WorkoutCard from "../../pages/Workout/components/WorkoutCard";

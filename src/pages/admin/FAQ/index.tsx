@@ -18,7 +18,6 @@ import DeleteFaq from "./faq-actions/DeleteFaq";
 import { CgSearchLoading } from "react-icons/cg";
 import FAQForm from "./form/FaqForm";
 import UpdateFaq from "./faq-actions/UpdateFaq";
-import { useTranslation } from "react-i18next";
 import useGetTranslation from "../../../utils/useGetTranslation";
 
 const FAQCard = ({

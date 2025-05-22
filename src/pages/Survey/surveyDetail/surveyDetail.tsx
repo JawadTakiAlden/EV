@@ -1,5 +1,5 @@
 import { Box, Button, Skeleton, Typography } from "@mui/material";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { gridSpacing } from "../../../config";
 import UnderlineHeader from "../../../components/UnderlineHeader";
 import DeleteTypography from "../../../components/DeleteTypography";
@@ -55,7 +55,7 @@ const SurveyDetail = ({ withActions = true }: { withActions?: boolean }) => {
             <SurveyForm
               task="update"
               initialValues={surveyData!}
-              loadingButtonProps={{
+              ButtonProps={{
                 loading: updateSurvey.isPending,
               }}
               onSubmit={(values) => {

@@ -1,5 +1,5 @@
-import { LoadingButtonProps } from "@mui/lab";
+import { ButtonProps } from "@mui/material";
 
-export interface FormLoadingButtonProps {
-  loadingButtonProps?: LoadingButtonProps;
+export interface FormButtonProps {
+  ButtonProps?: ButtonProps;
 }

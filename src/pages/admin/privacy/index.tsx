@@ -21,7 +21,7 @@ import { VscListOrdered } from "react-icons/vsc";
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import { useGetPrivacy, useUpdatePrivacy } from "../../../api/info";
 import LoadingDataError from "../../../components/LoadingDataError";
-import { LoadingButton } from "@mui/lab";
+
 import { stateToHTML } from "draft-js-export-html";
 import { useTranslation } from "react-i18next";
 
@@ -176,7 +176,6 @@ const Privacy = () => {
               flexDirection={"column"}
               sx={{
                 p: 1,
-                //   backgroundColor: getVlaue("grey.900", "grey.200"),
                 borderRadius: "8px",
               }}
             >
@@ -246,13 +245,13 @@ const Privacy = () => {
           />
         </Box>
       </Box>
-      <LoadingButton
+      <Button
         variant="contained"
         loading={updatePrivacy.isPending}
         onClick={handleSave}
       >
         {t("gbtn.save")}
-      </LoadingButton>
+      </Button>
     </Box>
   );
 };

@@ -32,7 +32,7 @@ const UpdateSport = ({ sport }: { sport: Sport }) => {
                   image: sport.image,
                 }}
                 task="update"
-                loadingButtonProps={{
+                ButtonProps={{
                   loading: updateSport.isPending,
                 }}
                 onSubmit={async (values) => {

@@ -12,7 +12,7 @@ import {
 import { MdDeleteSweep } from "react-icons/md";
 import { Survey } from "../../../tables-def/survey";
 import { useDeleteSurvey } from "../../../api/surveys";
-import { LoadingButton } from "@mui/lab";
+
 import { useTranslation } from "react-i18next";
 
 const DeleteSurvey = ({ survey }: { survey: Survey }) => {
@@ -49,7 +49,7 @@ const DeleteSurvey = ({ survey }: { survey: Survey }) => {
               <Button onClick={handleClose} variant="contained" color={"error"}>
                 {t("delete_pop.cancel")}
               </Button>
-              <LoadingButton
+              <Button
                 onClick={() => {
                   deleteSurvey.mutate(survey.id);
                 }}
@@ -58,7 +58,7 @@ const DeleteSurvey = ({ survey }: { survey: Survey }) => {
                 loading={deleteSurvey.isPending}
               >
                 {t("delete_pop.confirm")}
-              </LoadingButton>
+              </Button>
             </DialogActions>
           </Dialog>
         );

@@ -7,9 +7,9 @@ import {
 } from "@mui/material";
 import { FormikConfig, useFormik } from "formik";
 import React from "react";
-import Grid from "@mui/material/Grid2";
-import { LoadingButton } from "@mui/lab";
-import { FormLoadingButtonProps } from "../../../../tables-def/loadingButtonProps";
+import { Grid, Button } from "@mui/material";
+
+import { FormButtonProps } from "../../../../tables-def/loadingButtonProps";
 import { gridSpacing } from "../../../../config";
 import { useTranslation } from "react-i18next";
 
@@ -26,9 +26,9 @@ interface FAQFormValues {
 
 const FAQForm = ({
   task = "create",
-  loadingButtonProps,
+  ButtonProps,
   ...formikConfig
-}: FormikConfig<FAQFormValues> & FAQFormProps & FormLoadingButtonProps) => {
+}: FormikConfig<FAQFormValues> & FAQFormProps & FormButtonProps) => {
   const {
     values,
     touched,
@@ -147,7 +147,7 @@ const FAQForm = ({
             </FormControl>
           </Grid>
           <Grid size={12}>
-            <LoadingButton
+            <Button
               fullWidth
               variant="outlined"
               type="submit"
@@ -155,10 +155,10 @@ const FAQForm = ({
               sx={{
                 width: { xs: "100%", sm: "fit-content" },
               }}
-              {...loadingButtonProps}
+              {...ButtonProps}
             >
               {t("gbtn." + task)}
-            </LoadingButton>
+            </Button>
           </Grid>
         </Grid>
       </form>

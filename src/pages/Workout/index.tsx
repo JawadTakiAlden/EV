@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { gridSpacing } from "../../config";
 import { WorkoutModel } from "../../tables-def/workout";
 import WorkoutCard from "./components/WorkoutCard";

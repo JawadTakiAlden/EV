@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   FormControl,
   FormControlLabel,
   FormHelperText,
@@ -11,9 +12,9 @@ import {
 } from "@mui/material";
 import { useFormik } from "formik";
 import React from "react";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { gridSpacing } from "../../../config";
-import { LoadingButton } from "@mui/lab";
+
 import { useCreateNewUser } from "../../../api/users";
 import { useTranslation } from "react-i18next";
 
@@ -137,13 +138,13 @@ const AddUser = () => {
             </FormControl>
           </Grid>
           <Grid size={12}>
-            <LoadingButton
+            <Button
               type="submit"
               loading={createNewUser.isPending}
               variant="outlined"
             >
               {t("addUser.create")}
-            </LoadingButton>
+            </Button>
           </Grid>
         </Grid>
       </form>

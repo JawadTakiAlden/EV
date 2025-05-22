@@ -7,7 +7,6 @@ import UserProfile from "../pages/profile";
 import CreateWorkout from "../pages/Workout/createWorkout/createWorkout";
 import MainWorkoutDetail from "../pages/Workout/wokroutDetail";
 import GroupWorkoutManagement from "../pages/groupWorkoutManagem/GroupWorkoutManagement";
-import MealIngrediant from "../pages/MealTypes/MealIngrediant";
 import MainChat from "../pages/Chat";
 import MainLayout from "../pages/Chat/Layout/MainLayout";
 import ChatRequests from "../pages/coach/ChatRequests";

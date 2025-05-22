@@ -1,5 +1,4 @@
 import { Box, Typography } from "@mui/material";
-import React from "react";
 import AddUser from "./AddUser";
 import { useTranslation } from "react-i18next";
 

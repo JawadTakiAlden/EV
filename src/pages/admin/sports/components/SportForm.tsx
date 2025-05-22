@@ -1,5 +1,5 @@
 import React from "react";
-import { FormLoadingButtonProps } from "../../../../tables-def/loadingButtonProps";
+import { FormButtonProps } from "../../../../tables-def/loadingButtonProps";
 import { FormikConfig, useFormik } from "formik";
 import {
   Box,
@@ -10,7 +10,7 @@ import {
   OutlinedInput,
   styled,
 } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
+
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 
@@ -37,9 +37,9 @@ interface SportFormVlaues {
 }
 const SportForm = ({
   task = "create",
-  loadingButtonProps,
+  ButtonProps,
   ...formikConfig
-}: FormikConfig<SportFormVlaues> & SportFormProps & FormLoadingButtonProps) => {
+}: FormikConfig<SportFormVlaues> & SportFormProps & FormButtonProps) => {
   const {
     values,
     touched,
@@ -127,7 +127,7 @@ const SportForm = ({
               : values.image.name
             : undefined}
         </Box>
-        <LoadingButton
+        <Button
           fullWidth
           variant="outlined"
           type="submit"
@@ -135,10 +135,10 @@ const SportForm = ({
           sx={{
             width: { xs: "100%", sm: "fit-content" },
           }}
-          {...loadingButtonProps}
+          {...ButtonProps}
         >
           {t("gbtn." + task)}
-        </LoadingButton>
+        </Button>
       </form>
     </Box>
   );

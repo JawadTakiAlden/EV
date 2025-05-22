@@ -1,11 +1,6 @@
 import React from "react";
 import PopupButton from "../../../components/PopupButton";
-import {
-  Dialog,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-} from "@mui/material";
+import { Dialog, DialogContent, DialogTitle } from "@mui/material";
 import QuestionForm from "../components/QuestionForm";
 import { useCreateQuestion } from "../../../api/surveys";
 import { useParams } from "react-router";
@@ -31,7 +26,7 @@ const CreateQuestion = () => {
                   });
                   handleClose();
                 }}
-                loadingButtonProps={{
+                ButtonProps={{
                   loading: createQuestion.isPending,
                 }}
                 initialValues={{

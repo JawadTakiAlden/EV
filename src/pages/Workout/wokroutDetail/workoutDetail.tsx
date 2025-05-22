@@ -1,6 +1,6 @@
 import { alpha, Box, Chip, Stack, Typography } from "@mui/material";
 import React, { memo } from "react";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { gridSpacing } from "../../../config";
 import { WorkoutDetail } from "../../../tables-def/workout";
 import MainCard from "../../../components/MainCard";
@@ -26,32 +26,6 @@ const Exercise: React.FC<ListChildComponentProps> = memo(
   ),
   areEqual
 );
-
-// const CompletionCard = ({ completion }: { completion: WorkoutCompletion }) => {
-//   return (
-//     <MainCard cardContent={false} sx={{ p: 2, width: "250px" }} border={false}>
-//       <Stack justifyContent={"center"} alignItems={"center"} gap={4}>
-//         <Link
-//           component={BaseLink}
-//           variant="h5"
-//           to={`/dashboard/users/${completion.user.id}`}
-//         >
-//           {completion.user.name}
-//         </Link>
-//         <Typography variant="h6">{completion.createdAt}</Typography>
-//       </Stack>
-//     </MainCard>
-//   );
-// };
-
-// const Completion: React.FC<ListChildComponentProps> = memo(
-//   ({ index, style, data }) => (
-//     <div style={{ ...style }} key={index}>
-//       <CompletionCard completion={data.completions[index]} />
-//     </div>
-//   ),
-//   areEqual
-// );
 
 const createItemData = memoize((items) => ({
   items,

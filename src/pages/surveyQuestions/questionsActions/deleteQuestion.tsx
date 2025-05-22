@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { MdDeleteSweep } from "react-icons/md";
 import { useDeleteQuestion } from "../../../api/surveys";
-import { LoadingButton } from "@mui/lab";
+
 import { useTranslation } from "react-i18next";
 
 const DeleteQuestion = ({ question }: { question: SurveyDataModel }) => {
@@ -46,7 +46,7 @@ const DeleteQuestion = ({ question }: { question: SurveyDataModel }) => {
               <Button onClick={handleClose} variant="contained" color={"error"}>
                 {t("delete_pop.cancel")}
               </Button>
-              <LoadingButton
+              <Button
                 onClick={() => {
                   deleteQuestion.mutate(question.id);
                 }}
@@ -54,7 +54,7 @@ const DeleteQuestion = ({ question }: { question: SurveyDataModel }) => {
                 color={"success"}
               >
                 {t("delete_pop.confirm")}
-              </LoadingButton>
+              </Button>
             </DialogActions>
           </Dialog>
         );

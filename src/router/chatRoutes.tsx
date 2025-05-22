@@ -1,5 +1,4 @@
 import { RouteObject } from "react-router";
-import RootLayout from "../layouts/RootLayout/RootLayout";
 import MainChat from "../pages/Chat";
 import MainLayout from "../pages/Chat/Layout/MainLayout";
 

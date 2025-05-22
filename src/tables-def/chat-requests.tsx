@@ -2,7 +2,6 @@ import { Link as BaseLink } from "react-router-dom";
 import { Button, Link } from "@mui/material";
 import { MRT_ColumnDef } from "material-react-table";
 import { useAcceptChatRequest } from "../api/chat-requests";
-import { LoadingButton } from "@mui/lab";
 
 export interface ChatRequest {
   id: number;
@@ -28,7 +27,7 @@ export const chatRequestColumns: MRT_ColumnDef<ChatRequest>[] = [
     Cell: ({ row }) => {
       const acceptRequest = useAcceptChatRequest();
       return (
-        <LoadingButton
+        <Button
           loading={acceptRequest.isPending}
           variant="contained"
           size="small"
@@ -38,7 +37,7 @@ export const chatRequestColumns: MRT_ColumnDef<ChatRequest>[] = [
           }}
         >
           Accept
-        </LoadingButton>
+        </Button>
       );
     },
   },

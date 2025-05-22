@@ -4,6 +4,7 @@ import { FormikConfig, useFormik } from "formik";
 import {
   Autocomplete,
   Box,
+  Button,
   Chip,
   FormControl,
   FormHelperText,
@@ -13,12 +14,12 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
-import Grid from "@mui/material/Grid2";
+
+import { Grid } from "@mui/material";
 import { gridSpacing } from "../../../config";
 import useGetTypes from "../../../api/type/useGetTypes";
 import { MealType } from "../../../tables-def/meal-types";
-import { FormLoadingButtonProps } from "../../../tables-def/loadingButtonProps";
+import { FormButtonProps } from "../../../tables-def/loadingButtonProps";
 import FileImagePicker from "../../../components/FileImagePicker";
 import { MealIngreadiant } from "../../../tables-def/meal-ingrediant";
 import { useGetIngredients } from "../../../api/ingredients";
@@ -71,11 +72,9 @@ interface ExerciseFormProps {
 
 const MealForm = ({
   task = "create",
-  loadingButtonProps,
+  ButtonProps,
   ...formikProps
-}: FormikConfig<MealFormValues> &
-  ExerciseFormProps &
-  FormLoadingButtonProps) => {
+}: FormikConfig<MealFormValues> & ExerciseFormProps & FormButtonProps) => {
   const {
     values,
     touched,
@@ -426,14 +425,14 @@ const MealForm = ({
             </Grid>
           </Grid>
           <Grid size={12}>
-            <LoadingButton
+            <Button
               sx={{ my: 1, width: { xs: "100%", sm: "initial" } }}
               variant="outlined"
               type="submit"
-              {...loadingButtonProps}
+              {...ButtonProps}
             >
               {t("gbtn." + task)}
-            </LoadingButton>
+            </Button>
           </Grid>
         </Grid>
       </form>

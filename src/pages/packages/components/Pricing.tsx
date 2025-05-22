@@ -1,6 +1,6 @@
 import { alpha, Box } from "@mui/material";
 import PricingForm from "./PricingForm";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { gridSpacing } from "../../../config";
 import {
   Pricing as PriceModel,
@@ -51,10 +51,10 @@ const Pricing = ({
                 number_of_days: 0,
                 package_id: packageId!,
               }}
-              loadingButtonProps={{
+              ButtonProps={{
                 loading: createPrice.isPending,
               }}
-              onSubmit={(values) => {
+              onSubmit={(values: any) => {
                 createPrice.mutate(values);
               }}
             />

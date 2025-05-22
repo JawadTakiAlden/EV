@@ -1,6 +1,6 @@
 import React from "react";
 import { gridSpacing } from "../../../config";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import StatisticCard from "../../../components/StatisticCard";
 import { useGetStats } from "../../../api/admin/stats";
 import Screen from "../../../components/Screen";

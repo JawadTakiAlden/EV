@@ -58,7 +58,7 @@ const SettingsPannel = ({ exercise }: { exercise: Exercise }) => {
             updateExercice.mutate(exerciseFormData);
           }}
           task="update"
-          loadingButtonProps={{
+          ButtonProps={{
             loading: updateExercice.isPending,
           }}
           progress={progress}

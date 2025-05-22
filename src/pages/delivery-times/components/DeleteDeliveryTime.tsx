@@ -8,10 +8,9 @@ import {
   DialogContentText,
   DialogTitle,
   IconButton,
-  Tooltip,
 } from "@mui/material";
 import { MdDeleteSweep } from "react-icons/md";
-import { LoadingButton } from "@mui/lab";
+
 import { DeliveryTime } from "../../../tables-def/delivery-times";
 import { useDeleteDeliveryTime } from "../../../api/delivery-times";
 import { useTranslation } from "react-i18next";
@@ -52,7 +51,7 @@ const DeleteDeliveryTime = ({
               <Button onClick={handleClose} variant="contained" color={"error"}>
                 {t("delete_pop.cancel")}
               </Button>
-              <LoadingButton
+              <Button
                 onClick={async () => {
                   await deleteDeliveryTime.mutateAsync(deliveryTime.id);
                   handleClose();
@@ -62,7 +61,7 @@ const DeleteDeliveryTime = ({
                 color={"success"}
               >
                 {t("delete_pop.confirm")}
-              </LoadingButton>
+              </Button>
             </DialogActions>
           </Dialog>
         );

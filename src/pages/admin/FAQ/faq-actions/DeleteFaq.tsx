@@ -10,7 +10,7 @@ import {
   DialogTitle,
   IconButton,
 } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
+
 import { MdOutlineDeleteSweep } from "react-icons/md";
 import { useDeleteFaq } from "../../../../api/faqs";
 import { useTranslation } from "react-i18next";
@@ -45,7 +45,7 @@ const DeleteFaq = ({ faq }: { faq: Faq }) => {
               <Button onClick={handleClose} color="error" variant="outlined">
                 {t("delete_pop.cancel")}
               </Button>
-              <LoadingButton
+              <Button
                 onClick={() => {
                   deleteFaq.mutateAsync(faq.id);
                   handleClose();
@@ -55,7 +55,7 @@ const DeleteFaq = ({ faq }: { faq: Faq }) => {
                 variant="contained"
               >
                 {t("delete_pop.confirm")}
-              </LoadingButton>
+              </Button>
             </DialogActions>
           </Dialog>
         );

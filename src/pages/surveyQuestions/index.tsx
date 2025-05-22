@@ -8,7 +8,6 @@ import DeleteQuestion from "./questionsActions/deleteQuestion";
 import UpdateQuestion from "./questionsActions/updateQuestion";
 import CreateQuestion from "./createQuestion/createQuestion";
 import Loadable from "../../components/Loadable";
-import { useTranslation } from "react-i18next";
 
 const Table = Loadable(lazy(() => import("../../components/Table")));
 

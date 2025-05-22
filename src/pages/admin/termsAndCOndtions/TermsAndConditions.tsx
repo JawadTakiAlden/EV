@@ -21,7 +21,7 @@ import { VscListOrdered } from "react-icons/vsc";
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import { useGetTerms, useUpdateTerms } from "../../../api/info";
 import LoadingDataError from "../../../components/LoadingDataError";
-import { LoadingButton } from "@mui/lab";
+
 import { stateToHTML } from "draft-js-export-html";
 import { useTranslation } from "react-i18next";
 
@@ -245,13 +245,13 @@ const TermsAndConditions = () => {
           />
         </Box>
       </Box>
-      <LoadingButton
+      <Button
         variant="contained"
         loading={updateTerms.isPending}
         onClick={handleSave}
       >
         {t("gbtn.save")}
-      </LoadingButton>
+      </Button>
     </Box>
   );
 };

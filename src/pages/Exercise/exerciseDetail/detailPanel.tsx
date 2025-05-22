@@ -10,7 +10,7 @@ import React from "react";
 import { gridSpacing } from "../../../config";
 import MainCard from "../../../components/MainCard";
 import ReactPlayer from "react-player";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { Exercise } from "../../../tables-def/excercise";
 import { useTranslation } from "react-i18next";
 import useGetTranslation from "../../../utils/useGetTranslation";

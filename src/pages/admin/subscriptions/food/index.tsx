@@ -4,7 +4,7 @@ import FoodSubscriptionTable from "./FoodSubscriptionTable";
 import { gridSpacing } from "../../../../config";
 import MainCard from "../../../../components/MainCard";
 import SectionTitle from "../../../../components/SectionTitle";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import Loadable from "../../../../components/Loadable";
 import JustInViewRender from "../../../../components/JustInViewRender";
 import { useGetActiveMealsSubscriptionStats } from "../../../../api/subscriptions";

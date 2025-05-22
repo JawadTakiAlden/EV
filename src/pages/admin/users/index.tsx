@@ -1,4 +1,4 @@
-import { Box, Button, IconButton, Tooltip } from "@mui/material";
+import { Box, Button, IconButton } from "@mui/material";
 import React, { lazy } from "react";
 import { UserTableColumns } from "../../../tables-def/users";
 import { CgProfile } from "react-icons/cg";

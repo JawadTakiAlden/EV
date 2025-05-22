@@ -1,11 +1,11 @@
-import { Box, FormHelperText, Typography } from "@mui/material";
+import { Box, Button, FormHelperText, Typography } from "@mui/material";
 import { FormikConfig, useFormik } from "formik";
 import React, { useMemo } from "react";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { gridSpacing } from "../../../config";
 import FileImagePicker from "../../../components/FileImagePicker";
-import { LoadingButton } from "@mui/lab";
-import { FormLoadingButtonProps } from "../../../tables-def/loadingButtonProps";
+
+import { FormButtonProps } from "../../../tables-def/loadingButtonProps";
 import { useTranslation } from "react-i18next";
 
 interface BannerFormProps {
@@ -18,11 +18,9 @@ interface BannerFormValues {
 
 const BannerForm = ({
   task = "create",
-  loadingButtonProps,
+  ButtonProps,
   ...formikConfig
-}: FormikConfig<BannerFormValues> &
-  BannerFormProps &
-  FormLoadingButtonProps) => {
+}: FormikConfig<BannerFormValues> & BannerFormProps & FormButtonProps) => {
   const {
     values,
     touched,
@@ -97,15 +95,15 @@ const BannerForm = ({
             )}
           </Grid>
           <Grid size={12}>
-            <LoadingButton
+            <Button
               fullWidth
               variant="outlined"
               type="submit"
               disabled={!isValid}
-              {...loadingButtonProps}
+              {...ButtonProps}
             >
               {t("gbtn." + task)}
-            </LoadingButton>
+            </Button>
           </Grid>
         </Grid>
       </form>

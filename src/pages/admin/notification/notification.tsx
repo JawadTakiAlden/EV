@@ -1,6 +1,6 @@
-import { LoadingButton } from "@mui/lab";
 import {
   Box,
+  Button,
   FormControl,
   FormHelperText,
   InputLabel,
@@ -8,7 +8,6 @@ import {
   Typography,
 } from "@mui/material";
 import { useFormik } from "formik";
-import React from "react";
 import * as yup from "yup";
 import { usePushNotification } from "../../../api/notification";
 import { useTranslation } from "react-i18next";
@@ -78,7 +77,7 @@ const Notification = () => {
             <FormHelperText>{errors.body}</FormHelperText>
           )}
         </FormControl>
-        <LoadingButton
+        <Button
           loading={pushNotification.isPending}
           type="submit"
           variant="contained"
@@ -86,7 +85,7 @@ const Notification = () => {
           sx={{ mt: 2 }}
         >
           {t("notification.send_act")}
-        </LoadingButton>
+        </Button>
       </form>
     </Box>
   );

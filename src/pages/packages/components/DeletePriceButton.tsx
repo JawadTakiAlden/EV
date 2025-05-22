@@ -1,4 +1,3 @@
-import { LoadingButton } from "@mui/lab";
 import { PriceModel } from "../../../tables-def/price";
 import PopupButton from "../../../components/PopupButton";
 import {
@@ -47,7 +46,7 @@ const DeletePriceButton = ({ price }: { price: PriceModel }) => {
               <Button onClick={handleClose} variant="contained" color={"error"}>
                 {t("delete_pop.cancel")}
               </Button>
-              <LoadingButton
+              <Button
                 onClick={async () => {
                   await deletePrice.mutateAsync(price.id);
                   handleClose();
@@ -57,7 +56,7 @@ const DeletePriceButton = ({ price }: { price: PriceModel }) => {
                 color={"success"}
               >
                 {t("delete_pop.confirm")}
-              </LoadingButton>
+              </Button>
             </DialogActions>
           </Dialog>
         );

@@ -2,11 +2,6 @@ import {
   alpha,
   Box,
   Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
   FormControl,
   FormControlLabel,
   FormHelperText,
@@ -20,7 +15,7 @@ import {
 } from "@mui/material";
 import { FormikConfig, useFormik } from "formik";
 import React, { memo, useEffect, useMemo, useState } from "react";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { gridSpacing } from "../../../config";
 import { Exercise } from "../../../tables-def/excercise";
 import {
@@ -37,8 +32,7 @@ import { useGetExercises } from "../../../api/exercise";
 import LoadingDataError from "../../../components/LoadingDataError";
 import FileImagePicker from "../../../components/FileImagePicker";
 import { useTranslation } from "react-i18next";
-import { FormLoadingButtonProps } from "../../../tables-def/loadingButtonProps";
-import { LoadingButton } from "@mui/lab";
+import { FormButtonProps } from "../../../tables-def/loadingButtonProps";
 
 interface CreateWorkoutStore {
   exercises: ExerciseSelected[];
@@ -164,11 +158,9 @@ const ExerciseRow: React.FC<ListChildComponentProps<Exercise[]>> = memo(
 
 const WorkoutForm = ({
   task = "create",
-  loadingButtonProps,
+  ButtonProps,
   ...formikProps
-}: FormikConfig<WorkoutFormValues> &
-  WorkoutFormProps &
-  FormLoadingButtonProps) => {
+}: FormikConfig<WorkoutFormValues> & WorkoutFormProps & FormButtonProps) => {
   const {
     values,
     touched,
@@ -530,8 +522,8 @@ const WorkoutForm = ({
             </Box>
           </Grid>
         </Grid>
-        <LoadingButton
-          {...loadingButtonProps}
+        <Button
+          {...ButtonProps}
           type="submit"
           variant="outlined"
           sx={{
@@ -540,7 +532,7 @@ const WorkoutForm = ({
           }}
         >
           {t("gbtn." + task)}
-        </LoadingButton>
+        </Button>
       </form>
     </Box>
   );

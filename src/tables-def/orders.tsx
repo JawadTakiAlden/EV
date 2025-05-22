@@ -1,11 +1,11 @@
-import { Box, IconButton, Stack } from "@mui/material";
+import { Box, Button, IconButton, Stack } from "@mui/material";
 import { Meal } from "./meals";
 import { UserProfileModel } from "./user-profile";
 import { MRT_ColumnDef } from "material-react-table";
 import { CgInfo } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../providers/AuthProvider";
-import { LoadingButton } from "@mui/lab";
+
 import { useChangeOrderStatus } from "../api/meal-orders";
 import { mealOrderStatus } from "../pages/mealOrders/detail/MealOrderDetail";
 import { useTranslation } from "react-i18next";
@@ -43,7 +43,7 @@ export const orderColumns: MRT_ColumnDef<Order>[] = [
           gap={"5px"}
         >
           {mealOrderStatus.map((statusButton) => (
-            <LoadingButton
+            <Button
               key={statusButton.accessKey}
               size="small"
               onClick={() => {
@@ -68,7 +68,7 @@ export const orderColumns: MRT_ColumnDef<Order>[] = [
               }}
             >
               {t("mealOrderDetail." + statusButton.tranlsationKey)}
-            </LoadingButton>
+            </Button>
           ))}
         </Stack>
       );

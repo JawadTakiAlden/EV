@@ -8,12 +8,11 @@ import {
   DialogContentText,
   DialogTitle,
   IconButton,
-  Tooltip,
 } from "@mui/material";
 import { MdDeleteSweep } from "react-icons/md";
 import { MealType } from "../../tables-def/meal-types";
 import useDeleteType from "../../api/type/useDeleteType";
-import { LoadingButton } from "@mui/lab";
+
 import { useTranslation } from "react-i18next";
 import useGetTranslation from "../../utils/useGetTranslation";
 
@@ -50,7 +49,7 @@ const DeleteMealType = ({ mealType }: { mealType: MealType }) => {
               <Button onClick={handleClose} variant="contained" color={"error"}>
                 {t("delete_pop.cancel")}
               </Button>
-              <LoadingButton
+              <Button
                 onClick={async () => {
                   await deleteType.mutateAsync(mealType.id);
                   handleClose();
@@ -60,7 +59,7 @@ const DeleteMealType = ({ mealType }: { mealType: MealType }) => {
                 color={"success"}
               >
                 {t("delete_pop.confirm")}
-              </LoadingButton>
+              </Button>
             </DialogActions>
           </Dialog>
         );

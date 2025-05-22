@@ -38,7 +38,7 @@ const MealType = () => {
           title: yup.string().max(255).required(),
         })}
         initialValues={initailValues}
-        loadingButtonProps={{
+        ButtonProps={{
           loading: createType.isPending || updateType.isPending,
         }}
         onSubmit={async (values) => {

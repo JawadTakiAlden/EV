@@ -28,7 +28,7 @@ const UpdatePriceButton = ({ price }: { price: Pricing }) => {
             <PricingForm
               task="update"
               dir="column"
-              loadingButtonProps={{
+              ButtonProps={{
                 loading: updatePrice.isPending,
               }}
               initialValues={price}

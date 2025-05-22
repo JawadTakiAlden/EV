@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { gridSpacing } from "../../../config";
 import StatisticCard from "../../../components/StatisticCard";
 import Loadable from "../../../components/Loadable";

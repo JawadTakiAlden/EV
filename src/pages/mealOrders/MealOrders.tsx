@@ -3,15 +3,12 @@ import { Box, Stack } from "@mui/material";
 import DayCard from "./components/DayCard";
 import { useNavigate } from "react-router";
 import { useAuthContext } from "../../providers/AuthProvider";
-import { getNextWeekDays } from "../../utils/getNextWeekDays";
 import { useGetDaysOfMonth } from "../../api/days-of-month";
 
 const MealOrders = () => {
   const { base } = useAuthContext();
   const navigate = useNavigate();
-
   const days = useGetDaysOfMonth();
-
   return (
     <Box>
       <Stack flexDirection={"row"} flexWrap={"wrap"} gap={"8px"}>

@@ -7,9 +7,8 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { gridSpacing } from "../../config";
-import Screen from "../../components/Screen";
 import useGetGetDarkValue from "../../utils/useGetGetDarkValue";
 import LineChart from "../../components/charts/LineChart";
 import MainCard from "../../components/MainCard";

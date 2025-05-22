@@ -13,7 +13,7 @@ import {
 import { MdDeleteSweep } from "react-icons/md";
 import { MealIngreadiant } from "../../tables-def/meal-ingrediant";
 import { useDeleteIngredient } from "../../api/ingredients";
-import { LoadingButton } from "@mui/lab";
+
 import { useTranslation } from "react-i18next";
 import useGetTranslation from "../../utils/useGetTranslation";
 
@@ -54,7 +54,7 @@ const DeleteMealIngrediant = ({
               <Button onClick={handleClose} variant="contained" color={"error"}>
                 {t("delete_pop.cancel")}
               </Button>
-              <LoadingButton
+              <Button
                 onClick={async () => {
                   await deleteIngredient.mutateAsync(mealIngrediant.id);
                   handleClose();
@@ -63,7 +63,7 @@ const DeleteMealIngrediant = ({
                 color={"success"}
               >
                 {t("delete_pop.confirm")}
-              </LoadingButton>
+              </Button>
             </DialogActions>
           </Dialog>
         );

@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { gridSpacing } from "../../config";
 import PackageForm from "./components/packageForm";
 import Pricing from "./components/Pricing";
@@ -27,7 +27,7 @@ const PackageDetail = ({ withActions = true }: { withActions?: boolean }) => {
               <PackageForm
                 task="update"
                 initialValues={packageInfo.data?.data}
-                loadingButtonProps={{
+                ButtonProps={{
                   loading: updatePackage.isPending,
                 }}
                 onSubmit={(values) => {

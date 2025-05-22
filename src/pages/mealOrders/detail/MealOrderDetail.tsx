@@ -5,7 +5,7 @@ import {
 } from "../../../api/meal-orders";
 import {
   Box,
-  Divider,
+  Button,
   List,
   ListItem,
   ListItemText,
@@ -16,13 +16,12 @@ import {
   TableCell,
   TableHead,
   TableRow,
-  Tooltip,
   Typography,
 } from "@mui/material";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { gridSpacing } from "../../../config";
 import MealCard from "../../meals/components/MealCard";
-import { LoadingButton } from "@mui/lab";
+
 import { useTranslation } from "react-i18next";
 import useGetTranslation from "../../../utils/useGetTranslation";
 
@@ -94,7 +93,7 @@ const MealOrderDetail = () => {
           </Typography>
           <Stack flexDirection={"row"} alignItems={"center"} gap={"5px"}>
             {mealOrderStatus.map((statusButton) => (
-              <LoadingButton
+              <Button
                 onClick={() => {
                   chnageOrderStatus.mutate({
                     orderId: data?.id!,
@@ -113,7 +112,7 @@ const MealOrderDetail = () => {
                 }}
               >
                 {t("mealOrderDetail." + statusButton.tranlsationKey)}
-              </LoadingButton>
+              </Button>
             ))}
           </Stack>
         </Grid>

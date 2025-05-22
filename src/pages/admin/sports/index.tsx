@@ -3,7 +3,7 @@ import { useCreateSport, useGetSprots } from "../../../api/sports";
 import { Box, Divider } from "@mui/material";
 import { gridSpacing } from "../../../config";
 import SportForm from "./components/SportForm";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { SportColumns } from "../../../tables-def/sport";
 import Loadable from "../../../components/Loadable";
 
@@ -29,7 +29,7 @@ const Sports = () => {
               createSport.mutateAsync(values);
               resetForm();
             }}
-            loadingButtonProps={{
+            ButtonProps={{
               loading: createSport.isPending,
             }}
           />

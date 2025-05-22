@@ -1,11 +1,6 @@
 import React from "react";
 import PopupButton from "../../../components/PopupButton";
-import {
-  Dialog,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-} from "@mui/material";
+import { Dialog, DialogContent, DialogTitle } from "@mui/material";
 import BannerForm from "./BannerForm";
 import { useCreateBanner } from "../../../api/banner";
 import { useTranslation } from "react-i18next";
@@ -26,13 +21,13 @@ const AddBanner = () => {
             </DialogTitle>
             <DialogContent>
               <BannerForm
-                loadingButtonProps={{
+                ButtonProps={{
                   loading: createBanner.isPending,
                 }}
                 initialValues={{
                   image: null,
                 }}
-                onSubmit={async (values) => {
+                onSubmit={async (values: any) => {
                   await createBanner.mutateAsync(values);
                   handleClose();
                 }}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import {
   Autocomplete,
   Avatar,
@@ -28,7 +28,7 @@ import {
   useGetMeals,
   useGetMealsOfWeek,
 } from "../../api/meals";
-import { LoadingButton } from "@mui/lab";
+
 import { useTranslation } from "react-i18next";
 import { useGetDaysOfMonth } from "../../api/days-of-month";
 import HorizintalMealCard from "../meals/components/HorizintalMealCard";
@@ -239,34 +239,8 @@ const WeekManagement = () => {
           <Box>
             <List
               height={200}
-              // itemCount={
-              //   mealsQuery?.data?.data?.filter((meal) => {
-              //     return (
-              //       !droppedMeals[activeDay]?.meals.includes(meal.id!) &&
-              //       meal.name.includes(search) &&
-              //       (mealFilter.id === 0
-              //         ? true
-              //         : meal.types.findIndex(
-              //             (type) => type.id === mealFilter.id
-              //           ) !== -1)
-              //     );
-              //   })?.length || 0
-              // }
               itemCount={mealsQuery?.data?.data?.length || 0}
               direction={i18n.language === "ar" ? "rtl" : "ltr"}
-              // itemData={
-              //   mealsQuery?.data?.data?.filter((meal) => {
-              //     return (
-              //       !droppedMeals[activeDay]?.meals.includes(meal.id!) &&
-              //       meal.name.includes(search) &&
-              //       (mealFilter.id === 0
-              //         ? true
-              //         : meal.types.findIndex(
-              //             (type) => type.id === mealFilter.id
-              //           ) !== -1)
-              //     );
-              //   }) || []
-              // }
               itemData={mealsQuery?.data?.data || []}
               itemSize={310}
               layout="horizontal"
@@ -378,7 +352,7 @@ const WeekManagement = () => {
             </Grid>
           </Grid>
           <Grid size="auto">
-            <LoadingButton
+            <Button
               sx={{
                 mt: 1,
               }}
@@ -387,7 +361,7 @@ const WeekManagement = () => {
               onClick={assignMealsSubmit}
             >
               {t("gbtn.save")}
-            </LoadingButton>
+            </Button>
           </Grid>
         </Grid>
       </Grid>

@@ -1,5 +1,5 @@
-import { LoadingButton } from "@mui/lab";
 import {
+  Button,
   FormControl,
   FormHelperText,
   InputLabel,
@@ -7,9 +7,9 @@ import {
 } from "@mui/material";
 import { FormikConfig, useFormik } from "formik";
 import React, { useEffect } from "react";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { gridSpacing } from "../../../config";
-import { FormLoadingButtonProps } from "../../../tables-def/loadingButtonProps";
+import { FormButtonProps } from "../../../tables-def/loadingButtonProps";
 import { useTranslation } from "react-i18next";
 
 export interface MealTypeVlaue {
@@ -25,11 +25,9 @@ interface MealTypeFormProps {
 const MealTypeForm = ({
   task = "create",
   initialValues,
-  loadingButtonProps,
+  ButtonProps,
   ...formikConfig
-}: FormikConfig<MealTypeVlaue> &
-  MealTypeFormProps &
-  FormLoadingButtonProps) => {
+}: FormikConfig<MealTypeVlaue> & MealTypeFormProps & FormButtonProps) => {
   const {
     values,
     touched,
@@ -95,15 +93,15 @@ const MealTypeForm = ({
           </FormControl>
         </Grid>
         <Grid size={12}>
-          <LoadingButton
+          <Button
             variant="outlined"
             type="submit"
             disabled={!values.title}
             sx={{ width: { xs: "100%", sm: "initial" } }}
-            {...loadingButtonProps}
+            {...ButtonProps}
           >
             {t("gbtn." + task)}
-          </LoadingButton>
+          </Button>
         </Grid>
       </Grid>
     </form>

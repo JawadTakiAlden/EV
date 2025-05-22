@@ -1,9 +1,7 @@
 import React from "react";
 import MainCard from "./MainCard";
-import { alpha, Chip, Icon, Skeleton, Stack, Typography } from "@mui/material";
-import Grid from "@mui/material/Grid2";
-import { AiOutlineFall } from "react-icons/ai";
-import { AiOutlineRise } from "react-icons/ai";
+import { Skeleton, Stack, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 
 interface StatsticCardProps {
   title: string;

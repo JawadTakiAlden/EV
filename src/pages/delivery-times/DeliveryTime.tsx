@@ -43,7 +43,7 @@ const DeliveryTime = () => {
             .label(t("deliveryTime.form.title")),
         })}
         initialValues={initailValues}
-        loadingButtonProps={{
+        ButtonProps={{
           loading:
             createDeliveryTimes.isPending || updateDeliveryTimes.isPending,
         }}

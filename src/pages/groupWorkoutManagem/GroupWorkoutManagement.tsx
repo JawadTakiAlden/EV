@@ -1,6 +1,6 @@
 import { Box, Stack, Typography } from "@mui/material";
 import { gridSpacing } from "../../config";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { Package } from "../../tables-def/packages";
 import MiniPackageCard from "./MiniPackageCard";
 import WorkoutManagement from "../../components/WorkoutManagement/WorkoutManagement";

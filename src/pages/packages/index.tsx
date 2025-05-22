@@ -2,7 +2,7 @@ import { Box, Skeleton, Typography } from "@mui/material";
 import React from "react";
 import { Package } from "../../tables-def/packages";
 import PackageCard from "./PackageCard";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { gridSpacing } from "../../config";
 import PackageForm from "./components/packageForm";
 import { useCreatePackages, useGetPackages } from "../../api/packages";
@@ -25,7 +25,7 @@ const Packages = ({ withCreate = true }: { withCreate?: boolean }) => {
               description_ar: "",
               type: "group",
             }}
-            loadingButtonProps={{
+            ButtonProps={{
               loading: createPackages.isPending,
             }}
             onSubmit={(values) => {

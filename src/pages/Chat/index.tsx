@@ -1,24 +1,13 @@
 import { Box, Stack, useMediaQuery, useTheme } from "@mui/material";
 import MyChatPeople from "./components/MyChatPeople";
-import { useChat } from "./Store/chatStore";
 import MessageRenderer from "./components/MessageRenderer";
-import { useGetChats } from "../../api/chats";
-import LoadingDataError from "../../components/LoadingDataError";
 import { useChatContext } from "../../providers/ChatProvider";
 
 const MainChat = () => {
-  // const { selectedUser } = useChat();
-
   const { selectedChatId } = useChatContext();
 
   const theme = useTheme();
   const mathcDownSm = useMediaQuery(theme.breakpoints.down("sm"));
-
-  // const chats = useGetChats();
-
-  // if (chats.isError) {
-  //   return <LoadingDataError refetch={chats.refetch} />;
-  // }
 
   const DownSmLayout = () => {
     return selectedChatId ? (

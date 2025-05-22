@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   FormControl,
   FormHelperText,
   InputLabel,
@@ -9,8 +10,8 @@ import {
 import { FormikConfig, useFormik } from "formik";
 import React from "react";
 import { gridSpacing } from "../../../config";
-import { LoadingButton } from "@mui/lab";
-import { FormLoadingButtonProps } from "../../../tables-def/loadingButtonProps";
+
+import { FormButtonProps } from "../../../tables-def/loadingButtonProps";
 import { useTranslation } from "react-i18next";
 
 interface PriceFormProps {
@@ -29,9 +30,9 @@ export interface PriceFormValue {
 const PricingForm = ({
   task = "create",
   dir = "row",
-  loadingButtonProps,
+  ButtonProps,
   ...formikConfig
-}: FormikConfig<PriceFormValue> & PriceFormProps & FormLoadingButtonProps) => {
+}: FormikConfig<PriceFormValue> & PriceFormProps & FormButtonProps) => {
   const {
     values,
     touched,
@@ -113,14 +114,14 @@ const PricingForm = ({
             )}
           </FormControl>
         </Stack>
-        <LoadingButton
+        <Button
           disabled={!isValid}
           variant="outlined"
           type="submit"
-          {...loadingButtonProps}
+          {...ButtonProps}
         >
           {t("gbtn." + task)}
-        </LoadingButton>
+        </Button>
       </form>
     </Box>
   );

@@ -5,12 +5,6 @@ import MealPlanForm from "../components/MealPlanForm";
 import { useCreateMealPlan } from "../../../api/mealPlan";
 import { useTranslation } from "react-i18next";
 
-const options = {
-  maxSizeMB: 0.5,
-  maxWidthOrHeight: 1920,
-  useWebWorker: true,
-};
-
 const CreateMealPlan = () => {
   const createMealPlan = useCreateMealPlan();
   const { t } = useTranslation();
@@ -31,7 +25,7 @@ const CreateMealPlan = () => {
             types: values.types.map((ty) => ty.id),
           });
         }}
-        loadingButtonProps={{
+        ButtonProps={{
           loading: createMealPlan.isPending,
         }}
         initialValues={{

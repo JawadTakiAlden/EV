@@ -1,9 +1,9 @@
-import { Box, Stack } from "@mui/material";
+import { Box, Button, Stack } from "@mui/material";
 import React, { lazy } from "react";
 import { useGetMealOrders } from "../../../api/meal-orders";
 import Loadable from "../../../components/Loadable";
 import { orderColumns } from "../../../tables-def/orders";
-import { LoadingButton } from "@mui/lab";
+
 import {
   useMarkAllOrdersAsDone,
   usePrintMealOrdersInformationToPDF,
@@ -32,7 +32,7 @@ const OrderOfDay = () => {
         mb={2}
         alignItems={"center"}
       >
-        <LoadingButton
+        <Button
           variant="contained"
           color="secondary"
           onClick={() => {
@@ -41,15 +41,15 @@ const OrderOfDay = () => {
           endIcon={<FaFilePdf />}
         >
           {t("orderSummary.donwload_order_summmary")}
-        </LoadingButton>
-        <LoadingButton
+        </Button>
+        <Button
           variant="contained"
           onClick={() => {
             markAllOrdersAsDone.mutate(date);
           }}
         >
           {t("orderSummary.mark_all_done")}
-        </LoadingButton>
+        </Button>
       </Stack>
       <TableComponent
         state={{

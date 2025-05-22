@@ -9,12 +9,9 @@ import {
 import { IoArrowBackCircle } from "react-icons/io5";
 import JustifyStartMessage from "./JustifyStartMessage";
 import JustifyEndMessage from "./JustifyEndMessage";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import SendMessage from "./SendMessage";
-import { useChat } from "../Store/chatStore";
 import { useAuthContext } from "../../../providers/AuthProvider";
-import { request } from "../../../api/baseRequest";
-import socket from "../socket";
 import JustInViewRender from "../../../components/JustInViewRender";
 import { useChatContext } from "../../../providers/ChatProvider";
 import { useTranslation } from "react-i18next";
@@ -36,26 +33,11 @@ export interface MessageResponse {
 }
 
 const MessageRenderer = ({ chatId }: { chatId: number | undefined }) => {
-  // const [messages, setMessages] = useState<MessageResponse[]>([]);
   const authContext = useAuthContext();
   const messageContainerRef = useRef<HTMLDivElement>(null);
   const { chats, messages, setSelectedChatId } = useChatContext();
   const { t } = useTranslation();
   const user = chats.find((chat) => chat.id === chatId)?.user;
-
-  // const Scroll = () => {
-  //   if (!messageContainerRef.current) return;
-  //   const { offsetHeight, scrollHeight, scrollTop } =
-  //     messageContainerRef.current as HTMLDivElement;
-  //   if (scrollHeight <= scrollTop + offsetHeight + 100) {
-  //     console.log(scrollHeight);
-  //     messageContainerRef.current?.scrollTo(0, scrollHeight);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   Scroll();
-  // }, [messages, messageContainerRef]);
 
   if (!user) {
     return (

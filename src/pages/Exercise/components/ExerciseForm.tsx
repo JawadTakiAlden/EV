@@ -13,14 +13,15 @@ import {
   IconButton,
   Checkbox,
   FormControlLabel,
+  Button,
 } from "@mui/material";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { gridSpacing } from "../../../config";
 import { FormikConfig, useFormik } from "formik";
 import FileImagePicker from "../../../components/FileImagePicker";
 import ReactPlayer from "react-player";
-import { FormLoadingButtonProps } from "../../../tables-def/loadingButtonProps";
-import { LoadingButton } from "@mui/lab";
+import { FormButtonProps } from "../../../tables-def/loadingButtonProps";
+
 import { MdDeleteSweep } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 
@@ -45,12 +46,10 @@ interface ExerciseFormValues {
 
 const ExerciseForm = ({
   task,
-  loadingButtonProps,
+  ButtonProps,
   progress,
   ...formikProps
-}: FormikConfig<ExerciseFormValues> &
-  ExerciseFormProps &
-  FormLoadingButtonProps) => {
+}: FormikConfig<ExerciseFormValues> & ExerciseFormProps & FormButtonProps) => {
   const {
     handleBlur,
     handleChange,
@@ -207,26 +206,7 @@ const ExerciseForm = ({
             )}
           </FormControl>
         </Grid>
-        {/* <Grid size={{ xs: 12, sm: 6 }}>
-          <FormControl
-            fullWidth
-            error={Boolean(touched.duration && errors.duration)}
-          >
-            <InputLabel htmlFor="duration">Duration (minutes)</InputLabel>
-            <OutlinedInput
-              id="duration"
-              name="duration"
-              type="number"
-              value={values.duration}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              label="Duration"
-            />
-            {touched.duration && errors.duration && (
-              <FormHelperText>{errors.duration}</FormHelperText>
-            )}
-          </FormControl>
-        </Grid> */}
+
         <Grid size={{ xs: 12, sm: 6 }}>
           <FormControl
             fullWidth
@@ -483,16 +463,16 @@ const ExerciseForm = ({
         </Grid>
       </Grid>
       <Box my={2}>
-        <LoadingButton
+        <Button
           type="submit"
           sx={{ width: { xs: "100%", sm: "fit-content" } }}
           variant="contained"
           color="primary"
-          {...loadingButtonProps}
+          {...ButtonProps}
         >
           {t("gbtn." + task)}
-        </LoadingButton>
-        {loadingButtonProps?.loading && (
+        </Button>
+        {ButtonProps?.loading && (
           <Typography>
             {t("createExc.waitting")} <b>{progress}%</b>
           </Typography>

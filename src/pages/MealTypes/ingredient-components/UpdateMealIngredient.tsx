@@ -41,7 +41,7 @@ const UpdateMealIngredient = ({
                   });
                   handleClose();
                 }}
-                loadingButtonProps={{
+                ButtonProps={{
                   loading: updateMealIngredient.isPending,
                 }}
                 initialValues={mealIngrediant}

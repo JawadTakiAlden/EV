@@ -1,5 +1,5 @@
 import React from "react";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { Box, Typography } from "@mui/material";
 import { gridSpacing } from "../../config";
 import BannerCard from "./components/BannerCard";

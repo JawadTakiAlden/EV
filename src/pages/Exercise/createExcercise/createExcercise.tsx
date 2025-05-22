@@ -47,7 +47,7 @@ const CreateExcercise = () => {
           );
           createExercice.mutate(exerciseFormData);
         }}
-        loadingButtonProps={{
+        ButtonProps={{
           loading: createExercice.isPending,
         }}
         validationSchema={validationSchema}

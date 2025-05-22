@@ -1,6 +1,11 @@
-import { styled, Typography, TypographyProps } from "@mui/material";
+import {
+  styled,
+  Typography,
+  TypographyProps,
+  Button,
+  ButtonProps,
+} from "@mui/material";
 import React, { useState } from "react";
-import { LoadingButton, LoadingButtonProps } from "@mui/lab";
 import { useTranslation } from "react-i18next";
 
 interface MotionTypographyProps extends TypographyProps {
@@ -22,7 +27,7 @@ const DoupleClickToConfirm = ({
   onClick,
   children,
   ...buttonProps
-}: LoadingButtonProps) => {
+}: ButtonProps) => {
   const [clickTimes, setClickTimes] = useState<number>(0);
 
   const { t } = useTranslation();
@@ -41,7 +46,7 @@ const DoupleClickToConfirm = ({
 
   return (
     <>
-      <LoadingButton
+      <Button
         {...buttonProps}
         onClick={(e) => {
           if (clickTimes === 0) {
@@ -53,7 +58,7 @@ const DoupleClickToConfirm = ({
         }}
       >
         {children}
-      </LoadingButton>
+      </Button>
       <MotionTypography
         open={clickTimes !== 0}
         variant="caption"

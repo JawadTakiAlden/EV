@@ -1,10 +1,5 @@
 import { ReactNode } from "react";
-import {
-  MdGroupWork,
-  MdHome,
-  MdPeopleOutline,
-  MdRequestPage,
-} from "react-icons/md";
+import { MdHome, MdPeopleOutline, MdRequestPage } from "react-icons/md";
 import { GiMeal } from "react-icons/gi";
 import { MdOutlinePayments } from "react-icons/md";
 import { CgGym } from "react-icons/cg";
@@ -223,41 +218,6 @@ export const adminMenuItems: MenuItemObject[] = [
     ],
   },
 
-  // {
-  //   id: "survey-questions",
-  //   title: "Manage Survey Question",
-  //   type: "group",
-  //   children: [
-  //     {
-  //       id: "survey-questions-page",
-  //       title: "Survey Question",
-  //       type: "item",
-  //       icon: <FaQuestionCircle size={30} />,
-  //       path: "/dashboard/surveyQuestions",
-  //     },
-  //     {
-  //       id: "surveys",
-  //       title: "Surveys",
-  //       type: "coollabse",
-  //       children: [
-  //         {
-  //           id: "all-surveys",
-  //           title: "All",
-  //           type: "item",
-  //           path: "/dashboard/surveys",
-  //           icon: <FcSurvey size={30} />,
-  //         },
-  //         {
-  //           id: "create-excercise",
-  //           title: "Create survey",
-  //           type: "item",
-  //           path: "/dashboard/surveys/create",
-  //           icon: <FcSurvey size={30} />,
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // },
   {
     title: "public",
     type: "group",

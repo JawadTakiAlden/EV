@@ -1,6 +1,6 @@
 import { alpha, Box, Typography } from "@mui/material";
 import React from "react";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { gridSpacing } from "../../config";
 import DeleteTypography from "../../components/DeleteTypography";
 import MealPlanForm from "./components/MealPlanForm";
@@ -48,7 +48,7 @@ const MealPlanDetail = () => {
                 types: values.types.map((type) => type.id),
               });
             }}
-            loadingButtonProps={{
+            ButtonProps={{
               loading: updateMealPlan.isPending,
             }}
             initialValues={meal.data?.data!}

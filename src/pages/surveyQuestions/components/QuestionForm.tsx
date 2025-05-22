@@ -1,6 +1,7 @@
 import {
   Autocomplete,
   Box,
+  Button,
   Chip,
   FormControl,
   FormControlLabel,
@@ -16,10 +17,10 @@ import {
 import { FormikConfig, useFormik } from "formik";
 import React, { useMemo } from "react";
 import FileImagePicker from "../../../components/FileImagePicker";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { gridSpacing } from "../../../config";
-import { LoadingButton } from "@mui/lab";
-import { FormLoadingButtonProps } from "../../../tables-def/loadingButtonProps";
+
+import { FormButtonProps } from "../../../tables-def/loadingButtonProps";
 import { useTranslation } from "react-i18next";
 
 interface QuestionFormValues {
@@ -32,11 +33,11 @@ interface QuestionFormValues {
 
 const QuestionForm = ({
   task = "create",
-  loadingButtonProps,
+  ButtonProps,
   ...formikConfig
 }: FormikConfig<QuestionFormValues> & {
   task?: "create" | "update";
-} & FormLoadingButtonProps) => {
+} & FormButtonProps) => {
   const {
     values,
     touched,
@@ -215,14 +216,9 @@ const QuestionForm = ({
           />
         )}
 
-        <LoadingButton
-          fullWidth
-          type="submit"
-          variant="outlined"
-          {...loadingButtonProps}
-        >
+        <Button fullWidth type="submit" variant="outlined" {...ButtonProps}>
           {t("gbtn." + task)}
-        </LoadingButton>
+        </Button>
       </form>
     </Box>
   );

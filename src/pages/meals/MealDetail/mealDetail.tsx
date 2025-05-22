@@ -7,7 +7,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import Grid from "@mui/material/Grid2";
+import { Grid } from "@mui/material";
 import { gridSpacing } from "../../../config";
 import DeleteTypography from "../../../components/DeleteTypography";
 import DoupleClickToConfirm from "../../../components/DoupleClickToConfirm";
@@ -107,7 +107,7 @@ const MealDetail = () => {
           {!meal.isLoading && !meal.isError && (
             <MealForm
               task="update"
-              loadingButtonProps={{
+              ButtonProps={{
                 loading: updateMeal.isPending,
               }}
               onSubmit={(values) => {

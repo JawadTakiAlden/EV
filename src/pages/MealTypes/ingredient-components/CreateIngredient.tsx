@@ -5,12 +5,6 @@ import MealIngrediantForm from "../components/MealIngrediantForm";
 import { useCreateIngredient } from "../../../api/ingredients";
 import { useTranslation } from "react-i18next";
 
-const options = {
-  maxSizeMB: 0.5,
-  maxWidthOrHeight: 1920,
-  useWebWorker: true,
-};
-
 const CreateIngredient = () => {
   const createIngredient = useCreateIngredient();
   const { t } = useTranslation();
@@ -27,7 +21,7 @@ const CreateIngredient = () => {
                   await createIngredient.mutateAsync(values);
                   handleClose();
                 }}
-                loadingButtonProps={{
+                ButtonProps={{
                   loading: createIngredient.isPending,
                 }}
                 initialValues={{
