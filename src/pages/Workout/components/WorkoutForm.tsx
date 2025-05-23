@@ -75,7 +75,6 @@ interface WorkoutFormValues {
   description: string; //done
   description_ar: string; //done
   type: "group" | "personalized" | "template"; //done
-  difficulty_level: string; //done
   duration: number; //done
   user_id?: string | null;
   motivational_message: string;
@@ -274,28 +273,6 @@ const WorkoutForm = ({
                   />
                   {!!touched.title_ar && !!errors.title_ar && (
                     <FormHelperText error>{errors.title_ar}</FormHelperText>
-                  )}
-                </FormControl>
-              </Grid>
-              <Grid size={{ xs: 12, sm: 6 }}>
-                <FormControl
-                  error={
-                    !!touched.difficulty_level && !!errors.difficulty_level
-                  }
-                >
-                  <InputLabel>{t("workoutForm.diff_level")}</InputLabel>
-                  <OutlinedInput
-                    label={t("workoutForm.diff_level")}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.difficulty_level}
-                    name="difficulty_level"
-                    type="text"
-                  />
-                  {!!touched.difficulty_level && !!errors.difficulty_level && (
-                    <FormHelperText error>
-                      {errors.difficulty_level}
-                    </FormHelperText>
                   )}
                 </FormControl>
               </Grid>

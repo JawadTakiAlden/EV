@@ -2,9 +2,17 @@ import { RouteObject } from "react-router";
 import KitchenLayout from "../layouts/KitchenLayout.tsx/KitchenLayout";
 import RootLayout from "../layouts/RootLayout/RootLayout";
 import MealOrders from "../pages/mealOrders/MealOrders";
-import MealOrderDetail from "../pages/mealOrders/detail/MealOrderDetail";
-import OrderOfDay from "../pages/mealOrders/order-of-day/OrderOfDay";
-import MealIngrediant from "../pages/MealTypes/MealIngrediant";
+import Loadable from "../components/Loadable";
+import { lazy } from "react";
+const MealOrderDetail = Loadable(
+  lazy(() => import("../pages/mealOrders/detail/MealOrderDetail"))
+);
+const OrderOfDay = Loadable(
+  lazy(() => import("../pages/mealOrders/order-of-day/OrderOfDay"))
+);
+const MealIngrediant = Loadable(
+  lazy(() => import("../pages/MealTypes/MealIngrediant"))
+);
 
 const kitchenRoutes: RouteObject = {
   path: "",

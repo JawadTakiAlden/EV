@@ -2,41 +2,89 @@ import { RouteObject } from "react-router";
 import RootLayout from "../layouts/RootLayout/RootLayout";
 import AdminLayout from "../layouts/AdminLayout/AdminLayout";
 import Home from "../pages/admin/dashboard/Home";
-import AllUsers from "../pages/admin/users";
-import UserProfile from "../pages/profile";
-import FitnessSubscriptions from "../pages/admin/subscriptions/fitness";
-import FoodSubscriptions from "../pages/admin/subscriptions/food";
-import CreateWorkout from "../pages/Workout/createWorkout/createWorkout";
-import Exercise from "../pages/Exercise";
-import CreateExcercise from "../pages/Exercise/createExcercise/createExcercise";
-import ExcerciseDetail from "../pages/Exercise/exerciseDetail/excerciseDetail";
-import MainWorkoutDetail from "../pages/Workout/wokroutDetail";
-import SurveyQuestions from "../pages/surveyQuestions";
-import SurveyDetail from "../pages/Survey/surveyDetail/surveyDetail";
-import CreateSurvey from "../pages/Survey/createSurvey/createSurvey";
-import Meals from "../pages/meals";
-import MealDetail from "../pages/meals/MealDetail/mealDetail";
-import MealPlans from "../pages/MealPlans";
-import MealTypes from "../pages/MealTypes";
-import CreateMealPlan from "../pages/MealPlans/createMealPlan/createMealPlan";
-import MealPlanDetail from "../pages/MealPlans/mealPlanDetail";
-import WeekManagement from "../pages/weekManagement/weekManagement";
-import Banners from "../pages/banner";
-import Packages from "../pages/packages";
-import PackageDetail from "../pages/packages/PackageDetail";
-import GroupWorkoutManagement from "../pages/groupWorkoutManagem/GroupWorkoutManagement";
-import Privacy from "../pages/admin/privacy";
-import FAQs from "../pages/admin/FAQ";
-import Sports from "../pages/admin/sports";
-import DeliveryTime from "../pages/delivery-times/DeliveryTime";
-import CreateUser from "../pages/admin/users/CreateUser";
-import TermsAndConditions from "../pages/admin/termsAndCOndtions/TermsAndConditions";
-import MealIngrediant from "../pages/MealTypes/MealIngrediant";
-import WorkoutLibrary from "../pages/WorkoutLibrary";
-import WorkoutRequests from "../pages/coach/WorkoutRequests/WorkoutRequests";
-import MealOrders from "../pages/mealOrders/MealOrders";
-import MealOrderDetail from "../pages/mealOrders/detail/MealOrderDetail";
-import OrderOfDay from "../pages/mealOrders/order-of-day/OrderOfDay";
+import Loadable from "../components/Loadable";
+import { lazy } from "react";
+const AllUsers = Loadable(lazy(() => import("../pages/admin/users")));
+const UserProfile = Loadable(lazy(() => import("../pages/profile")));
+const FitnessSubscriptions = Loadable(
+  lazy(() => import("../pages/admin/subscriptions/fitness"))
+);
+const FoodSubscriptions = Loadable(
+  lazy(() => import("../pages/admin/subscriptions/food"))
+);
+const CreateWorkout = Loadable(
+  lazy(() => import("../pages/Workout/createWorkout/createWorkout"))
+);
+const Exercise = Loadable(lazy(() => import("../pages/Exercise")));
+const CreateExcercise = Loadable(
+  lazy(() => import("../pages/Exercise/createExcercise/createExcercise"))
+);
+const ExcerciseDetail = Loadable(
+  lazy(() => import("../pages/Exercise/exerciseDetail/excerciseDetail"))
+);
+const MainWorkoutDetail = Loadable(
+  lazy(() => import("../pages/Workout/wokroutDetail"))
+);
+const SurveyQuestions = Loadable(
+  lazy(() => import("../pages/surveyQuestions"))
+);
+const SurveyDetail = Loadable(
+  lazy(() => import("../pages/Survey/surveyDetail/surveyDetail"))
+);
+const CreateSurvey = Loadable(
+  lazy(() => import("../pages/Survey/createSurvey/createSurvey"))
+);
+const Meals = Loadable(lazy(() => import("../pages/meals")));
+const MealDetail = Loadable(
+  lazy(() => import("../pages/meals/MealDetail/mealDetail"))
+);
+const MealPlans = Loadable(lazy(() => import("../pages/MealPlans")));
+const MealTypes = Loadable(lazy(() => import("../pages/MealTypes")));
+const CreateMealPlan = Loadable(
+  lazy(() => import("../pages/MealPlans/createMealPlan/createMealPlan"))
+);
+const MealPlanDetail = Loadable(
+  lazy(() => import("../pages/MealPlans/mealPlanDetail"))
+);
+const WeekManagement = Loadable(
+  lazy(() => import("../pages/weekManagement/weekManagement"))
+);
+const Banners = Loadable(lazy(() => import("../pages/banner")));
+const Packages = Loadable(lazy(() => import("../pages/packages")));
+const PackageDetail = Loadable(
+  lazy(() => import("../pages/packages/PackageDetail"))
+);
+const GroupWorkoutManagement = Loadable(
+  lazy(() => import("../pages/groupWorkoutManagem/GroupWorkoutManagement"))
+);
+const Privacy = Loadable(lazy(() => import("../pages/admin/privacy")));
+const FAQs = Loadable(lazy(() => import("../pages/admin/FAQ")));
+const Sports = Loadable(lazy(() => import("../pages/admin/sports")));
+const DeliveryTime = Loadable(
+  lazy(() => import("../pages/delivery-times/DeliveryTime"))
+);
+const CreateUser = Loadable(
+  lazy(() => import("../pages/admin/users/CreateUser"))
+);
+const TermsAndConditions = Loadable(
+  lazy(() => import("../pages/admin/termsAndCOndtions/TermsAndConditions"))
+);
+const MealIngrediant = Loadable(
+  lazy(() => import("../pages/MealTypes/MealIngrediant"))
+);
+const WorkoutLibrary = Loadable(lazy(() => import("../pages/WorkoutLibrary")));
+const WorkoutRequests = Loadable(
+  lazy(() => import("../pages/coach/WorkoutRequests/WorkoutRequests"))
+);
+const MealOrders = Loadable(
+  lazy(() => import("../pages/mealOrders/MealOrders"))
+);
+const MealOrderDetail = Loadable(
+  lazy(() => import("../pages/mealOrders/detail/MealOrderDetail"))
+);
+const OrderOfDay = Loadable(
+  lazy(() => import("../pages/mealOrders/order-of-day/OrderOfDay"))
+);
 
 export const adminRoutes: RouteObject = {
   path: "",

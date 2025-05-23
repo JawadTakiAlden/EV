@@ -1,7 +1,0 @@
-"@mui/lab": "^6.0.0",
-"@types/jest": "^27.5.2",
-"@types/node": "^16.18.119",
-"@types/react": "^18.3.12",
-"@types/react-dom": "^18.3.1",
-"@types/react-window": "^1.8.8",
-"@types/stylis": "^4.2.7",

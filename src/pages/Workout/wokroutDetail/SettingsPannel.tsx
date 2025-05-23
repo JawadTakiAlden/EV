@@ -50,7 +50,6 @@ const SettingsPannel = ({ workout }: { workout: WorkoutDetail }) => {
               title_ar: workout.title_ar,
               description: workout.description,
               description_ar: workout.description_ar,
-              difficulty_level: workout.difficulty_level,
               duration: workout.duration,
               motivational_message: workout.motivational_message,
               motivational_message_ar: workout.motivational_message_ar,

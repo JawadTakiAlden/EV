@@ -2,15 +2,29 @@ import { RouteObject } from "react-router";
 import RootLayout from "../layouts/RootLayout/RootLayout";
 import CoachLayout from "../layouts/CoachLayout/CoachLayout";
 import Home from "../pages/coach/dashboard/Home";
-import WorkoutRequests from "../pages/coach/WorkoutRequests/WorkoutRequests";
-import UserProfile from "../pages/profile";
-import CreateWorkout from "../pages/Workout/createWorkout/createWorkout";
-import MainWorkoutDetail from "../pages/Workout/wokroutDetail";
-import GroupWorkoutManagement from "../pages/groupWorkoutManagem/GroupWorkoutManagement";
-import MainChat from "../pages/Chat";
-import MainLayout from "../pages/Chat/Layout/MainLayout";
-import ChatRequests from "../pages/coach/ChatRequests";
-import WorkoutLibrary from "../pages/WorkoutLibrary";
+import Loadable from "../components/Loadable";
+import { lazy } from "react";
+const WorkoutRequests = Loadable(
+  lazy(() => import("../pages/coach/WorkoutRequests/WorkoutRequests"))
+);
+const UserProfile = Loadable(lazy(() => import("../pages/profile")));
+const CreateWorkout = Loadable(
+  lazy(() => import("../pages/Workout/createWorkout/createWorkout"))
+);
+const MainWorkoutDetail = Loadable(
+  lazy(() => import("../pages/Workout/wokroutDetail"))
+);
+const GroupWorkoutManagement = Loadable(
+  lazy(() => import("../pages/groupWorkoutManagem/GroupWorkoutManagement"))
+);
+const MainChat = Loadable(lazy(() => import("../pages/Chat")));
+const MainLayout = Loadable(
+  lazy(() => import("../pages/Chat/Layout/MainLayout"))
+);
+const ChatRequests = Loadable(
+  lazy(() => import("../pages/coach/ChatRequests"))
+);
+const WorkoutLibrary = Loadable(lazy(() => import("../pages/WorkoutLibrary")));
 
 export const coachRoutes: RouteObject = {
   path: "",
