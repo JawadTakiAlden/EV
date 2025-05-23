@@ -1,7 +1,6 @@
 import { MRT_ColumnDef } from "material-react-table";
 import useGetTranslation from "../utils/useGetTranslation";
 import { useTranslation } from "react-i18next";
-import { useAuthContext } from "../providers/AuthProvider";
 import { useFormik } from "formik";
 import { FaCircleInfo } from "react-icons/fa6";
 

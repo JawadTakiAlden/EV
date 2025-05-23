@@ -1,8 +1,9 @@
 import CryptoJS from "crypto-js";
 
-export const Encrypt = (text: string) => {
-  const APP_KEY = "jawad";
+const APP_KEY = process.env.REACT_APP_APP_KEY as string;
 
+export const Encrypt = (text: string) => {
+  console.log(APP_KEY);
   try {
     const hash = CryptoJS.AES.encrypt(text, APP_KEY).toString();
     return hash;
@@ -12,7 +13,6 @@ export const Encrypt = (text: string) => {
 };
 
 export const Decrypt = (hasedValue: string) => {
-  const APP_KEY = "jawad";
   try {
     const bytes = CryptoJS.AES.decrypt(hasedValue, APP_KEY);
     const originalText = bytes.toString(CryptoJS.enc.Utf8);

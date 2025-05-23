@@ -1,6 +1,5 @@
 import { MRT_ColumnDef } from "material-react-table";
 import { useTranslation } from "react-i18next";
-import useGetTranslation from "../utils/useGetTranslation";
 import { Translation } from "./translationInterface";
 
 const roleMapper: { [key: string]: string } = {
@@ -24,7 +23,6 @@ export interface UserModel extends Translation {
 
 export const UserTableColumns = () => {
   const { t } = useTranslation();
-  const { getTranslation } = useGetTranslation();
   const col: MRT_ColumnDef<UserModel, any>[] = [
     {
       accessorKey: "id",

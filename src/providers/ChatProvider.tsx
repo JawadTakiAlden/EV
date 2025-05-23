@@ -10,7 +10,6 @@ import { request } from "../api/baseRequest";
 import { AxiosResponse } from "axios";
 import socket from "../pages/Chat/socket";
 import { useAuthContext } from "./AuthProvider";
-import { useGetChats, useGetMessages } from "../api/chats";
 
 export interface ConversationRow {
   id: number;

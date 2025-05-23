@@ -1,5 +1,4 @@
-import { Link as BaseLink } from "react-router-dom";
-import { Button, Link } from "@mui/material";
+import { Button } from "@mui/material";
 import { MRT_ColumnDef } from "material-react-table";
 import { useAcceptChatRequest } from "../api/chat-requests";
 

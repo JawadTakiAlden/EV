@@ -1,7 +1,5 @@
 import { MRT_ColumnDef } from "material-react-table";
-import { Translation } from "./translationInterface";
 import { useTranslation } from "react-i18next";
-import useGetTranslation from "../utils/useGetTranslation";
 
 export interface LeaderBoard {
   user: {
@@ -17,7 +15,6 @@ export interface LeaderBoard {
 
 export const LeaderBoardColumns = () => {
   const { t } = useTranslation();
-  const { getTranslation } = useGetTranslation();
   const col: MRT_ColumnDef<LeaderBoard>[] = [
     {
       accessorKey: "user.name",

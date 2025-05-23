@@ -9,7 +9,6 @@ import { useAuthContext } from "../providers/AuthProvider";
 import { useChangeOrderStatus } from "../api/meal-orders";
 import { mealOrderStatus } from "../pages/mealOrders/detail/MealOrderDetail";
 import { useTranslation } from "react-i18next";
-import { useEffect } from "react";
 
 export interface Order {
   id: number;
