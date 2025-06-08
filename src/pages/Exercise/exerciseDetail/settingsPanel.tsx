@@ -21,10 +21,10 @@ const SettingsPannel = ({ exercise }: { exercise: Exercise }) => {
       .label(t("createExc.description")),
     images: Yup.array().required().label(t("createExc.images")),
     target_muscles_image: Yup.mixed()
-      .optional()
+      .nullable()
       .label(t("createExc.target_muscles_image")),
     notes: Yup.mixed().required().label(t("createExc.notes")),
-    video: Yup.mixed().optional().label(t("createExc.exc_vid")),
+    video: Yup.mixed().nullable().label(t("createExc.exc_vid")),
   });
 
   return (
