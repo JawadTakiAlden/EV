@@ -83,6 +83,14 @@ export const adminMenuItems: MenuItemObject[] = [
   },
 
   {
+    id: "coupons",
+    title: "coupons",
+    type: "item",
+    icon: <GiMeal size={30} />,
+    path: "/admin/dashboard/coupons",
+  },
+
+  {
     id: "meals",
     title: "meals_man",
     type: "group",

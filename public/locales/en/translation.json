@@ -12,6 +12,11 @@
     "waiting": "Waiting...",
     "desc": "We are preparing your profile, please wait a moment."
   },
+
+  "packageDetail": {
+    "coupon": "Create Coupon"
+  },
+
   "slugs": {
     "faq": "FAQ",
     "sport": "Sport",
@@ -36,7 +41,8 @@
     "packageDesc": "Package Description",
     "name": "Name",
     "notes": "Notes",
-    "description": "Description"
+    "description": "Description",
+    "coupon": "Coupon"
   },
 
   "pricingForm": {
@@ -45,11 +51,23 @@
     "numberOfDays": "Number Of Days"
   },
 
+  "coupons": {
+    "add": "Create Global Coupon"
+  },
+
+  "couponForm": {
+    "code": "Code",
+    "discount_value": "Discount Value",
+    "usage_limit": "Usage Limit",
+    "expiry_date": "Expiry Date"
+  },
+
   "sidebar": {
     "dashboard": "Dashboard",
     "home": "Home",
     "users": "Users",
     "all_users": "All Users",
+    "coupons": "Coupons",
     "fin_man": "Finance Management",
     "packages": "Packages",
     "sub_man": "Subscription Management",
@@ -498,7 +516,17 @@
     "subType": "Subscription Type",
     "unit": "Unit",
     "stock": "Stock",
-    "updateStock": "Update quantity in stock"
+    "updateStock": "Update quantity in stock",
+    "code": "Code",
+    "global_specfic": "Global Coupon",
+    "package_specific": "Package Specific Coupon",
+    "meal_plan_specific": "Meal Plan Specific Coupon",
+    "discount_type": "Discount Type",
+    "discount_value": "Discount Value",
+    "usage_limit": "Usage Limit",
+    "used_count": "Used Count",
+    "expiry_date": "Expiry Date",
+    "specfication": "Coupon Specification"
   },
   "addBanner": {
     "button": "Craete Banner"

@@ -22,7 +22,7 @@ const WorkoutManagement = ({
     name: string;
   };
   targetPackage: {
-    id: number;
+    id?: number;
     name: string;
   };
   data: any;

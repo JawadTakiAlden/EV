@@ -12,6 +12,22 @@
     "waiting": "جارٍ الانتظار...",
     "desc": "نقوم بإعداد ملفك الشخصي، يرجى الانتظار قليلًا."
   },
+
+  "coupons": {
+    "add": "انشاء قسيمة عامة"
+  },
+
+  "packageDetail": {
+    "coupon": "انشاء قسيمة"
+  },
+
+  "couponForm": {
+    "code": "رمز القسيمة",
+    "discount_value": "قيمة الخصم",
+    "usage_limit": "حد الاستخدام",
+    "expiry_date": "تاريخ الانتهاء"
+  },
+
   "slugs": {
     "faq": "الأسئلة الشائعة",
     "sport": "الرياضة",
@@ -36,7 +52,8 @@
     "packageDesc": "وصف الباقة",
     "name": "الاسم",
     "description": "الوصف",
-    "notes": "ملاحظات"
+    "notes": "ملاحظات",
+    "coupon": "القسيمة"
   },
 
   "pricingForm": {
@@ -54,6 +71,7 @@
     "packages": "الباقات",
     "sub_man": "إدارة الاشتراكات",
     "fit_sub": "اشتراكات اللياقة",
+    "coupons": "بطاقات الخصومات",
     "food_sub": "اشتراكات الطعام",
     "meals_man": "إدارة الوجبات",
     "meals": "الوجبات",
@@ -500,7 +518,17 @@
     "subType": "نوع الاشتراك",
     "unit": "الوحدة",
     "stock": "المخزون",
-    "updateStock": "تحديث الكميات في المستودع"
+    "updateStock": "تحديث الكميات في المستودع",
+    "code": "رمز القسيمة",
+    "global_specfic": "قسيمة عامة",
+    "package_specific": "قسيمة خاصة بالباقات",
+    "meal_plan_specific": "قسيمة خاصة بخطة الوجبات",
+    "discount_type": "نوع الخصم",
+    "discount_value": "قيمة الخصم",
+    "usage_limit": "حد الاستخدام",
+    "used_count": "عدد مرات الاستخدام",
+    "expiry_date": "تاريخ الانتهاء",
+    "specfication": "تخصيص القسيمة"
   },
 
   "addBanner": {

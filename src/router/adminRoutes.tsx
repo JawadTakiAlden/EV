@@ -85,6 +85,10 @@ const MealOrderDetail = Loadable(
 const OrderOfDay = Loadable(
   lazy(() => import("../pages/mealOrders/order-of-day/OrderOfDay"))
 );
+const AllCoupons = Loadable(lazy(() => import("../pages/coupons")));
+const CreateCoupons = Loadable(
+  lazy(() => import("../pages/coupons/components/CreateCoupon"))
+);
 
 export const adminRoutes: RouteObject = {
   path: "",
@@ -100,6 +104,14 @@ export const adminRoutes: RouteObject = {
             {
               path: "privacy",
               element: <Privacy />,
+            },
+            {
+              path: "coupons",
+              element: <AllCoupons />,
+            },
+            {
+              path: "createCoupon",
+              element: <CreateCoupons />,
             },
             {
               path: "terms-and-conditions",

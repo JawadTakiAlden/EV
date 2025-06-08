@@ -12,11 +12,18 @@ import {
 } from "../../api/mealPlan";
 import LoadingDataError from "../../components/LoadingDataError";
 import { useTranslation } from "react-i18next";
+import CouponForm from "../coupons/components/CouponForm";
+import { useCreateGlobalCoupons } from "../../api/coupons";
+import dayjs from "dayjs";
+import * as yup from "yup";
+import { useParams } from "react-router";
 
 const MealPlanDetail = () => {
   const deleteMealPlan = useDeleteMealPlan();
   const meal = useShowMealPlan();
   const updateMealPlan = useUpdateMealPlan();
+  const createCoupon = useCreateGlobalCoupons();
+  const { mealPlanId } = useParams();
 
   const { t } = useTranslation();
 
@@ -55,6 +62,37 @@ const MealPlanDetail = () => {
           />
         </Grid>
         <Grid size={12}>
+          <DeleteTypography
+            sx={{
+              borderLeftColor: (theme) => alpha(theme.palette.info.main, 0.3),
+              mb: 2,
+            }}
+          >
+            {t("updateMealPlan.createCopuon")}
+          </DeleteTypography>
+          <CouponForm
+            initialValues={{
+              code: "",
+              discount_type: "percentage",
+              discount_value: 0,
+              expiry_date: dayjs(),
+              is_active: true,
+              usage_limit: 100,
+              meal_plan_id: mealPlanId,
+            }}
+            ButtonProps={{
+              loading: createCoupon.isPending,
+            }}
+            onSubmit={(values) => {
+              createCoupon.mutate({
+                ...values,
+                expiry_date: values.expiry_date.format("DD-MM-YYYY"),
+              });
+            }}
+            validationSchema={validationSchema}
+          />
+        </Grid>
+        <Grid size={12}>
           <Box>
             <DeleteTypography mb={2}>
               {t("deleteSec.button", {
@@ -79,5 +117,15 @@ const MealPlanDetail = () => {
     </Box>
   );
 };
+
+const validationSchema = yup.object().shape({
+  code: yup.string().required().label("val.code"),
+  discount_value: yup
+    .number()
+    .moreThan(0)
+    .required()
+    .label("val.discount_value"),
+  usage_limit: yup.number().moreThan(0).required().label("val.usage_limit"),
+});
 
 export default MealPlanDetail;

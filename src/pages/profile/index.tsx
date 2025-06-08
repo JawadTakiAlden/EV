@@ -379,7 +379,6 @@ const UserProfile = () => {
                   name: userProfileData?.name!,
                 }}
                 targetPackage={{
-                  id: 5,
                   name: "package of user",
                 }}
                 data={getUserWorkouts.data?.data || {}}
