@@ -3,14 +3,21 @@ import { request, ServerResponse } from "../baseRequest";
 import { AxiosResponse } from "axios";
 import { toast } from "react-toastify";
 
-const getAllCoupons = (): Promise<AxiosResponse<any[]>> => {
-  return request({
-    url: "/admin/coupons",
-  });
-};
-export const useGetAllCoupons = () => {
+export const useGetAllCoupons = (
+  planFilterId: number | string,
+  mealPlanFilter: number | string
+) => {
+  const getAllCoupons = (): Promise<AxiosResponse<any[]>> => {
+    return request({
+      url: "/admin/coupons",
+      params: {
+        package_id: planFilterId !== -1 ? planFilterId : null,
+        meal_plan_id: mealPlanFilter !== -1 ? mealPlanFilter : null,
+      },
+    });
+  };
   const query = useQuery({
-    queryKey: ["get-all-coupons"],
+    queryKey: [`get-all-coupons`],
     queryFn: getAllCoupons,
   });
 
